@@ -155,7 +155,7 @@ function renderFeaturedSeries() {
   `).join("");
 
   dots.innerHTML = featuredSeries.map((_, index) => (
-    `<button class="${index === 0 ? "active" : ""}" type="button" aria-label="切换到第 ${index + 1} 张特色系列" data-index="${index}"></button>`
+    `<button class="${index === 0 ? "active" : ""}" type="button" aria-label="切换到第 ${index + 1} 张特色产品系列" data-index="${index}"></button>`
   )).join("");
 
   track.querySelectorAll(".series-slide").forEach((slide) => {
