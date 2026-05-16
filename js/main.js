@@ -479,75 +479,88 @@ function bindEvents() {
 
   const navToggle = document.querySelector(".nav-toggle");
   const siteNav = document.querySelector(".site-nav");
-  navToggle.addEventListener("click", () => {
+  const siteHeader = document.querySelector(".site-header");
+  const closeMobileNav = () => {
+    if (!siteNav?.classList.contains("open")) return;
+    siteNav.classList.remove("open");
+    navToggle?.setAttribute("aria-expanded", "false");
+  };
+
+  navToggle?.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
     navToggle.setAttribute("aria-expanded", String(!expanded));
-    siteNav.classList.toggle("open");
+    siteNav?.classList.toggle("open");
   });
 
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+  siteNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileNav);
   });
+
+  const updateHeaderState = () => {
+    siteHeader?.classList.toggle("scrolled", window.scrollY > 24);
+  };
+
+  window.addEventListener("scroll", () => {
+    closeMobileNav();
+    updateHeaderState();
+  }, { passive: true });
+  updateHeaderState();
 
   const slides = Array.from(document.querySelectorAll(".hero-slide"));
   const dots = Array.from(document.querySelectorAll(".hero-dots button"));
   const hero = document.querySelector(".hero");
   const prevButton = document.querySelector(".hero-prev");
   const nextButton = document.querySelector(".hero-next");
-  let activeSlide = 0;
-  let slideTimer = null;
-  const showSlide = (index) => {
-    activeSlide = (index + slides.length) % slides.length;
-    slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === activeSlide));
-    dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === activeSlide));
-  };
-  const nextSlide = () => showSlide(activeSlide + 1);
-  const prevSlide = () => showSlide(activeSlide - 1);
-  const restartTimer = () => {
-    if (slideTimer) window.clearInterval(slideTimer);
-    if (slides.length > 1) {
-      slideTimer = window.setInterval(nextSlide, 5200);
-    }
-  };
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showSlide(index);
+  if (hero && slides.length > 1) {
+    let activeSlide = 0;
+    let slideTimer = null;
+    const showSlide = (index) => {
+      activeSlide = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === activeSlide));
+      dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === activeSlide));
+    };
+    const nextSlide = () => showSlide(activeSlide + 1);
+    const prevSlide = () => showSlide(activeSlide - 1);
+    const restartTimer = () => {
+      if (slideTimer) window.clearInterval(slideTimer);
+      slideTimer = window.setInterval(nextSlide, 5200);
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        restartTimer();
+      });
+    });
+
+    prevButton?.addEventListener("click", () => {
+      prevSlide();
       restartTimer();
     });
-  });
 
-  prevButton.addEventListener("click", () => {
-    prevSlide();
-    restartTimer();
-  });
-
-  nextButton.addEventListener("click", () => {
-    nextSlide();
-    restartTimer();
-  });
-
-  let startX = 0;
-  let startY = 0;
-  hero.addEventListener("pointerdown", (event) => {
-    startX = event.clientX;
-    startY = event.clientY;
-  });
-
-  hero.addEventListener("pointerup", (event) => {
-    const deltaX = event.clientX - startX;
-    const deltaY = event.clientY - startY;
-    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX < 0) nextSlide();
-      if (deltaX > 0) prevSlide();
+    nextButton?.addEventListener("click", () => {
+      nextSlide();
       restartTimer();
-    }
-  });
+    });
 
-  if (slides.length > 1) {
+    let startX = 0;
+    let startY = 0;
+    hero.addEventListener("pointerdown", (event) => {
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    hero.addEventListener("pointerup", (event) => {
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) nextSlide();
+        if (deltaX > 0) prevSlide();
+        restartTimer();
+      }
+    });
+
     restartTimer();
   }
 }
