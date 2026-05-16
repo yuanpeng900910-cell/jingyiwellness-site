@@ -374,7 +374,7 @@ input {
 
 .hero h1.hero-title-compact {
   max-width: 920px;
-  font-size: clamp(42px, 5vw, 68px);
+  font-size: clamp(34px, 4vw, 56px);
   line-height: 1.12;
   white-space: nowrap;
 }
@@ -1085,8 +1085,8 @@ section:not(.hero) {
   }
 
   .hero h1.hero-title-compact {
-    font-size: 40px;
-    white-space: normal;
+    font-size: clamp(22px, 6.8vw, 28px);
+    white-space: nowrap;
   }
 
   .hero-actions,
@@ -2242,7 +2242,7 @@ button {
   }
 
   .hero h1.hero-title-compact {
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.18;
   }
 
@@ -2394,7 +2394,8 @@ button {
   }
 
   .hero h1.hero-title-compact {
-    font-size: 32px;
+    font-size: clamp(22px, 6.8vw, 28px);
+    white-space: nowrap;
   }
 
   .hero-desc {
@@ -2664,5 +2665,63 @@ button {
     width: 38px;
     height: 38px;
     font-size: 26px;
+  }
+}
+
+/* Mobile banner image tuning: show the full wide banner over a soft filled backdrop. */
+@media (max-width: 820px) {
+  .hero-slide {
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .hero-slide:nth-child(1) {
+    background-image: url("../images/common/banner-1.jpg");
+  }
+
+  .hero-slide:nth-child(2) {
+    background-image: url("../images/common/banner-2.jpg");
+  }
+
+  .hero-slide::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: inherit;
+    background-position: center;
+    background-size: cover;
+    content: "";
+    filter: blur(18px);
+    opacity: 0.48;
+    transform: scale(1.08);
+  }
+
+  .hero-slide img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    object-fit: contain;
+    object-position: center 22%;
+  }
+
+  .hero-slide::after {
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(47, 74, 47, 0.28) 0%, rgba(47, 74, 47, 0.54) 48%, rgba(47, 74, 47, 0.86) 100%);
+  }
+
+  .hero-copy {
+    z-index: 3;
+    top: 58%;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero-copy {
+    top: 60%;
   }
 }
