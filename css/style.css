@@ -1407,7 +1407,17 @@ section:not(.hero) {
 
 @media (max-width: 520px) {
   .language-select {
-    display: none;
+    display: inline-flex;
+    right: 60px;
+    top: 15px;
+    min-width: 106px;
+  }
+
+  .language-select select {
+    min-height: 36px;
+    padding-left: 10px;
+    padding-right: 28px;
+    font-size: 12px;
   }
 }
 

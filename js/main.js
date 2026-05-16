@@ -479,6 +479,12 @@ function bindEvents() {
 
   const navToggle = document.querySelector(".nav-toggle");
   const siteNav = document.querySelector(".site-nav");
+  const closeMobileNav = () => {
+    if (!siteNav.classList.contains("open")) return;
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
+
   navToggle.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
     navToggle.setAttribute("aria-expanded", String(!expanded));
@@ -486,11 +492,10 @@ function bindEvents() {
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMobileNav);
   });
+
+  window.addEventListener("scroll", closeMobileNav, { passive: true });
 
   const slides = Array.from(document.querySelectorAll(".hero-slide"));
   const dots = Array.from(document.querySelectorAll(".hero-dots button"));
