@@ -497,6 +497,13 @@ function bindEvents() {
 
   window.addEventListener("scroll", closeMobileNav, { passive: true });
 
+  const siteHeader = document.querySelector(".site-header");
+  const updateHeaderState = () => {
+    siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+  updateHeaderState();
+  window.addEventListener("scroll", updateHeaderState, { passive: true });
+
   const slides = Array.from(document.querySelectorAll(".hero-slide"));
   const dots = Array.from(document.querySelectorAll(".hero-dots button"));
   const hero = document.querySelector(".hero");
