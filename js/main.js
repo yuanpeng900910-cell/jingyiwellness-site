@@ -481,23 +481,23 @@ function bindEvents() {
   const siteNav = document.querySelector(".site-nav");
   const siteHeader = document.querySelector(".site-header");
   const closeMobileNav = () => {
-    if (!siteNav.classList.contains("open")) return;
+    if (!siteNav || !navToggle || !siteNav.classList.contains("open")) return;
     siteNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
   };
 
-  navToggle.addEventListener("click", () => {
+  navToggle?.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
     navToggle.setAttribute("aria-expanded", String(!expanded));
-    siteNav.classList.toggle("open");
+    siteNav?.classList.toggle("open");
   });
 
-  siteNav.querySelectorAll("a").forEach((link) => {
+  Array.from(siteNav?.querySelectorAll("a") || []).forEach((link) => {
     link.addEventListener("click", closeMobileNav);
   });
 
   const updateHeaderState = () => {
-    siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+    siteHeader?.classList.toggle("scrolled", window.scrollY > 24);
   };
 
   window.addEventListener("scroll", () => {
