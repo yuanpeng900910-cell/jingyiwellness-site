@@ -111,18 +111,29 @@
         <p class="count-text">当前显示 <strong id="productCount">0</strong> 项</p>
       </div>
 
-      <div class="filter-panel">
-        <div class="filter-row">
+      <div class="filter-panel" id="productFilterPanel">
+        <div class="filter-mobile-header">
+          <h3>产品筛选</h3>
+          <button class="filter-toggle" id="filterToggle" type="button" aria-controls="mobileFilterMore" aria-expanded="false">
+            <span>展开筛选</span>
+            <span class="filter-toggle-arrow" aria-hidden="true">⌄</span>
+          </button>
+        </div>
+        <div class="filter-row primary-filter">
           <span>产品体系</span>
-          <div class="chip-group" id="categoryFilters"></div>
+          <div class="filter-scroll-wrapper">
+            <div class="chip-group" id="categoryFilters"></div>
+          </div>
         </div>
-        <div class="filter-row">
-          <span>产品系列</span>
-          <div class="chip-group" id="seriesFilters"></div>
-        </div>
-        <div class="filter-row">
-          <span>使用场景</span>
-          <div class="chip-group" id="sceneFilters"></div>
+        <div class="mobile-filter-more" id="mobileFilterMore">
+          <div class="filter-row">
+            <span>产品系列</span>
+            <div class="chip-group" id="seriesFilters"></div>
+          </div>
+          <div class="filter-row">
+            <span>使用场景</span>
+            <div class="chip-group" id="sceneFilters"></div>
+          </div>
         </div>
         <label class="search-box">
           <span>人群搜索</span>
