@@ -411,7 +411,31 @@ function bindEvents() {
     }
   });
 
-  getElement("searchInput").addEventListener("input", (event) => {
+  const filterPanel = getElement("productFilterPanel");
+  const filterToggle = getElement("filterToggle");
+  const searchInput = getElement("searchInput");
+  const mobileSearchPlaceholder = "搜索产品、体质或场景";
+  const desktopSearchPlaceholder = searchInput.placeholder;
+  const mobileFilterQuery = window.matchMedia("(max-width: 768px)");
+
+  const syncSearchPlaceholder = () => {
+    searchInput.placeholder = mobileFilterQuery.matches ? mobileSearchPlaceholder : desktopSearchPlaceholder;
+  };
+
+  syncSearchPlaceholder();
+  if (mobileFilterQuery.addEventListener) {
+    mobileFilterQuery.addEventListener("change", syncSearchPlaceholder);
+  } else {
+    mobileFilterQuery.addListener(syncSearchPlaceholder);
+  }
+
+  filterToggle.addEventListener("click", () => {
+    const isOpen = filterPanel.classList.toggle("is-open");
+    filterToggle.setAttribute("aria-expanded", String(isOpen));
+    filterToggle.querySelector("span").textContent = isOpen ? "收起筛选" : "展开筛选";
+  });
+
+  searchInput.addEventListener("input", (event) => {
     state.keyword = event.target.value;
     renderProducts();
   });
