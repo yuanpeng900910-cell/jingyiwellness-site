@@ -48,7 +48,7 @@ const products = [
 const categories = ["全部", "药食养方系列", "生活养方系列", "节气养生系列", "定制礼赠系列", "健康场景共建系列"];
 const seriesList = ["全部", "轻养小罐茶系列", "辨体调养茶系列", "国民经典饮系列", "养生隐茶杯系列", "滋补系列", "轻养膳食系列", "草本睡眠/香养产品", "草本梳理/洗护产品", "节气内容产品", "礼赠产品/方案", "场景合作项目"];
 const visibleSeriesList = seriesList;
-const sceneList = ["全部", "办公室茶饮", "家庭常备", "节令养护", "女性关爱", "餐后清爽", "商务礼赠", "睡前香养", "轻养膳食"];
+const sceneList = ["全部", "日常茶饮", "办公室茶饮", "体质调养", "节令养护", "餐后清爽", "睡前香养", "草本洗护", "轻养膳食", "商务礼赠", "企业关怀", "社区活动"];
 
 const categoryIntros = {
   "药食养方系列": "代茶饮、经典饮品、滋补茶点与轻养膳食，覆盖日常轻养场景。",
@@ -85,19 +85,64 @@ const state = {
 
 const getElement = (id) => document.getElementById(id);
 
+const productSceneMap = {
+  "元气茶": ["日常茶饮", "办公室茶饮"],
+  "轻湿茶": ["日常茶饮", "办公室茶饮", "餐后清爽"],
+  "红颜茶": ["日常茶饮", "办公室茶饮"],
+  "熬夜茶": ["日常茶饮", "办公室茶饮"],
+  "苹果黄芪茶": ["体质调养", "日常茶饮", "办公室茶饮"],
+  "甘草干姜茶": ["体质调养", "日常茶饮", "办公室茶饮", "节令养护"],
+  "百合玉竹茶": ["体质调养", "日常茶饮", "办公室茶饮", "节令养护"],
+  "参芪大枣茶": ["体质调养", "日常茶饮", "办公室茶饮"],
+  "茯苓陈皮茶": ["体质调养", "日常茶饮", "办公室茶饮", "餐后清爽"],
+  "薏仁荷叶茶": ["体质调养", "日常茶饮", "办公室茶饮", "餐后清爽"],
+  "当归玫瑰茶": ["体质调养", "日常茶饮", "办公室茶饮"],
+  "玫瑰佛手茶": ["体质调养", "日常茶饮", "办公室茶饮", "餐后清爽"],
+  "黄芪紫苏茶": ["体质调养", "日常茶饮", "办公室茶饮", "节令养护"],
+  "酸梅汤": ["日常茶饮", "办公室茶饮", "餐后清爽", "节令养护"],
+  "五红饮": ["日常茶饮", "办公室茶饮", "节令养护"],
+  "姜枣茶": ["日常茶饮", "办公室茶饮", "节令养护"],
+  "秋梨汤": ["日常茶饮", "办公室茶饮", "节令养护"],
+  "养元茶": ["日常茶饮", "办公室茶饮"],
+  "清和茶": ["日常茶饮", "办公室茶饮"],
+  "葛花解酲汤": ["日常茶饮", "办公室茶饮", "餐后清爽"],
+  "即食九制黄精": ["轻养膳食", "商务礼赠"],
+  "茯苓糕": ["轻养膳食", "商务礼赠"],
+  "五黑丸": ["轻养膳食", "商务礼赠"],
+  "五行馒头": ["轻养膳食"],
+  "轻养膳食粉": ["轻养膳食"],
+  "鼻安梦香枕": ["睡前香养"],
+  "非遗合香珠": ["睡前香养", "商务礼赠"],
+  "非遗药香梳": ["草本洗护", "商务礼赠"],
+  "养发梳套装": ["草本洗护", "商务礼赠"],
+  "侧柏叶养发皂": ["草本洗护"],
+  "七子白洁面皂": ["草本洗护"],
+  "顺时而养 · 二十四节气养生历": ["节令养护", "商务礼赠"],
+  "顺时而养 · Companion OS": ["节令养护", "企业关怀"],
+  "企业员工健康礼": ["商务礼赠", "企业关怀"],
+  "商务伴手礼": ["商务礼赠"],
+  "参石御养小罐茶礼盒": ["商务礼赠", "办公室茶饮"],
+  "主题健康礼盒": ["商务礼赠", "企业关怀"],
+  "京颐养方线下体验区": ["企业关怀", "社区活动"],
+  "企业健康活动": ["企业关怀"],
+  "社区健康服务": ["社区活动"],
+  "园区员工健康关爱": ["企业关怀"],
+  "中医文化展活动合作": ["社区活动", "企业关怀"]
+};
+
 function getScenes(product) {
-  const text = [product.name, product.target, product.intro, product.series, product.category].join(" ");
-  const scenes = [];
-  if (/办公室|上班|加班|久坐|出差|工作|夜班/.test(text)) scenes.push("办公室茶饮");
-  if (/家庭|常备|早餐|茶点/.test(text)) scenes.push("家庭常备");
-  if (/节令|秋冬|夏季|换季|节日|端午|中秋|春节/.test(text)) scenes.push("节令养护");
-  if (/女性|红颜|气色|关爱/.test(text)) scenes.push("女性关爱");
-  if (/餐后|聚餐|应酬|清爽|轻负担/.test(text)) scenes.push("餐后清爽");
-  if (/商务|高端|客户|礼赠|礼盒|伴手礼/.test(text)) scenes.push("商务礼赠");
-  if (/睡前|卧室|香枕|香养|衣柜/.test(text)) scenes.push("睡前香养");
-  if (/膳食|主食|代餐|馒头|早餐|粉/.test(text)) scenes.push("轻养膳食");
-  return scenes.length ? scenes : ["日常轻养"];
+  const mappedScenes = productSceneMap[product.name];
+  const scenes = Array.isArray(product.scenes)
+    ? product.scenes
+    : product.scene
+      ? [product.scene]
+      : [];
+  return (mappedScenes || scenes).length ? (mappedScenes || scenes) : ["日常茶饮"];
 }
+
+products.forEach((product) => {
+  product.scenes = getScenes(product);
+});
 
 function renderChips(container, items, activeValue, onClick) {
   container.innerHTML = items.map((item) => (
@@ -317,8 +362,8 @@ function getSeriesOptions(category = state.category) {
 
 function getSceneOptions(category = state.category, series = state.series) {
   const scoped = getProductsByCategorySeries(category, series);
-  const scenes = unique(scoped.flatMap((product) => getScenes(product)));
-  return ["全部", ...scenes];
+  const sceneSet = new Set(scoped.flatMap((product) => getScenes(product)));
+  return ["全部", ...sceneList.filter((scene) => scene !== "全部" && sceneSet.has(scene))];
 }
 
 function normalizeFilterState() {
@@ -344,7 +389,7 @@ function normalizeFilterState() {
 
 function getFilteredProducts() {
   const keyword = state.keyword.trim().toLowerCase();
-  return products.filter((product) => {
+  const filtered = products.filter((product) => {
     const categoryMatched = state.category === "全部" || product.category === state.category;
     const seriesMatched = state.series === "全部" || product.series === state.series;
     const scenes = getScenes(product);
@@ -352,6 +397,13 @@ function getFilteredProducts() {
     const keywordText = [product.name, product.spec, product.formula, product.intro, product.target, product.series, product.category, scenes.join(" ")].join(" ").toLowerCase();
     return categoryMatched && seriesMatched && sceneMatched && (!keyword || keywordText.includes(keyword));
   });
+
+  if (!keyword && state.scene !== "全部" && filtered.length === 0) {
+    state.scene = "全部";
+    return getFilteredProducts();
+  }
+
+  return filtered;
 }
 
 function sortProductsForDisplay(items) {
@@ -390,6 +442,8 @@ function renderProducts() {
       </details>
     ` : "";
 
+    const sceneTags = getScenes(product).map((scene) => `<span class="scene-tag">${scene}</span>`).join("");
+
     return `
       <article class="product-card">
         <div class="product-image">
@@ -403,6 +457,7 @@ function renderProducts() {
             ${formula}
           </div>
           <p class="intro">${product.intro}</p>
+          <div class="scene-tags">${sceneTags}</div>
         </div>
       </article>
     `;
