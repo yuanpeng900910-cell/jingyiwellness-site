@@ -841,6 +841,22 @@ section:not(.hero) {
   color: var(--ink);
 }
 
+.scene-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.scene-tags .scene-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
 .empty-state {
   padding: 42px;
   border: 1px dashed var(--line);
