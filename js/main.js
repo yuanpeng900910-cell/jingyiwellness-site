@@ -297,6 +297,51 @@ function openTeaDetail(product) {
   getElement("teaModalClose").focus();
 }
 
+
+function getProductsByCategorySeries(category = state.category, series = state.series) {
+  return products.filter((product) => {
+    const categoryMatched = category === "全部" || product.category === category;
+    const seriesMatched = series === "全部" || product.series === series;
+    return categoryMatched && seriesMatched;
+  });
+}
+
+function unique(items) {
+  return [...new Set(items)];
+}
+
+function getSeriesOptions(category = state.category) {
+  const scoped = category === "全部" ? products : products.filter((product) => product.category === category);
+  return ["全部", ...unique(scoped.map((product) => product.series))];
+}
+
+function getSceneOptions(category = state.category, series = state.series) {
+  const scoped = getProductsByCategorySeries(category, series);
+  const scenes = unique(scoped.flatMap((product) => getScenes(product)));
+  return ["全部", ...scenes];
+}
+
+function normalizeFilterState() {
+  const seriesOptions = getSeriesOptions(state.category);
+  if (!seriesOptions.includes(state.series)) {
+    state.series = "全部";
+  }
+
+  const sceneOptions = getSceneOptions(state.category, state.series);
+  if (!sceneOptions.includes(state.scene)) {
+    state.scene = "全部";
+  }
+
+  if (!state.keyword.trim()) {
+    const hasProducts = getProductsByCategorySeries(state.category, state.series).length > 0;
+    if (!hasProducts && state.series !== "全部") {
+      state.series = "全部";
+      const resetSceneOptions = getSceneOptions(state.category, state.series);
+      if (!resetSceneOptions.includes(state.scene)) state.scene = "全部";
+    }
+  }
+}
+
 function getFilteredProducts() {
   const keyword = state.keyword.trim().toLowerCase();
   return products.filter((product) => {
@@ -384,19 +429,26 @@ function renderConstitutionCards() {
 }
 
 function update() {
+  normalizeFilterState();
+
+  const seriesOptions = getSeriesOptions(state.category);
+  const sceneOptions = getSceneOptions(state.category, state.series);
+
   renderChips(getElement("categoryFilters"), categories, state.category, (value) => {
     state.category = value;
-    if (value === "全部") state.series = "全部";
+    normalizeFilterState();
     update();
   });
 
-  renderChips(getElement("seriesFilters"), visibleSeriesList, state.series, (value) => {
+  renderChips(getElement("seriesFilters"), seriesOptions, state.series, (value) => {
     state.series = value;
+    normalizeFilterState();
     update();
   });
 
-  renderChips(getElement("sceneFilters"), sceneList, state.scene, (value) => {
+  renderChips(getElement("sceneFilters"), sceneOptions, state.scene, (value) => {
     state.scene = value;
+    normalizeFilterState();
     update();
   });
 
@@ -442,7 +494,7 @@ function bindEvents() {
 
   searchInput.addEventListener("input", (event) => {
     state.keyword = event.target.value;
-    renderProducts();
+    update();
   });
 
   getElement("backToTop").addEventListener("click", () => {
