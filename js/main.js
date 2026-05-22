@@ -511,18 +511,6 @@ function update() {
 }
 
 function bindEvents() {
-  const protectedImageSelector = "img, .hero-slide, .series-slide, .product-image, .tea-image, .scene-banner";
-  document.addEventListener("contextmenu", (event) => {
-    if (event.target.closest(protectedImageSelector)) {
-      event.preventDefault();
-    }
-  });
-  document.addEventListener("dragstart", (event) => {
-    if (event.target.closest(protectedImageSelector)) {
-      event.preventDefault();
-    }
-  });
-
   const filterPanel = getElement("productFilterPanel");
   const filterToggle = getElement("filterToggle");
   const searchInput = getElement("searchInput");
