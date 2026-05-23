@@ -83,7 +83,13 @@ const state = {
   keyword: ""
 };
 
+const eagerProductImageNames = new Set(["苹果黄芪茶", "甘草干姜茶", "百合玉竹茶", "参芪大枣茶"]);
+
 const getElement = (id) => document.getElementById(id);
+
+function getImageLoadingAttrs({ eager = false, width = 800, height = 600 } = {}) {
+  return `width="${width}" height="${height}" decoding="async" loading="${eager ? "eager" : "lazy"}"${eager ? " fetchpriority=\"high\"" : ""}`;
+}
 
 const productSceneMap = {
   "元气茶": ["日常茶饮", "办公室茶饮"],
@@ -194,7 +200,7 @@ function renderFeaturedSeries() {
   const dots = getElement("seriesDots");
   track.innerHTML = featuredSeries.map((item) => `
     <article class="series-slide" data-series="${item.series}">
-      <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
+      <img src="${item.image}" alt="${item.title}" ${getImageLoadingAttrs({ eager: false, width: 1600, height: 900 })} onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
       <div class="series-copy">
         <p class="eyebrow">Featured Series</p>
         <h3>${item.title}</h3>
@@ -258,7 +264,7 @@ function renderConstitutionTea() {
   track.innerHTML = teas.map(({ constitution, product }, index) => `
     <article class="tea-card">
       <div class="tea-image">
-        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
+        <img src="${product.image}" alt="${product.name}" ${getImageLoadingAttrs({ eager: false, width: 800, height: 600 })} onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
       </div>
       <div class="tea-body">
         <span class="tea-constitution">${constitution}</span>
@@ -427,7 +433,9 @@ function renderProducts() {
   const filtered = sortProductsForDisplay(getFilteredProducts());
   const grid = getElement("productGrid");
   const empty = getElement("emptyState");
-  getElement("productCount").textContent = filtered.length;
+  const productCount = getElement("productCount");
+  if (!grid || !empty || !productCount) return;
+  productCount.textContent = filtered.length;
   empty.hidden = filtered.length > 0;
 
   grid.innerHTML = filtered.map((product) => {
@@ -447,7 +455,7 @@ function renderProducts() {
     return `
       <article class="product-card">
         <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
+          <img src="${product.image}" alt="${product.name}" ${getImageLoadingAttrs({ eager: eagerProductImageNames.has(product.name), width: 800, height: 600 })} onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
         </div>
         <div class="product-body">
           <h3>${product.name}</h3>
