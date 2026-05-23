@@ -1,5 +1,31 @@
 const filterTabs = ['全部', '买前必看', '茶饮产品', '草本生活', '送礼团购', '注意事项'];
 
+
+const teaConstitutionCards = [
+  { product: '苹果黄芪茶', constitution: '平和体质', keyword: '体质平衡｜日常轻养' },
+  { product: '参芪大枣茶', constitution: '气虚体质', keyword: '易疲惫｜元气补养' },
+  { product: '甘草干姜茶', constitution: '阳虚体质', keyword: '怕冷偏寒｜温养驱寒' },
+  { product: '百合玉竹茶', constitution: '阴虚体质', keyword: '燥热偏干｜清润养阴' },
+  { product: '茯苓陈皮茶', constitution: '痰湿体质', keyword: '身体困重｜健脾化湿' },
+  { product: '薏仁荷叶茶', constitution: '湿热体质', keyword: '油腻易热｜清爽祛湿' },
+  { product: '当归玫瑰茶', constitution: '血瘀体质', keyword: '循环偏滞｜温和活络' },
+  { product: '玫瑰佛手茶', constitution: '气郁体质', keyword: '情绪郁结｜舒畅解郁' },
+  { product: '黄芪紫苏茶', constitution: '特禀体质', keyword: '敏感体质｜温和调护' }
+];
+
+function renderTeaConstitutionCards(cards) {
+  return `
+    <div class="tea-constitution-grid" aria-label="九款辨体调养茶体质对应表">
+      ${cards.map((card) => `
+        <article class="tea-constitution-card">
+          <h4>${card.product}</h4>
+          <p><strong>对应体质：</strong>${card.constitution}</p>
+          <p class="tea-constitution-keyword">${card.keyword}</p>
+        </article>
+      `).join('')}
+    </div>
+  `;
+}
 const qaItems = [
   { section: '品牌Q&A', q: '京颐养方是什么品牌？', a: '京颐养方是合肥京东方医院主动健康业务下的健康产品与服务品牌。\n品牌围绕药食同源、草本生活与健康礼赠场景，提供更日常的东方轻养方案。', tag: '品牌', groups: ['买前必看'] },
   { section: '品牌Q&A', q: '京颐养方做的是什么业务？', a: '不是单一卖货。\n品牌在做产品体系、企业健康场景、线下体验和礼赠方案，强调可持续的日常健康管理。', tag: '品牌', groups: ['买前必看'] },
@@ -25,6 +51,7 @@ const qaItems = [
   { section: '辨体调养茶系列Q&A', q: '这九款茶是什么产品？', a: '围绕中医九种体质思路开发的辨体调养茶。\n每款对应一种体质方向，帮助用户根据状态选择日常茶饮。', tag: '茶饮', groups: ['茶饮产品'] },
   { section: '辨体调养茶系列Q&A', q: '和普通养生茶有什么区别？', a: '普通养生茶多按口味或单一场景区分；\n辨体调养茶强调“先辨体，再选茶”，按体质特点设计。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
   { section: '辨体调养茶系列Q&A', q: '不知道自己是什么体质，怎么选？', a: '可先通过体质辨识工具了解主导体质。\n若没有明显偏向，可先从苹果黄芪茶等基础款开始。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
+  { section: '辨体调养茶系列Q&A', q: '九款辨体调养茶分别对应什么体质？', a: '苹果黄芪茶、参芪大枣茶、甘草干姜茶、百合玉竹茶、茯苓陈皮茶、薏仁荷叶茶、当归玫瑰茶、玫瑰佛手茶、黄芪紫苏茶分别对应平和、气虚、阳虚、阴虚、痰湿、湿热、血瘀、气郁、特禀体质。\n可按体质关键词快速对照，做买前选择。', tag: '茶饮', groups: ['茶饮产品', '买前必看'], cards: teaConstitutionCards },
   { section: '辨体调养茶系列Q&A', q: '一天喝几罐合适？', a: '一般建议每日1罐即可。\n不建议一次大量饮用，也不建议一天同时喝多种体质茶。', tag: '禁忌', groups: ['茶饮产品', '注意事项'] },
   { section: '辨体调养茶系列Q&A', q: '能不能几款一起泡？', a: '不建议随意混泡。\n建议一次一罐、按需选择，做组合时按周期轮换。', tag: '禁忌', groups: ['茶饮产品', '注意事项'] },
   { section: '辨体调养茶系列Q&A', q: '适合做礼盒吗？', a: '适合。\n比普通茶礼更有“健康关怀”和“专属感”，适配企业福利、客户礼赠等。', tag: '团购', groups: ['茶饮产品', '送礼团购'] },
@@ -99,6 +126,12 @@ function toParagraphs(text) {
   return text.split('\n').map((line) => `<p>${line}</p>`).join('');
 }
 
+function renderAnswer(item) {
+  const paragraphs = toParagraphs(item.a);
+  const cards = item.cards ? renderTeaConstitutionCards(item.cards) : '';
+  return `${paragraphs}${cards}`;
+}
+
 function renderCategoryFilters() {
   qaCategoryFilters.innerHTML = filterTabs.map((category) => (
     `<button class="sales-qa-chip ${category === activeCategory ? 'active' : ''}" data-category="${category}" type="button">${category}</button>`
@@ -139,7 +172,7 @@ function renderFaq() {
               <span class="sales-qa-tag">${item.tag}</span>
               <span class="sales-qa-question">${item.q}</span>
             </summary>
-            <div class="sales-qa-answer">${toParagraphs(item.a)}</div>
+            <div class="sales-qa-answer">${renderAnswer(item)}</div>
           </details>
         `;
       }).join('')}
