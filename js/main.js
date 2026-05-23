@@ -83,8 +83,6 @@ const state = {
   keyword: ""
 };
 
-const eagerProductImageNames = new Set(["苹果黄芪茶", "甘草干姜茶", "百合玉竹茶", "参芪大枣茶"]);
-
 const getElement = (id) => document.getElementById(id);
 
 function getImageLoadingAttrs({ eager = false, width = 800, height = 600 } = {}) {
@@ -455,7 +453,7 @@ function renderProducts() {
     return `
       <article class="product-card">
         <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" ${getImageLoadingAttrs({ eager: eagerProductImageNames.has(product.name), width: 800, height: 600 })} onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
+          <img src="${product.image}" alt="${product.name}" ${getImageLoadingAttrs({ eager: false, width: 800, height: 600 })} onerror="this.onerror=null;this.src='images/common/product-placeholder.jpg'">
         </div>
         <div class="product-body">
           <h3>${product.name}</h3>
@@ -695,10 +693,20 @@ function bindEvents() {
   }
 }
 
+function runWhenIdle(callback) {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 1200 });
+    return;
+  }
+  window.setTimeout(callback, 120);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderConstitutionTea();
-  renderFeaturedSeries();
-  renderConstitutionCards();
   bindEvents();
   update();
+  runWhenIdle(() => {
+    renderConstitutionTea();
+    renderFeaturedSeries();
+    renderConstitutionCards();
+  });
 });
