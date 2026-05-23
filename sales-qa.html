@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京颐养方品牌产品购买Q&A手册</title>
-  <meta name="description" content="京颐养方品牌、产品体系、购买团购及日常答疑资料页。">
+  <title>京颐养方销售Q&A与销售话术手册</title>
+  <meta name="description" content="京颐养方销售培训、客服接待、企业团购、试饮活动、直播回复使用的话术手册。">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sales-qa.css">
 </head>
 <body class="sales-qa-page">
   <main class="sales-qa-main">
     <header class="sales-qa-header">
-      <h1>京颐养方品牌产品购买Q&A手册</h1>
-      <p>用于快速了解京颐养方品牌、产品体系、购买团购及日常答疑。</p>
+      <h1>京颐养方销售Q&A与销售话术手册</h1>
+      <p>用于销售培训、客服答疑、团购沟通与试饮活动</p>
+      <div class="sales-qa-shortcuts" id="shortcutLinks"></div>
     </header>
 
-    <section class="sales-qa-tools" aria-label="Q&A筛选工具">
-      <label class="sales-qa-search" for="qaSearchInput">
-        <span>搜索问题/关键词</span>
-        <input id="qaSearchInput" type="search" placeholder="搜索问题，如：怎么选、团购价、孕妇、保质期、合香珠">
-      </label>
+    <section class="sales-qa-tools" aria-label="销售手册筛选工具">
+      <input id="qaSearchInput" type="search" placeholder="搜索问题、场景或话术，如：怎么选、团购、孕妇、煮泡、智商税、合香珠" aria-label="搜索问题、场景或话术">
       <div class="sales-qa-categories" id="qaCategoryFilters" aria-label="分类筛选"></div>
       <p class="sales-qa-result" id="qaResultCount"></p>
     </section>
 
-    <section class="sales-qa-list" id="qaList" aria-live="polite"></section>
-    <p class="sales-qa-empty" id="qaEmpty" hidden>暂无匹配内容，请尝试其他关键词。</p>
+    <div class="sales-qa-layout">
+      <aside class="sales-qa-toc" id="toc"></aside>
+      <section class="sales-qa-list" id="qaList" aria-live="polite"></section>
+    </div>
+    <p class="sales-qa-empty" id="qaEmpty" hidden>没有找到相关内容，可尝试搜索：怎么选、团购、孕妇、煮泡、智商税、合香珠、隐茶杯</p>
   </main>
-
   <script src="js/sales-qa.js"></script>
 </body>
 </html>
