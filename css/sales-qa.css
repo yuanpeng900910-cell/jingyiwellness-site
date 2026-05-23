@@ -1,0 +1,136 @@
+.sales-qa-page {
+  background: #f8f7f2;
+  color: #1f2a1f;
+}
+
+.sales-qa-main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.1rem 1rem 3rem;
+}
+
+.sales-qa-header {
+  background: #fffef8;
+  border: 1px solid #e7e1d2;
+  border-radius: 18px;
+  padding: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.sales-qa-header h1 {
+  margin: 0.4rem 0;
+  color: #234f35;
+  line-height: 1.35;
+  font-size: 1.25rem;
+}
+
+.sales-qa-tools {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(248, 247, 242, 0.96);
+  backdrop-filter: blur(4px);
+  padding: 0.5rem 0 0.9rem;
+}
+
+.sales-qa-search {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.sales-qa-search span {
+  font-size: 0.85rem;
+  color: #5d665d;
+}
+
+.sales-qa-search input {
+  width: 100%;
+  border: 1px solid #c9d2c1;
+  border-radius: 12px;
+  padding: 0.72rem 0.82rem;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.sales-qa-categories {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.1rem;
+}
+
+.sales-qa-chip {
+  border: 1px solid #bfd1b6;
+  background: #f5faef;
+  color: #32533d;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.sales-qa-chip.active {
+  background: #2f6a44;
+  color: #fff;
+  border-color: #2f6a44;
+}
+
+.sales-qa-group {
+  margin-bottom: 0.9rem;
+}
+
+.sales-qa-group-title {
+  font-size: 1rem;
+  margin: 0.75rem 0 0.55rem;
+  color: #2c5038;
+}
+
+.sales-qa-item {
+  border: 1px solid #e5e2d8;
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 0.45rem;
+  overflow: hidden;
+}
+
+.sales-qa-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.78rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.sales-qa-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.sales-qa-answer {
+  margin: 0;
+  padding: 0 0.78rem 0.86rem;
+  color: #49544b;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  white-space: pre-line;
+}
+
+.sales-qa-empty {
+  padding: 1rem;
+  text-align: center;
+  color: #5f6d5f;
+}
+
+@media (min-width: 760px) {
+  .sales-qa-main {
+    padding-top: 1.8rem;
+  }
+
+  .sales-qa-header {
+    padding: 1.35rem;
+  }
+
+  .sales-qa-header h1 {
+    font-size: 1.6rem;
+  }
+}
