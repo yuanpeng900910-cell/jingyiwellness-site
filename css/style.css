@@ -1182,9 +1182,22 @@ section:not(.hero) {
 }
 
 .hero {
+  position: relative;
   display: block;
   min-height: 720px;
   background: var(--green);
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .hero::before {
@@ -1231,6 +1244,13 @@ section:not(.hero) {
   padding: 0;
   color: #fff;
   transform: translateY(-50%);
+}
+
+#products,
+#experience,
+#custom {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 960px;
 }
 
 .hero .eyebrow {
@@ -2749,6 +2769,10 @@ button {
 
   .hero-copy {
     top: 60%;
+  }
+
+  .hero-media img {
+    object-position: 58% center;
   }
 }
 
