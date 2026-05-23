@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京颐养方常见问题</title>
+  <meta name="description" content="了解京颐养方品牌、产品选择、饮用方式、使用建议与购买说明。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/qa.css">
+</head>
+<body class="qa-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand logo-only" href="/" aria-label="京颐养方首页">
+        <img src="images/common/logo.png" alt="京颐养方 JINGYI WELLNESS">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="/#brand-idea">认识品牌</a>
+        <a href="/#featured">特色产品</a>
+        <a href="/#products">所有产品</a>
+        <a href="/#experience">场景共建</a>
+        <a href="/#custom">定制礼赠</a>
+        <a href="/qa">Q&A</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="qa-main">
+    <header class="qa-header">
+      <h1>京颐养方常见问题</h1>
+      <p>了解京颐养方品牌、产品选择、饮用方式、使用建议与购买说明。</p>
+    </header>
+
+    <section class="qa-tools" aria-label="常见问题筛选工具">
+      <label class="qa-search" for="qaSearchInput">
+        <span>搜索问题/关键词</span>
+        <input id="qaSearchInput" type="search" placeholder="搜索问题，如：怎么选、冲泡、孕妇、保质期、合香珠、团购">
+      </label>
+      <div class="qa-categories" id="qaCategoryFilters" aria-label="分类筛选"></div>
+      <p class="qa-result" id="qaResultCount"></p>
+    </section>
+
+    <section class="qa-list" id="qaList" aria-live="polite"></section>
+    <p class="qa-empty" id="qaEmpty" hidden>没有找到相关问题，可尝试搜索：怎么选、冲泡、孕妇、保质期、合香珠、团购</p>
+  </main>
+
+  <script src="js/qa.js"></script>
+</body>
+</html>
