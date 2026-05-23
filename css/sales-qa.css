@@ -18,10 +18,16 @@
 }
 
 .sales-qa-header h1 {
-  margin: 0.4rem 0;
+  margin: 0;
   color: #234f35;
   line-height: 1.35;
-  font-size: 1.25rem;
+  font-size: 1.24rem;
+}
+
+.sales-qa-header p {
+  margin: 0.65rem 0 0;
+  color: #485447;
+  line-height: 1.65;
 }
 
 .sales-qa-tools {
@@ -40,7 +46,7 @@
 }
 
 .sales-qa-search span {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   color: #5d665d;
 }
 
@@ -48,8 +54,8 @@
   width: 100%;
   border: 1px solid #c9d2c1;
   border-radius: 12px;
-  padding: 0.72rem 0.82rem;
-  font-size: 0.95rem;
+  padding: 0.76rem 0.86rem;
+  font-size: 1rem;
   background: #fff;
 }
 
@@ -57,16 +63,16 @@
   display: flex;
   gap: 0.45rem;
   overflow-x: auto;
-  padding-bottom: 0.1rem;
+  padding-bottom: 0.2rem;
 }
 
 .sales-qa-chip {
   border: 1px solid #bfd1b6;
   background: #f5faef;
   color: #32533d;
-  padding: 0.35rem 0.7rem;
+  padding: 0.42rem 0.76rem;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   white-space: nowrap;
 }
 
@@ -76,8 +82,14 @@
   border-color: #2f6a44;
 }
 
+.sales-qa-result {
+  margin: 0.55rem 0 0;
+  color: #5a675a;
+  font-size: 0.9rem;
+}
+
 .sales-qa-group {
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
 }
 
 .sales-qa-group-title {
@@ -88,31 +100,49 @@
 
 .sales-qa-item {
   border: 1px solid #e5e2d8;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #fff;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.65rem;
   overflow: hidden;
 }
 
 .sales-qa-item summary {
   cursor: pointer;
   list-style: none;
-  padding: 0.78rem;
-  font-weight: 600;
-  line-height: 1.45;
+  padding: 0.82rem;
+  line-height: 1.5;
 }
 
 .sales-qa-item summary::-webkit-details-marker {
   display: none;
 }
 
+.sales-qa-question {
+  display: block;
+  font-weight: 600;
+}
+
+.sales-qa-tag {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-size: 0.76rem;
+  color: #2f6a44;
+  background: #eef8e9;
+  border: 1px solid #cbe0bf;
+  border-radius: 999px;
+  padding: 0.14rem 0.48rem;
+}
+
 .sales-qa-answer {
   margin: 0;
-  padding: 0 0.78rem 0.86rem;
-  color: #49544b;
-  line-height: 1.7;
-  font-size: 0.92rem;
-  white-space: pre-line;
+  padding: 0 0.82rem 0.96rem;
+  color: #3e4b40;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.sales-qa-answer p {
+  margin: 0 0 0.56rem;
 }
 
 .sales-qa-empty {
@@ -122,15 +152,7 @@
 }
 
 @media (min-width: 760px) {
-  .sales-qa-main {
-    padding-top: 1.8rem;
-  }
-
-  .sales-qa-header {
-    padding: 1.35rem;
-  }
-
-  .sales-qa-header h1 {
-    font-size: 1.6rem;
-  }
+  .sales-qa-main { padding-top: 1.8rem; }
+  .sales-qa-header { padding: 1.35rem; }
+  .sales-qa-header h1 { font-size: 1.58rem; }
 }
