@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京颐养方品牌产品购买Q&A手册</title>
+  <meta name="description" content="京颐养方品牌、产品体系、购买团购及日常答疑资料页。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sales-qa.css">
+</head>
+<body class="sales-qa-page">
+  <main class="sales-qa-main">
+    <header class="sales-qa-header">
+      <h1>京颐养方品牌产品购买Q&A手册</h1>
+      <p>用于快速了解京颐养方品牌、产品体系、购买团购及日常答疑。</p>
+    </header>
+
+    <section class="sales-qa-tools" aria-label="Q&A筛选工具">
+      <label class="sales-qa-search" for="qaSearchInput">
+        <span>搜索问题/关键词</span>
+        <input id="qaSearchInput" type="search" placeholder="搜索问题，如：怎么选、团购价、孕妇、保质期、合香珠">
+      </label>
+      <div class="sales-qa-categories" id="qaCategoryFilters" aria-label="分类筛选"></div>
+      <p class="sales-qa-result" id="qaResultCount"></p>
+    </section>
+
+    <section class="sales-qa-list" id="qaList" aria-live="polite"></section>
+    <p class="sales-qa-empty" id="qaEmpty" hidden>暂无匹配内容，请尝试其他关键词。</p>
+  </main>
+
+  <script src="js/sales-qa.js"></script>
+</body>
+</html>
