@@ -156,3 +156,46 @@
   .sales-qa-header { padding: 1.35rem; }
   .sales-qa-header h1 { font-size: 1.58rem; }
 }
+
+.tea-constitution-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.58rem;
+  margin-top: 0.36rem;
+}
+
+.tea-constitution-card {
+  border: 1px solid #dfe8d8;
+  border-radius: 12px;
+  background: #f8fcf5;
+  padding: 0.62rem 0.66rem;
+}
+
+.tea-constitution-card h4 {
+  margin: 0 0 0.28rem;
+  color: #2c5038;
+  font-size: 0.96rem;
+}
+
+.tea-constitution-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tea-constitution-keyword {
+  margin-top: 0.22rem;
+  color: #526552;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 760px) {
+  .tea-constitution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .tea-constitution-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
