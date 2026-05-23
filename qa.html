@@ -35,12 +35,47 @@
     </header>
 
     <section class="qa-tools" aria-label="常见问题筛选工具">
-      <label class="qa-search" for="qaSearchInput">
-        <span>搜索问题/关键词</span>
-        <input id="qaSearchInput" type="search" placeholder="搜索问题，如：怎么选、冲泡、孕妇、保质期、合香珠、团购">
-      </label>
-      <div class="qa-categories" id="qaCategoryFilters" aria-label="分类筛选"></div>
-      <p class="qa-result" id="qaResultCount"></p>
+      <div class="qa-tools-inner">
+        <label class="qa-search" for="qaSearchInput">
+          <span>搜索问题/关键词</span>
+          <input id="qaSearchInput" type="search" placeholder="搜索问题，如：怎么选、冲泡、孕妇、保质期、合香珠、团购">
+        </label>
+        <div class="qa-categories" id="qaCategoryFilters" aria-label="分类筛选"></div>
+        <p class="qa-result" id="qaResultCount"></p>
+      </div>
+    </section>
+
+    <section class="qa-featured" aria-label="推荐阅读">
+      <h2>推荐阅读</h2>
+      <div class="qa-featured-grid" id="qaFeaturedLinks"></div>
+    </section>
+
+    <section class="qa-scenes" aria-label="场景推荐">
+      <h2>不同场景，喝不同的轻养方式</h2>
+      <div class="qa-scene-chips" id="qaSceneFilters"></div>
+    </section>
+
+    <section class="qa-product-map" aria-label="产品快速认识">
+      <h2>产品快速认识</h2>
+      <div class="qa-product-grid">
+        <article class="qa-product-col">
+          <h3>茶饮产品</h3>
+          <ul>
+            <li><strong>轻养小罐茶：</strong>一罐一泡，适合办公室与日常轻养。</li>
+            <li><strong>辨体调养茶：</strong>围绕九种体质，一人一方辨体调养。</li>
+            <li><strong>国民经典饮：</strong>经典配方现代化，四时皆可轻松饮用。</li>
+            <li><strong>隐茶杯：</strong>杯装便携，即泡即饮，会议接待更省心。</li>
+          </ul>
+        </article>
+        <article class="qa-product-col">
+          <h3>草本生活</h3>
+          <ul>
+            <li><strong>鼻安梦香枕：</strong>床头与午休皆可用的草本香养陪伴。</li>
+            <li><strong>合香珠手串：</strong>古法草本合香，佩戴盘玩都有东方香意。</li>
+            <li><strong>药香梳：</strong>日常梳理结合草本香养，轻松融入生活。</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
     <section class="qa-list" id="qaList" aria-live="polite"></section>
