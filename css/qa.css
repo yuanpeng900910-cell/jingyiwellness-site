@@ -1,3 +1,19 @@
+
+.qa-page .site-header {
+  position: sticky;
+}
+
+.qa-page .site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -14px;
+  height: 14px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(248, 247, 242, .98), rgba(248, 247, 242, 0));
+}
+
 .qa-page {
   background: #f8f7f2;
   color: #1f2a1f;
