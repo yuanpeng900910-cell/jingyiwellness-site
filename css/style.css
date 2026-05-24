@@ -865,6 +865,45 @@ section:not(.hero) {
   text-align: center;
 }
 
+.empty-state p {
+  margin: 0;
+}
+
+.empty-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.empty-action-btn,
+.filter-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-dark);
+  cursor: pointer;
+}
+
+.filter-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filter-summary {
+  margin: 0;
+  color: var(--text-readable);
+  font-size: 14px;
+}
+
 .constitution {
   width: 100%;
   max-width: none;
@@ -1960,8 +1999,8 @@ button {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: rgba(168, 185, 133, 0.16);
@@ -2105,7 +2144,7 @@ button {
 }
 
 .tea-detail-button {
-  min-height: 38px;
+  min-height: 44px;
   margin-top: 6px;
   padding: 0 16px;
   border: 1px solid rgba(185, 151, 91, 0.34);
@@ -2230,8 +2269,8 @@ button {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: rgba(168, 185, 133, 0.16);
@@ -3347,7 +3386,7 @@ button {
 
   .filter-toggle {
     display: inline-flex;
-    min-height: 38px;
+    min-height: 44px;
     align-items: center;
     gap: 6px;
     padding: 0 14px;
@@ -3415,7 +3454,7 @@ button {
   }
 
   .chip {
-    min-height: 38px;
+    min-height: 44px;
     padding: 8px 16px;
     border: 1px solid rgba(122, 90, 58, 0.14);
     border-radius: 999px;
@@ -3454,5 +3493,18 @@ button {
 
   .filter-panel.is-open .mobile-filter-more {
     display: grid;
+  }
+
+  .filter-summary-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-summary {
+    font-size: 14px;
+  }
+
+  .filter-reset-btn {
+    width: 100%;
   }
 }
