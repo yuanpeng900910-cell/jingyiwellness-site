@@ -96,7 +96,13 @@ function render() {
       const text = `${sec.title}${i.q}${i.a}${i.sell||''}${i.scene||''}${i.avoid||''}${(i.tags||[]).join('')}`.toLowerCase();
       return (!kw || text.includes(kw)) && (activeCategory==='全部' || sec.category===activeCategory);
     });
-    const passthrough = (sec.quickLines || sec.scenes || sec.constitution) && (activeCategory==='全部' || sec.category===activeCategory) && (!kw || sec.title.toLowerCase().includes(kw));
+    const extraSearchText = [
+      sec.title,
+      ...(sec.quickLines || []),
+      ...((sec.scenes || []).flat()),
+      ...((sec.constitution || []).flat())
+    ].join('').toLowerCase();
+    const passthrough = (sec.quickLines || sec.scenes || sec.constitution) && (activeCategory==='全部' || sec.category===activeCategory) && (!kw || extraSearchText.includes(kw));
     return { ...sec, matchedItems, passthrough };
   }).filter(sec => sec.matchedItems.length || sec.passthrough);
   const total = filteredSections.reduce((n,s)=>n+s.matchedItems.length+(s.passthrough?1:0),0);
