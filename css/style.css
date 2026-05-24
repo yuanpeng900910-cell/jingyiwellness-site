@@ -1285,6 +1285,8 @@ section:not(.hero) {
   transform: translateY(-50%);
 }
 
+#brand-idea,
+#featured,
 #products,
 #experience,
 #custom {
