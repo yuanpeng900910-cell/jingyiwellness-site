@@ -83,6 +83,13 @@ const state = {
   keyword: ""
 };
 
+function resetAllFilters() {
+  state.category = "全部";
+  state.series = "全部";
+  state.scene = "全部";
+  state.keyword = "";
+}
+
 const eagerProductImageNames = new Set(["苹果黄芪茶", "甘草干姜茶", "百合玉竹茶", "参芪大枣茶"]);
 
 const getElement = (id) => document.getElementById(id);
@@ -472,6 +479,17 @@ function renderProducts() {
   }).join("");
 }
 
+function renderFilterSummary() {
+  const summary = getElement("filterSummary");
+  if (!summary) return;
+  const parts = [];
+  if (state.category !== "全部") parts.push(state.category);
+  if (state.series !== "全部") parts.push(state.series);
+  if (state.scene !== "全部") parts.push(state.scene);
+  if (state.keyword.trim()) parts.push(`关键词：${state.keyword.trim()}`);
+  summary.textContent = parts.length ? `当前筛选：${parts.join(" · ")}` : "当前显示全部产品";
+}
+
 function renderConstitutionCards() {
   if (!getElement("constitutionGrid")) return;
   const items = [
@@ -516,13 +534,14 @@ function update() {
   });
 
   renderProducts();
+  renderFilterSummary();
 }
 
 function bindEvents() {
   const filterPanel = getElement("productFilterPanel");
   const filterToggle = getElement("filterToggle");
   const searchInput = getElement("searchInput");
-  const mobileSearchPlaceholder = "搜索产品、体质或场景";
+  const mobileSearchPlaceholder = "搜索产品、体质、场景或配方";
   const desktopSearchPlaceholder = searchInput.placeholder;
   const mobileFilterQuery = window.matchMedia("(max-width: 768px)");
 
@@ -547,6 +566,19 @@ function bindEvents() {
     state.keyword = event.target.value;
     update();
   });
+
+  const filterResetBtn = getElement("filterResetBtn");
+  const emptyResetBtn = getElement("emptyResetBtn");
+  const emptyShowAllBtn = getElement("emptyShowAllBtn");
+  const resetAndRefreshProducts = () => {
+    resetAllFilters();
+    searchInput.value = "";
+    update();
+  };
+
+  filterResetBtn?.addEventListener("click", resetAndRefreshProducts);
+  emptyResetBtn?.addEventListener("click", resetAndRefreshProducts);
+  emptyShowAllBtn?.addEventListener("click", resetAndRefreshProducts);
 
   getElement("backToTop").addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
