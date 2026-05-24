@@ -10,18 +10,18 @@
 </head>
 <body class="sales-qa-page">
   <main class="sales-qa-main" id="top">
-    <header class="hero">
+    <header class="hero sales-hero sales-header sales-cover sales-workspace-hero workspace-header">
       <p class="hero-kicker">销售工作台</p>
-      <h1 id="pageTitle"></h1>
-      <p class="hero-subtitle" id="pageSubtitle"></p>
+      <h1 id="pageTitle" class="sales-title"></h1>
+      <p class="hero-subtitle sales-subtitle" id="pageSubtitle"></p>
       <p class="hero-intro" id="pageIntro"></p>
     </header>
 
-    <section class="sales-toolbar-sticky tools-sticky">
-      <section class="search-panel">
+    <section class="sales-sticky-toolbar sales-toolbar-sticky tools-sticky">
+      <section class="search-panel sales-search">
         <input id="qaSearchInput" type="search">
       </section>
-      <section class="category-bar" id="qaCategoryFilters"></section>
+      <section class="category-bar sales-tabs" id="qaCategoryFilters"></section>
     </section>
     <p id="qaResultCount" class="result-count"></p>
 
@@ -30,7 +30,7 @@
     <section id="qaContent" class="qa-content"></section>
     <p class="sales-qa-empty" id="qaEmpty" hidden>没有找到相关内容，可尝试搜索：怎么选、团购、孕妇、煮泡、智商税、合香珠、隐茶杯</p>
   </main>
-  <a href="#top" class="back-top" aria-label="回到顶部">顶部</a>
+  <a href="#top" class="back-top back-to-top" aria-label="回到顶部">顶部</a>
 
   <script src="js/data/sales-qa-data.js"></script>
   <script src="js/sales-qa.js"></script>
