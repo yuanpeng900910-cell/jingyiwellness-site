@@ -16,7 +16,7 @@ function renderStatic() {
   document.getElementById('pageTitle').textContent = data.page.title;
   document.getElementById('pageSubtitle').textContent = data.page.subtitle;
   document.getElementById('pageIntro').textContent = data.page.intro;
-  searchInput.placeholder = '搜索：怎么选、孕妇、团购、智商税';
+  searchInput.placeholder = '搜索关键词';
 
   quickEntrances.innerHTML = data.quickEntrances.map(i => `<a href="#${i.id}" class="entry-card"><h3>${i.title}</h3><p>${i.desc}</p></a>`).join('');
   quickGuide.innerHTML = `<article class="base-card"><h2>00 销售人员快速使用指南</h2><div class="quick-steps">${data.quickGuide.steps.map(s=>`<p>${s}</p>`).join('<span>→</span>')}</div><h3>统一基础口径</h3><ul>${data.quickGuide.basics.map(s=>`<li>${s}</li>`).join('')}</ul></article>`;
