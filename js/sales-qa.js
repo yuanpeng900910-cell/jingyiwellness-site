@@ -1,5 +1,3 @@
-const sourceNote = '内容来源：docs/京颐养方销售Q&A与销售话术手册.md（最新合并版）';
-
 const categories = ['全部', '品牌介绍', '茶饮产品', '草本生活', '团购送礼', '合规话术', '异议处理', '场景推荐', '快速推荐'];
 
 const handbookSections = [
@@ -102,7 +100,7 @@ function render() {
     return { ...sec, matchedItems, passthrough };
   }).filter(sec => sec.matchedItems.length || sec.passthrough);
   const total = filteredSections.reduce((n,s)=>n+s.matchedItems.length+(s.passthrough?1:0),0);
-  resultCount.textContent = `${sourceNote}｜共匹配 ${total} 条内容`;
+  resultCount.textContent = '';
   toc.innerHTML = filteredSections.map(s=>`<a href="#${s.id}">${s.title}</a>`).join('');
   content.innerHTML = filteredSections.map(sec => {
     const qas = sec.matchedItems.map((i)=>qaCard(i,false)).join('');
