@@ -6,7 +6,7 @@
 .qa-main {
   max-width: 920px;
   margin: 0 auto;
-  padding: 6.5rem 1rem 3rem;
+  padding: calc(var(--site-header-height, 72px) + 1.2rem) 1rem 3rem;
 }
 
 .qa-header {
@@ -20,7 +20,7 @@
 .qa-header h1 { margin: 0; color: #234f35; font-size: 1.24rem; }
 .qa-header p { margin: 0.65rem 0 0; color: #485447; line-height: 1.65; }
 
-.qa-tools { position: sticky; top: 70px; z-index: 5; background: rgba(248,247,242,.96); padding: .5rem 0 .9rem; }
+.qa-tools { padding: .5rem 0 .9rem; }
 .qa-search { display: grid; gap: .4rem; margin-bottom: .7rem; }
 .qa-search span { font-size: .92rem; color: #5d665d; }
 .qa-search input { width: 100%; border: 1px solid #c9d2c1; border-radius: 12px; padding: .76rem .86rem; font-size: 1rem; background: #fff; }
@@ -28,9 +28,9 @@
 .qa-chip { border: 1px solid #bfd1b6; background: #f5faef; color: #32533d; padding: .42rem .76rem; border-radius: 999px; font-size: .9rem; white-space: nowrap; }
 .qa-chip.active { background: #2f6a44; color: #fff; border-color: #2f6a44; }
 .qa-result { margin: .55rem 0 0; color: #5a675a; font-size: .9rem; }
-.qa-group { margin-bottom: 1.1rem; }
+.qa-group { margin-bottom: 1.1rem; scroll-margin-top: 96px; }
 .qa-group-title { font-size: 1rem; margin: .75rem 0 .55rem; color: #2c5038; }
-.qa-item { border: 1px solid #e5e2d8; border-radius: 14px; background: #fff; margin-bottom: .65rem; overflow: hidden; }
+.qa-item { border: 1px solid #e5e2d8; border-radius: 14px; background: #fff; margin-bottom: .65rem; overflow: hidden; scroll-margin-top: 96px; }
 .qa-item summary { cursor: pointer; list-style: none; padding: .82rem; line-height: 1.5; }
 .qa-item summary::-webkit-details-marker { display: none; }
 .qa-question { display: block; font-weight: 600; }
@@ -43,7 +43,7 @@
 .tea-constitution-card h4 { margin: 0 0 .28rem; color: #2c5038; font-size: .96rem; }
 
 @media (min-width: 760px) {
-  .qa-main { padding-top: 7rem; }
+  .qa-main { padding-top: calc(var(--site-header-height, 72px) + 1.5rem); }
   .qa-header { padding: 1.35rem; }
   .qa-header h1 { font-size: 1.58rem; }
   .tea-constitution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
