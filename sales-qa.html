@@ -3,42 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京颐养方销售Q&A与销售话术手册</title>
-  <meta name="description" content="京颐养方销售培训、客服接待、企业团购、试饮活动、直播回复的作战手册。">
+  <title>京颐养方销售Q&A</title>
+  <meta name="description" content="京颐养方销售快速检索平台，用于现场答疑、团购沟通、异议处理与合规表达。">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sales-qa.css">
 </head>
 <body class="sales-qa-page">
-  <main class="sales-qa-main">
-    <header class="sales-qa-header">
-      <p class="sales-qa-kicker">销售工作台</p>
-      <h1>京颐养方销售Q&A与销售话术手册</h1>
-      <p class="sales-qa-subtitle">用于销售培训、客服答疑、团购沟通与试饮活动</p>
+  <main class="sales-qa-main" id="top">
+    <header class="hero">
+      <p class="hero-kicker">销售工作台</p>
+      <h1 id="pageTitle"></h1>
+      <p class="hero-subtitle" id="pageSubtitle"></p>
+      <p class="hero-intro" id="pageIntro"></p>
     </header>
 
-    <section class="sales-qa-shortcuts" aria-label="快捷入口">
-      <a href="#sec-brand" class="shortcut-card">快速介绍品牌</a>
-      <a href="#sec-tea" class="shortcut-card">快速推荐产品</a>
-      <a href="#sec-objection" class="shortcut-card">处理客户异议</a>
-      <a href="#sec-corp" class="shortcut-card">团购送礼话术</a>
+    <section class="tools-sticky">
+      <section class="search-panel">
+        <input id="qaSearchInput" type="search">
+        <p id="qaResultCount" class="result-count"></p>
+      </section>
+      <section class="category-bar" id="qaCategoryFilters"></section>
     </section>
 
-    <section class="sales-qa-tools" aria-label="筛选与检索">
-      <label class="sales-qa-search" for="qaSearchInput">
-        <span>搜索问题 / 场景 / 话术</span>
-        <input id="qaSearchInput" type="search" placeholder="搜索问题、场景或话术，如：怎么选、团购、孕妇、煮泡、智商税、合香珠">
-      </label>
-      <div class="sales-qa-categories" id="qaCategoryFilters" aria-label="一级分类"></div>
-      <p class="sales-qa-result" id="qaResultCount"></p>
-    </section>
-
-    <section class="sales-qa-layout">
-      <nav class="sales-qa-toc" id="qaToc" aria-label="章节导航"></nav>
-      <section class="sales-qa-content" id="qaContent" aria-live="polite"></section>
-    </section>
-
+    <section id="quickEntrances" class="quick-entrances" aria-label="快捷入口"></section>
+    <section class="quick-guide" id="quickGuide"></section>
+    <section id="qaContent" class="qa-content"></section>
     <p class="sales-qa-empty" id="qaEmpty" hidden>没有找到相关内容，可尝试搜索：怎么选、团购、孕妇、煮泡、智商税、合香珠、隐茶杯</p>
   </main>
+  <a href="#top" class="back-top">回到顶部</a>
+
+  <script src="js/data/sales-qa-data.js"></script>
   <script src="js/sales-qa.js"></script>
 </body>
 </html>
