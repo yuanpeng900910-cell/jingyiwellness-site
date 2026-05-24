@@ -105,7 +105,7 @@ function render() {
   resultCount.textContent = `${sourceNote}｜共匹配 ${total} 条内容`;
   toc.innerHTML = filteredSections.map(s=>`<a href="#${s.id}">${s.title}</a>`).join('');
   content.innerHTML = filteredSections.map(sec => {
-    const qas = sec.matchedItems.map((i,idx)=>qaCard(i,idx===0)).join('');
+    const qas = sec.matchedItems.map((i)=>qaCard(i,false)).join('');
     const constitution = sec.constitution ? `<div class="table-grid">${sec.constitution.map(r=>`<div><strong>${r[0]}</strong><span>${r[1]}</span></div>`).join('')}</div>` : '';
     const compliance = sec.compliance ? `<div class="compliance"><div><h4>禁止使用</h4><ul><li>治疗</li><li>疗效</li><li>改善疾病</li><li>生发承诺</li><li>治鼻炎</li><li>治失眠</li><li>降三高</li><li>保证有效</li></ul></div><div><h4>推荐表达</h4><ul><li>日常轻养</li><li>草本陪伴</li><li>东方生活方式</li><li>温和调养</li><li>日常饮用</li><li>健康管理</li><li>场景化轻养</li></ul></div></div>` : '';
     const quickLines = sec.quickLines ? `<div class="line-cards">${sec.quickLines.map(l=>`<article><p>${l}</p>${copyBtn(l)}</article>`).join('')}</div>` : '';
