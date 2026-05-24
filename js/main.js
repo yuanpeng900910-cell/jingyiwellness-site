@@ -90,7 +90,7 @@ function resetAllFilters() {
   state.keyword = "";
 }
 
-const eagerProductImageNames = new Set(["苹果黄芪茶", "甘草干姜茶", "百合玉竹茶", "参芪大枣茶"]);
+const eagerProductImageNames = new Set();
 
 const getElement = (id) => document.getElementById(id);
 
@@ -731,6 +731,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderConstitutionTea();
   renderFeaturedSeries();
   renderConstitutionCards();
-  bindEvents();
   update();
+  bindEvents();
 });
