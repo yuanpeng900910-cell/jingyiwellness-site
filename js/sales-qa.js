@@ -1,196 +1,121 @@
-const filterTabs = ['全部', '买前必看', '茶饮产品', '草本生活', '送礼团购', '注意事项'];
+const sourceNote = '内容来源：docs/京颐养方销售Q&A与销售话术手册.md（最新合并版）';
 
+const categories = ['全部', '品牌介绍', '茶饮产品', '草本生活', '团购送礼', '合规话术', '异议处理', '场景推荐', '快速推荐'];
 
-const teaConstitutionCards = [
-  { product: '苹果黄芪茶', constitution: '平和体质', keyword: '体质平衡｜日常轻养' },
-  { product: '参芪大枣茶', constitution: '气虚体质', keyword: '易疲惫｜元气补养' },
-  { product: '甘草干姜茶', constitution: '阳虚体质', keyword: '怕冷偏寒｜温养驱寒' },
-  { product: '百合玉竹茶', constitution: '阴虚体质', keyword: '燥热偏干｜清润养阴' },
-  { product: '茯苓陈皮茶', constitution: '痰湿体质', keyword: '身体困重｜健脾化湿' },
-  { product: '薏仁荷叶茶', constitution: '湿热体质', keyword: '油腻易热｜清爽祛湿' },
-  { product: '当归玫瑰茶', constitution: '血瘀体质', keyword: '循环偏滞｜温和活络' },
-  { product: '玫瑰佛手茶', constitution: '气郁体质', keyword: '情绪郁结｜舒畅解郁' },
-  { product: '黄芪紫苏茶', constitution: '特禀体质', keyword: '敏感体质｜温和调护' }
+const handbookSections = [
+  {
+    id: 'sec-brand', title: '01 品牌认知与开场介绍', category: '品牌介绍',
+    items: [
+      { q: '京颐养方是什么品牌？', a: '京颐养方是合肥京东方医院主动健康业务下的健康产品与服务品牌，围绕药食同源、草本生活与健康礼赠，提供更日常的东方轻养方案。', oneLine: '京医古法，颐养东方。', sell: '我们是医院主动健康背景下的东方轻养品牌，主打把养生做成可坚持的日常习惯。', scene: '首次接待、直播间自我介绍、企业客户初次沟通。', avoid: '我们能治很多问题；比医院治疗更有效。', tags: ['品牌'] },
+      { q: '为什么强调轻养？', a: '轻养不是大补，也不是短期突击，而是把养生变成每天都能坚持的小习惯。', sell: '轻养就是把养生变得更轻、更日常、更容易坚持。', scene: '客户问“和普通养生有什么区别”时。', avoid: '短期见效、立竿见影。', tags: ['品牌'] }
+    ]
+  },
+  {
+    id: 'sec-product', title: '02 产品体系快速介绍', category: '快速推荐',
+    items: [
+      { q: '京颐养方有哪些产品体系？', a: '覆盖药食养方、生活养方、节气养生、定制礼赠、健康场景共建五大体系。', sell: '先看场景再选产品：自饮、送礼、福利、会议茶歇都能匹配。', scene: '初次咨询、企业团购沟通。', avoid: '盲推单品。', tags: ['品牌', '快速推荐'] },
+      { q: '统一基础口径', a: '茶饮保质期12个月；备货约3周；轻养小罐茶/国民经典饮/辨体调养茶两盒起售，两盒团购价49.9元；小罐茶建议沸水煮泡或焖泡5分钟以上；隐茶杯10杯/桶，冲水即饮。', sell: '先讲场景价值，再补充规格与起售政策。', scene: '报价前、客服答疑。', avoid: '遗漏起售与备货信息。', tags: ['快速推荐'] }
+    ]
+  },
+  {
+    id: 'sec-tea', title: '03 茶饮产品销售Q&A', category: '茶饮产品',
+    constitution: [
+      ['平和', '苹果黄芪茶'], ['气虚', '参芪大枣茶'], ['阳虚', '甘草干姜茶'], ['阴虚', '百合玉竹茶'], ['痰湿', '茯苓陈皮茶'], ['湿热', '薏仁荷叶茶'], ['血瘀', '当归玫瑰茶'], ['气郁', '玫瑰佛手茶'], ['特禀', '黄芪紫苏茶']
+    ],
+    items: [
+      { q: '茶饮系列保质期多久？', a: '轻养小罐茶、国民经典饮、辨体调养茶、隐茶杯等茶饮系列保质期统一为12个月。', tags: ['茶饮'] },
+      { q: '备货周期多久？', a: '常规备货周期约3周，团购和定制建议提前沟通交付。', tags: ['茶饮', '团购'] },
+      { q: '起售与团购价？', a: '轻养小罐茶、国民经典饮、辨体调养茶：两盒起售，两盒团购价49.9元。', tags: ['茶饮', '团购'] },
+      { q: '小罐茶怎么冲泡？', a: '建议沸水煮泡或焖泡5分钟以上，一罐可作为当天饮用量，一般可喝一天，不建议隔夜饮用。', tags: ['茶饮'] },
+      { q: '隐茶杯卖点是什么？', a: '隐茶杯10杯/桶，冲水即饮，适合会议、办公室、接待、宴请。', oneLine: '冲水即饮，把东方茶饮带进办公室。', sell: '用于会议茶歇和商务接待，省时且统一体验。', scene: '企业采购、办公室茶饮。', avoid: '疗效化表达。', tags: ['茶饮'] }
+    ]
+  },
+  {
+    id: 'sec-herbal', title: '04 草本生活产品销售Q&A', category: '草本生活',
+    items: [
+      { q: '鼻安梦香枕如何介绍？', a: '草本香养型生活产品，强调伴眠陪伴与东方香气，不替代药物或医疗治疗。', sell: '让睡眠环境多一点草本陪伴感。', scene: '睡眠环境优化、礼赠场景。', avoid: '治失眠、治鼻炎。', tags: ['香养'] },
+      { q: '合香珠如何介绍？', a: '合香珠强调东方草本香气陪伴感，可佩戴与轻盘玩。注意忌水、忌油、避汗、阴凉干燥保存。', sell: '不是香水味，而是东方草本香气的陪伴感。', scene: '香养偏好用户、礼物推荐。', avoid: '强功效承诺。', tags: ['香养'] },
+      { q: '药香梳如何介绍？', a: '把梳头这件小事做成东方香养体验。注意忌水、忌油、避汗，阴凉干燥保存。', sell: '把梳头这件小事，变成东方香养体验。', scene: '办公室放松、伴手礼。', avoid: '生发承诺、治疗白发。', tags: ['香养'] }
+    ]
+  },
+  {
+    id: 'sec-corp', title: '05 企业团购与送礼话术', category: '团购送礼',
+    items: [
+      { q: '团购适合哪些客户？', a: '企业员工福利、会议茶歇、客户维护、节日礼赠、试饮活动均适配。', sell: '按场景给组合：办公轻养、加班续航、商务接待、节日礼盒。', scene: '企业客户初谈。', avoid: '只报单价不讲方案。', tags: ['团购'] }
+    ]
+  },
+  {
+    id: 'sec-compliance', title: '06 合规与风险表达', category: '合规话术', compliance: true,
+    items: [
+      { q: '合规底线是什么？', a: '不讲治疗、不讲疗效、不讲保证，不替代药物或医疗服务。', sell: '日常轻养、草本陪伴、东方生活方式、温和调养、场景化轻养。', scene: '全场景通用。', avoid: '治疗、疗效、改善疾病、降三高、保证有效。', tags: ['合规'] }
+    ]
+  },
+  {
+    id: 'sec-objection', title: '07 高频异议处理', category: '异议处理',
+    items: [
+      { q: '这是智商税吗？', a: '不是神奇功效型产品，价值在于把草本食材、体质思路和日常场景做成可坚持的习惯。', sell: '我们不做“治病神器”，做的是长期可坚持的轻养方案。', avoid: '绝对有效、包治。', tags: ['异议'] },
+      { q: '孕妇/小孩能不能用？', a: '特殊人群不建议自行使用功能性草本产品，建议先咨询医生或专业人士。', sell: '安全第一，先咨询专业建议。', avoid: '都能用、绝对安全。', tags: ['异议', '合规'] }
+    ]
+  },
+  {
+    id: 'sec-lines', title: '08 一句话销售话术库', category: '场景推荐', quickLines: ['京医古法，颐养东方。','把养生变成每天都能坚持的小习惯。','一人一方，辨体调养。','古方有味，四时有养。','冲水即饮，把东方茶饮带进办公室。','让睡眠环境多一点草本陪伴感。','不是香水味，而是东方草本香气的陪伴感。','把梳头这件小事，变成东方香养体验。']
+  },
+  {
+    id: 'sec-scene', title: '09 场景化推荐模板', category: '场景推荐', scenes: [
+      ['办公室下午茶','红颜茶+轻湿茶','这组口感轻、复购高，适合下午茶。','兼顾气色感与清爽感'],
+      ['企业会议茶歇','隐茶杯+清和茶','冲水即饮，统一接待体验。','便捷、体面、可批量'],
+      ['女性轻养','五红饮+当归玫瑰茶','偏甜润与花香，日常更易坚持。','口感友好'],
+      ['秋冬暖饮','姜枣茶+五红饮','秋冬热饮接受度高。','暖感场景明确'],
+      ['熬夜加班','元气茶+熬夜茶','做加班后的轻陪伴。','元气+清润'],
+      ['聚餐火锅后','酸梅汤+轻湿茶','聚餐后更清爽。','饭后场景匹配'],
+      ['商务伴手礼','辨体调养茶组合','有健康关怀与专属感。','礼赠表达强'],
+      ['健康礼盒','国民经典饮四季组合','清爽清润甜润温暖一组配齐。','覆盖多人群']
+    ]
+  },
+  {
+    id: 'sec-logic', title: '10 销售人员快速推荐逻辑', category: '快速推荐',
+    items: [{ q:'三步推荐法', a:'第一步：先问场景；第二步：再问人群；第三步：最后推荐组合。常用组合：办公室轻养（红颜茶+轻湿茶）；加班续航（元气茶+熬夜茶）；商务接待（隐茶杯+葛花解酲汤）；秋冬暖饮（姜枣茶+五红饮）。', tags:['快速推荐']}]
+  }
 ];
 
-function renderTeaConstitutionCards(cards) {
-  return `
-    <div class="tea-constitution-grid" aria-label="九款辨体调养茶体质对应表">
-      ${cards.map((card) => `
-        <article class="tea-constitution-card">
-          <h4>${card.product}</h4>
-          <p><strong>对应体质：</strong>${card.constitution}</p>
-          <p class="tea-constitution-keyword">${card.keyword}</p>
-        </article>
-      `).join('')}
-    </div>
-  `;
+const content = document.getElementById('qaContent');
+const toc = document.getElementById('qaToc');
+const chips = document.getElementById('qaCategoryFilters');
+const searchInput = document.getElementById('qaSearchInput');
+const resultCount = document.getElementById('qaResultCount');
+const empty = document.getElementById('qaEmpty');
+let activeCategory = '全部';
+
+function copyBtn(text) { const safe = String(text).replaceAll("'", '&#39;'); return `<button class="copy-btn" data-copy='${safe}'>复制话术</button>`; }
+function qaCard(item, open) {
+  return `<details class="qa-item" ${open ? 'open' : ''}><summary><span>${item.q}</span></summary><div class="qa-body"><p>${item.a}</p>${item.oneLine ? `<p><strong>一句话介绍：</strong>${item.oneLine} ${copyBtn(item.oneLine)}</p>` : ''}${item.sell ? `<p><strong>推荐销售表达：</strong>${item.sell} ${copyBtn(item.sell)}</p>` : ''}${item.scene ? `<p><strong>适合场景：</strong>${item.scene}</p>` : ''}${item.avoid ? `<p><strong>避免表达：</strong>${item.avoid}</p>` : ''}</div></details>`;
 }
-const qaItems = [
-  { section: '品牌Q&A', q: '京颐养方是什么品牌？', a: '京颐养方是合肥京东方医院主动健康业务下的健康产品与服务品牌。\n品牌围绕药食同源、草本生活与健康礼赠场景，提供更日常的东方轻养方案。', tag: '品牌', groups: ['买前必看'] },
-  { section: '品牌Q&A', q: '京颐养方做的是什么业务？', a: '不是单一卖货。\n品牌在做产品体系、企业健康场景、线下体验和礼赠方案，强调可持续的日常健康管理。', tag: '品牌', groups: ['买前必看'] },
-  { section: '品牌Q&A', q: '京颐养方和普通养生品牌有什么区别？', a: '核心差异是有医院场景基础、有中医科和健康管理资源，并在真实企业和社区场景落地。\n同时强调合规表达，不把产品包装成“治病神器”。', tag: '品牌', groups: ['买前必看', '注意事项'] },
-  { section: '品牌Q&A', q: '京颐养方的品牌主张是什么？', a: '统一表达可用：“京医古法，颐养东方。”\n茶饮场景可补充：“古方有味，四时有养。”\n体质茶可补充：“一人一方，辨体调养。”', tag: '品牌', groups: ['买前必看'] },
-
-  { section: '产品体系Q&A', q: '京颐养方有哪些产品体系？', a: '覆盖药食养方、生活养方、节气养生、定制礼赠、健康场景共建五大体系。\n销售时建议先问客户场景，再推荐产品组合。', tag: '品牌', groups: ['买前必看'] },
-  { section: '产品体系Q&A', q: '京颐养方产品是不是药品？', a: '不是药品，不替代药物或医疗服务。\n定位是日常草本轻养和健康生活方式产品。', tag: '合规', groups: ['买前必看', '注意事项'] },
-  { section: '产品体系Q&A', q: '不知道怎么选产品时怎么做？', a: '先问场景（自饮/送礼/企业福利/会议茶歇）。\n再问人群（女性日常、加班人群、秋冬暖饮、商务客户等）。\n最后按预算和交付周期给出2-3个组合。', tag: '茶饮', groups: ['买前必看', '送礼团购'] },
-  { section: '产品体系Q&A', q: '茶饮系列保质期多久？', a: '轻养小罐茶、国民经典饮、辨体调养茶、隐茶杯等茶饮系列保质期统一为12个月。', tag: '售后', groups: ['买前必看', '注意事项'] },
-  { section: '产品体系Q&A', q: '备货周期多久？', a: '常规备货周期约3周。\n团购、企业定制、大批量采购建议提前沟通数量与交付时间。', tag: '团购', groups: ['买前必看', '送礼团购'] },
-
-  { section: '轻养小罐茶系列Q&A', q: '这四款茶和普通花茶有什么区别？', a: '它不是单一花茶或单一茶叶，而是围绕不同生活状态做草本复配。\n一罐一泡、便携即饮，适合办公室、下午茶、出差和年轻化轻养场景。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '轻养小罐茶系列Q&A', q: '红颜茶适合什么人？', a: '适合关注气色、经常熬夜、喜欢花香口感、注重日常轻养颜的人群。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '轻养小罐茶系列Q&A', q: '轻湿茶适合什么人？', a: '适合久坐办公室、饮食偏油腻、容易感觉身体沉重、喜欢清爽谷物口感的人群。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '轻养小罐茶系列Q&A', q: '元气茶适合什么人？', a: '适合工作节奏快、容易疲惫、需要日常元气感补充、喜欢温润草本口感的人群。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '轻养小罐茶系列Q&A', q: '熬夜茶适合什么人？', a: '适合经常晚睡、加班党、夜生活较多、喜欢清润口感的人群。\n可用表达：“熬夜后的轻陪伴”。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '轻养小罐茶系列Q&A', q: '一罐可以喝多久 / 一罐可以泡几次？', a: '建议一罐作为当天饮用量，可反复续水饮用，一般一罐可以喝一天。\n味道变淡后即可更换，不建议隔夜饮用。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '轻养小罐茶系列Q&A', q: '怎么冲泡 / 需要煮吗？', a: '建议使用沸水煮泡或焖泡5分钟以上，让草本、果干、根茎类原料的香气和风味充分释放。\n办公室或外出场景如不方便煮，也可以用沸水长时间焖泡后饮用。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '轻养小罐茶系列Q&A', q: '为什么包装上只有一个大字？', a: '这是系列视觉识别语言。\n“颜”代表红颜茶，“湿”代表轻湿茶，“气”代表元气茶，“熬”代表熬夜茶。', tag: '品牌', groups: ['茶饮产品'] },
-  { section: '轻养小罐茶系列Q&A', q: '第一次喝推荐什么组合？', a: '可推荐“元气清润组合”：红颜茶+轻湿茶。\n也可推荐“加班续航组合”：元气茶+熬夜茶。', tag: '团购', groups: ['茶饮产品', '送礼团购'] },
-
-  { section: '辨体调养茶系列Q&A', q: '这九款茶是什么产品？', a: '围绕中医九种体质思路开发的辨体调养茶。\n每款对应一种体质方向，帮助用户根据状态选择日常茶饮。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '辨体调养茶系列Q&A', q: '和普通养生茶有什么区别？', a: '普通养生茶多按口味或单一场景区分；\n辨体调养茶强调“先辨体，再选茶”，按体质特点设计。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '辨体调养茶系列Q&A', q: '不知道自己是什么体质，怎么选？', a: '可先通过体质辨识工具了解主导体质。\n若没有明显偏向，可先从苹果黄芪茶等基础款开始。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '辨体调养茶系列Q&A', q: '九款辨体调养茶分别对应什么体质？', a: '苹果黄芪茶、参芪大枣茶、甘草干姜茶、百合玉竹茶、茯苓陈皮茶、薏仁荷叶茶、当归玫瑰茶、玫瑰佛手茶、黄芪紫苏茶分别对应平和、气虚、阳虚、阴虚、痰湿、湿热、血瘀、气郁、特禀体质。\n可按体质关键词快速对照，做买前选择。', tag: '茶饮', groups: ['茶饮产品', '买前必看'], cards: teaConstitutionCards },
-  { section: '辨体调养茶系列Q&A', q: '一天喝几罐合适？', a: '一般建议每日1罐即可。\n不建议一次大量饮用，也不建议一天同时喝多种体质茶。', tag: '禁忌', groups: ['茶饮产品', '注意事项'] },
-  { section: '辨体调养茶系列Q&A', q: '能不能几款一起泡？', a: '不建议随意混泡。\n建议一次一罐、按需选择，做组合时按周期轮换。', tag: '禁忌', groups: ['茶饮产品', '注意事项'] },
-  { section: '辨体调养茶系列Q&A', q: '适合做礼盒吗？', a: '适合。\n比普通茶礼更有“健康关怀”和“专属感”，适配企业福利、客户礼赠等。', tag: '团购', groups: ['茶饮产品', '送礼团购'] },
-  { section: '辨体调养茶系列Q&A', q: '销售人员一句话怎么介绍？', a: '“京颐养方辨体调养茶依托中医体质调养思路打造，不是普通养生茶，而是根据九种体质特点，一人一方，辨体调养。”', tag: '合规', groups: ['茶饮产品', '买前必看'] },
-
-
-  { section: '辨体调养茶系列Q&A', q: '一罐可以喝多久 / 一罐可以泡几次？', a: '建议一罐作为当天饮用量，可反复续水饮用，一般一罐可以喝一天。\n味道变淡后即可更换，不建议隔夜饮用。', tag: '茶饮', groups: ['茶饮产品', '注意事项'] },
-  { section: '辨体调养茶系列Q&A', q: '怎么冲泡 / 需要煮吗？', a: '建议使用沸水煮泡或焖泡5分钟以上，让草本、果干、根茎类原料的香气和风味充分释放。\n办公室或外出场景如不方便煮，也可以用沸水长时间焖泡后饮用。', tag: '茶饮', groups: ['茶饮产品', '注意事项'] },
-  { section: '国民经典饮系列Q&A', q: '国民经典饮系列是什么？', a: '基于传统饮食文化打造的草本代茶饮系列。\n让大众熟悉的经典配方更方便进入现代生活。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '国民经典饮系列Q&A', q: '和九种体质茶有什么区别？', a: '九种体质茶更偏辨体调养；国民经典饮更偏经典场景饮用。\n一个更个性化，一个更大众化。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '国民经典饮系列Q&A', q: '酸梅汤主打什么？', a: '传统酸梅汤风味，酸甜清爽。\n适合饭后、夏天、火锅烧烤后、聚餐后饮用。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '国民经典饮系列Q&A', q: '秋梨汤主打什么？', a: '清润梨香，温和甘甜。\n适合秋冬、空调房、熬夜后、说话较多人群日常饮用。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '国民经典饮系列Q&A', q: '五红饮主打什么？', a: '红枣、红豆、枸杞等经典红色食材搭配，甜润温和。\n适合女性日常、下午茶、办公室和秋冬饮用。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '国民经典饮系列Q&A', q: '姜枣茶主打什么？', a: '姜香与枣甜融合，温暖顺口。\n适合秋冬、雨天、空调房、办公室热饮场景。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '国民经典饮系列Q&A', q: '第一次买怎么选？', a: '夏天和饭后选酸梅汤；秋冬清润选秋梨汤；女性日常选五红饮；秋冬暖饮选姜枣茶。', tag: '买前', groups: ['茶饮产品', '买前必看'] },
-  { section: '国民经典饮系列Q&A', q: '四款组合怎么推荐？', a: '可命名“国民经典饮四季组合”。\n覆盖清爽、清润、甜润、温暖四种场景。', tag: '团购', groups: ['茶饮产品', '送礼团购'] },
-
-
-  { section: '国民经典饮系列Q&A', q: '一罐可以喝多久 / 一罐可以泡几次？', a: '建议一罐作为当天饮用量，可反复续水饮用，一般一罐可以喝一天。\n味道变淡后即可更换，不建议隔夜饮用。', tag: '茶饮', groups: ['茶饮产品', '注意事项'] },
-  { section: '国民经典饮系列Q&A', q: '怎么冲泡 / 需要煮吗？', a: '建议使用沸水煮泡或焖泡5分钟以上，让草本、果干、根茎类原料的香气和风味充分释放。\n办公室或外出场景如不方便煮，也可以用沸水长时间焖泡后饮用。', tag: '茶饮', groups: ['茶饮产品', '注意事项'] },
-  { section: '养生隐茶杯系列Q&A', q: '隐茶杯是什么？', a: '面向办公、会议、宴请、居家场景的便携式草本茶饮。\n草本配方预置杯中，冲水即饮。', tag: '茶饮', groups: ['茶饮产品'] },
-  { section: '养生隐茶杯系列Q&A', q: '和小罐茶有什么区别？', a: '小罐茶强调一罐一泡与精致感；\n隐茶杯强调杯装便携、即泡即饮，更适合会议和接待。', tag: '茶饮', groups: ['茶饮产品', '买前必看'] },
-  { section: '养生隐茶杯系列Q&A', q: '养元茶适合什么场景？', a: '适合办公续航、日常滋养感和会议茶饮。\n建议表达“元气感、日常轻养”，避免医疗化表述。', tag: '合规', groups: ['茶饮产品', '注意事项'] },
-  { section: '养生隐茶杯系列Q&A', q: '清和茶适合什么场景？', a: '适合清爽轻饮、饭后、办公室和用嗓较多人群。\n建议表达“清爽、清润、饭后轻饮”。', tag: '合规', groups: ['茶饮产品', '注意事项'] },
-  { section: '养生隐茶杯系列Q&A', q: '葛花解酲汤适合什么场景？', a: '适合商务宴请、聚餐后、企业接待后的草本轻饮。\n避免使用“解酒神器”等绝对化话术。', tag: '合规', groups: ['茶饮产品', '注意事项'] },
-  { section: '养生隐茶杯系列Q&A', q: '隐茶杯适合企业采购吗？', a: '非常适合。\n可作为会议茶歇、办公室茶饮、活动伴手礼、员工福利和商务接待饮品。', tag: '团购', groups: ['茶饮产品', '送礼团购'] },
-
-  { section: '鼻安梦香枕Q&A', q: '鼻安梦香枕和普通枕头有什么区别？', a: '属于草本香养型生活产品，内部填充草本合香珠。\n通过草本气味营造舒缓放松环境，不是医疗器械或药品。', tag: '香养', groups: ['草本生活', '买前必看'] },
-  { section: '鼻安梦香枕Q&A', q: '一定要枕着睡吗？', a: '不一定。\n也可放床头、颈侧、沙发旁或办公午休区作为草本伴眠使用。', tag: '香养', groups: ['草本生活'] },
-  { section: '鼻安梦香枕Q&A', q: '为什么有草本味？', a: '因为内部填充草本合香珠，本身会有植物气味，不是香精味。\n首次使用可先通风散味再逐步适应。', tag: '售后', groups: ['草本生活', '注意事项'] },
-  { section: '鼻安梦香枕Q&A', q: '能改善鼻敏感或睡眠吗？', a: '建议表达：可作为睡眠环境和鼻部舒适感的草本陪伴产品。\n但不能替代药物或医疗治疗。', tag: '合规', groups: ['草本生活', '注意事项'] },
-  { section: '鼻安梦香枕Q&A', q: '哪些人慎用？', a: '孕妇、儿童、G6PD缺乏症人群、对草本气味敏感者慎用。\n如有不适应停止使用并保持通风。', tag: '禁忌', groups: ['草本生活', '注意事项'] },
-  { section: '鼻安梦香枕Q&A', q: '怎么保养？', a: '枕套可清洗；内胆建议每周晾晒一次；内胆不可水洗；\n避免潮湿、高温和暴晒。', tag: '售后', groups: ['草本生活', '注意事项'] },
-
-  { section: '合香珠手串Q&A', q: '合香珠是什么？', a: '合香珠由多种草本香材调和制作，用于佩戴、盘玩和日常香养陪伴。\n强调东方香文化与气味美学。', tag: '香养', groups: ['草本生活', '买前必看'] },
-  { section: '合香珠手串Q&A', q: '和普通手串有什么区别？', a: '普通手串多强调材质装饰；\n合香珠更强调草本香气、古法工艺和佩戴时的陪伴感。', tag: '香养', groups: ['草本生活', '买前必看'] },
-  { section: '合香珠手串Q&A', q: '香味会不会很浓？', a: '香气偏温和、内敛，不是香水式强扩散。\n更适合近距离闻香与安静氛围。', tag: '香养', groups: ['草本生活'] },
-  { section: '合香珠手串Q&A', q: '可以盘玩吗？', a: '可以轻度盘玩。\n建议净手后短时盘玩，避免长时间大力揉搓。', tag: '售后', groups: ['草本生活', '注意事项'] },
-  { section: '合香珠手串Q&A', q: '能见水吗？', a: '不建议见水。\n洗手、洗澡、运动出汗时建议取下，避免受潮变形。', tag: '禁忌', groups: ['草本生活', '注意事项'] },
-  { section: '合香珠手串Q&A', q: '怎么保存？', a: '长期不佩戴时，放入养香盒或密封袋，置于阴凉干燥处。\n避免接触香水、精油和化学品。', tag: '售后', groups: ['草本生活', '注意事项'] },
-
-  { section: '药香梳Q&A', q: '药香梳和普通梳子有什么区别？', a: '将草本香养理念与日常梳理结合。\n除了梳头，也强调头皮放松和东方香养体验。', tag: '香养', groups: ['草本生活', '买前必看'] },
-  { section: '药香梳Q&A', q: '能生发、治白发吗？', a: '不能这样承诺。\n应表达为日常头皮护理与梳理按摩体验，不是治疗产品。', tag: '合规', groups: ['草本生活', '注意事项'] },
-  { section: '药香梳Q&A', q: '适合什么人？', a: '适合熬夜、压力大、头皮紧绷、久坐办公及喜欢草本香养的人群。\n也适合作为礼物与企业伴手礼。', tag: '香养', groups: ['草本生活', '送礼团购'] },
-  { section: '药香梳Q&A', q: '怎么使用？', a: '建议头发清洁干爽时使用，顺着头皮轻柔梳理。\n每次几分钟即可，不要用力刮擦。', tag: '售后', groups: ['草本生活', '注意事项'] },
-  { section: '药香梳Q&A', q: '使用时要注意什么？', a: '忌水、忌油、避汗。\n湿发和使用精油时不要用香梳，避免摔打和长期潮湿。', tag: '禁忌', groups: ['草本生活', '注意事项'] },
-  { section: '药香梳Q&A', q: '怎么保养？', a: '使用后用干净软布轻擦，阴凉干燥保存。\n长时间不用时放回包装盒，避免受潮暴晒。', tag: '售后', groups: ['草本生活', '注意事项'] },
-
-  { section: '购买/团购/定制Q&A', q: '茶饮系列怎么起售？', a: '轻养小罐茶、国民经典饮、辨体调养茶均为两盒起售。\n两盒团购价为49.9元。', tag: '团购', groups: ['送礼团购', '买前必看'] },
-  { section: '购买/团购/定制Q&A', q: '为什么两盒起售？', a: '更适合组合体验和团购配送，也方便按不同场景搭配饮用。', tag: '团购', groups: ['送礼团购'] },
-  { section: '购买/团购/定制Q&A', q: '可以混搭吗？', a: '建议先按常规主推组合选择。\n如需混搭，可根据库存与团购政策另行确认。', tag: '团购', groups: ['送礼团购'] },
-  { section: '购买/团购/定制Q&A', q: '团购适合哪些客户？', a: '适合企业员工福利、园区活动、团检伴手礼、客户维护、会议茶歇、节日礼赠等。', tag: '团购', groups: ['送礼团购'] },
-  { section: '购买/团购/定制Q&A', q: '企业定制怎么介绍？', a: '可提供健康产品组合、定制包装、企业祝福卡、试饮活动和体质辨识联动。\n按预算、人数、周期和场景定制。', tag: '团购', groups: ['送礼团购'] },
-  { section: '购买/团购/定制Q&A', q: '购买前要提醒什么？', a: '付款前确认：库存、收货地址、数量、组合内容、开票需求、定制需求和预计交付时间。', tag: '售后', groups: ['送礼团购', '注意事项'] },
-
-  { section: '合规话术Q&A', q: '合规销售底线是什么？', a: '不讲治疗、不讲疗效、不讲保证。\n不替代药物，不替代医生，不使用绝对化医疗承诺。', tag: '合规', groups: ['注意事项', '买前必看'] },
-  { section: '合规话术Q&A', q: '客户说“是不是智商税”怎么回应？', a: '可回应：不是神奇功效型产品。\n价值在于把草本食材、体质思路与日常场景做成更方便的健康习惯产品。', tag: '合规', groups: ['注意事项'] },
-  { section: '合规话术Q&A', q: '孕妇、小孩能不能用？', a: '孕妇、哺乳期、儿童属于特殊人群，不建议自行使用功能性草本产品。\n建议先咨询医生或专业人士。', tag: '禁忌', groups: ['注意事项'] },
-  { section: '合规话术Q&A', q: '正在吃药能不能喝？', a: '正在服药或有明确疾病的人群，建议先咨询医生。\n产品不能替代药物或治疗方案。', tag: '禁忌', groups: ['注意事项'] },
-  { section: '合规话术Q&A', q: '能不能开票、定制、团购？', a: '可以按实际采购数量和企业需求沟通。\n建议先确认组合、数量、备货周期、交付时间和开票要求。', tag: '售后', groups: ['送礼团购', '注意事项'] }
-];
-
-const qaList = document.getElementById('qaList');
-const qaEmpty = document.getElementById('qaEmpty');
-const qaSearchInput = document.getElementById('qaSearchInput');
-const qaCategoryFilters = document.getElementById('qaCategoryFilters');
-const qaResultCount = document.getElementById('qaResultCount');
-
-let activeCategory = '买前必看';
-
-function toParagraphs(text) {
-  return text.split('\n').map((line) => `<p>${line}</p>`).join('');
+function render() {
+  const kw = searchInput.value.trim().toLowerCase();
+  chips.innerHTML = categories.map(c => `<button class="chip ${c===activeCategory?'active':''}" data-c="${c}">${c}</button>`).join('');
+  const filteredSections = handbookSections.map(sec => {
+    const matchedItems = (sec.items || []).filter(i => {
+      const text = `${sec.title}${i.q}${i.a}${i.sell||''}${i.scene||''}${i.avoid||''}${(i.tags||[]).join('')}`.toLowerCase();
+      return (!kw || text.includes(kw)) && (activeCategory==='全部' || sec.category===activeCategory);
+    });
+    const passthrough = (sec.quickLines || sec.scenes || sec.constitution) && (activeCategory==='全部' || sec.category===activeCategory) && (!kw || sec.title.toLowerCase().includes(kw));
+    return { ...sec, matchedItems, passthrough };
+  }).filter(sec => sec.matchedItems.length || sec.passthrough);
+  const total = filteredSections.reduce((n,s)=>n+s.matchedItems.length+(s.passthrough?1:0),0);
+  resultCount.textContent = `${sourceNote}｜共匹配 ${total} 条内容`;
+  toc.innerHTML = filteredSections.map(s=>`<a href="#${s.id}">${s.title}</a>`).join('');
+  content.innerHTML = filteredSections.map(sec => {
+    const qas = sec.matchedItems.map((i,idx)=>qaCard(i,idx===0)).join('');
+    const constitution = sec.constitution ? `<div class="table-grid">${sec.constitution.map(r=>`<div><strong>${r[0]}</strong><span>${r[1]}</span></div>`).join('')}</div>` : '';
+    const compliance = sec.compliance ? `<div class="compliance"><div><h4>禁止使用</h4><ul><li>治疗</li><li>疗效</li><li>改善疾病</li><li>生发承诺</li><li>治鼻炎</li><li>治失眠</li><li>降三高</li><li>保证有效</li></ul></div><div><h4>推荐表达</h4><ul><li>日常轻养</li><li>草本陪伴</li><li>东方生活方式</li><li>温和调养</li><li>日常饮用</li><li>健康管理</li><li>场景化轻养</li></ul></div></div>` : '';
+    const quickLines = sec.quickLines ? `<div class="line-cards">${sec.quickLines.map(l=>`<article><p>${l}</p>${copyBtn(l)}</article>`).join('')}</div>` : '';
+    const scenes = sec.scenes ? `<div class="scene-cards">${sec.scenes.map(s=>`<article><h4>${s[0]}</h4><p><strong>推荐产品：</strong>${s[1]}</p><p><strong>推荐销售表达：</strong>${s[2]}</p><p><strong>推荐搭配理由：</strong>${s[3]}</p>${copyBtn(s[2])}</article>`).join('')}</div>` : '';
+    return `<section id="${sec.id}" class="section"><h2>${sec.title}</h2>${constitution}${compliance}${quickLines}${scenes}${qas}</section>`;
+  }).join('');
+  empty.hidden = total !== 0;
 }
 
-function renderAnswer(item) {
-  const paragraphs = toParagraphs(item.a);
-  const cards = item.cards ? renderTeaConstitutionCards(item.cards) : '';
-  return `${paragraphs}${cards}`;
-}
-
-function renderCategoryFilters() {
-  qaCategoryFilters.innerHTML = filterTabs.map((category) => (
-    `<button class="sales-qa-chip ${category === activeCategory ? 'active' : ''}" data-category="${category}" type="button">${category}</button>`
-  )).join('');
-}
-
-function getFilteredItems() {
-  const keyword = qaSearchInput.value.trim().toLowerCase();
-  return qaItems.filter((item) => {
-    const matchCategory = activeCategory === '全部' || item.groups.includes(activeCategory);
-    const matchKeyword = !keyword || `${item.section}${item.q}${item.a}${item.tag}`.toLowerCase().includes(keyword);
-    return matchCategory && matchKeyword;
-  });
-}
-
-function renderFaq() {
-  const filtered = getFilteredItems();
-  qaResultCount.textContent = `共匹配 ${filtered.length} 条问答`;
-
-  const grouped = filtered.reduce((acc, item) => {
-    if (!acc[item.section]) acc[item.section] = [];
-    acc[item.section].push(item);
-    return acc;
-  }, {});
-
-  const sections = Object.entries(grouped);
-  let firstItemOpenUsed = false;
-
-  qaList.innerHTML = sections.map(([sectionName, items]) => `
-    <article class="sales-qa-group">
-      <h2 class="sales-qa-group-title">${sectionName}</h2>
-      ${items.map((item) => {
-        const openAttr = !firstItemOpenUsed ? 'open' : '';
-        firstItemOpenUsed = true;
-        return `
-          <details class="sales-qa-item" ${openAttr}>
-            <summary>
-              <span class="sales-qa-tag">${item.tag}</span>
-              <span class="sales-qa-question">${item.q}</span>
-            </summary>
-            <div class="sales-qa-answer">${renderAnswer(item)}</div>
-          </details>
-        `;
-      }).join('')}
-    </article>
-  `).join('');
-
-  qaEmpty.hidden = filtered.length !== 0;
-}
-
-qaCategoryFilters.addEventListener('click', (event) => {
-  const button = event.target.closest('[data-category]');
-  if (!button) return;
-  activeCategory = button.dataset.category;
-  renderCategoryFilters();
-  renderFaq();
-});
-
-qaSearchInput.addEventListener('input', renderFaq);
-
-renderCategoryFilters();
-renderFaq();
+chips.addEventListener('click', (e)=>{ const b = e.target.closest('[data-c]'); if(!b) return; activeCategory = b.dataset.c; render();});
+searchInput.addEventListener('input', render);
+document.addEventListener('click', async (e)=>{ const btn = e.target.closest('.copy-btn'); if(!btn) return; await navigator.clipboard.writeText(btn.dataset.copy); btn.textContent='已复制'; setTimeout(()=>btn.textContent='复制话术', 1200);});
+render();
