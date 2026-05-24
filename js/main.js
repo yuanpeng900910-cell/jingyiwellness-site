@@ -345,7 +345,8 @@ function updateConstitutionDots() {
   dots.forEach((dot, index) => dot.classList.toggle("active", index === activeIndex));
 }
 
-function openTeaDetail(product) {
+function openTeaDetail(product, triggerButton = null) {
+  lastTeaDetailTrigger = triggerButton || document.activeElement;
   getElement("teaModalTitle").textContent = product.name;
   getElement("teaModalTarget").textContent = product.target;
   getElement("teaModalSpec").textContent = product.spec;
@@ -353,6 +354,15 @@ function openTeaDetail(product) {
   getElement("teaModalIntro").textContent = product.intro;
   getElement("teaModal").hidden = false;
   getElement("teaModalClose").focus();
+}
+
+let lastTeaDetailTrigger = null;
+
+function getFocusableElements(container) {
+  if (!container) return [];
+  return Array.from(container.querySelectorAll(
+    'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter((element) => !element.hasAttribute("hidden"));
 }
 
 
@@ -458,6 +468,7 @@ function renderProducts() {
     ` : "";
 
     const sceneTags = getScenes(product).map((scene) => `<span class="scene-tag">${scene}</span>`).join("");
+    const mobileSceneTags = getScenes(product).slice(0, 3).map((scene) => `<span class="scene-tag">${scene}</span>`).join("");
 
     return `
       <article class="product-card">
@@ -471,12 +482,19 @@ function renderProducts() {
             ${spec}
             ${formula}
           </div>
+          <p class="product-target-mobile"><b>推荐体质/人群：</b>${product.target}</p>
           <p class="intro">${product.intro}</p>
+          <div class="scene-tags mobile-scene-tags">${mobileSceneTags}</div>
           <div class="scene-tags">${sceneTags}</div>
+          <button class="tea-detail-button product-detail-button" type="button">查看详情</button>
         </div>
       </article>
     `;
   }).join("");
+
+  grid.querySelectorAll(".product-card .product-detail-button").forEach((button, index) => {
+    button.addEventListener("click", () => openTeaDetail(filtered[index], button));
+  });
 }
 
 function renderFilterSummary() {
@@ -610,10 +628,26 @@ function bindEvents() {
 
   const closeTeaDetail = () => {
     teaModal.hidden = true;
+    if (lastTeaDetailTrigger) lastTeaDetailTrigger.focus();
+    lastTeaDetailTrigger = null;
   };
   teaModalClose.addEventListener("click", closeTeaDetail);
   teaModal.addEventListener("click", (event) => {
     if (event.target === teaModal) closeTeaDetail();
+  });
+  teaModal.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    const focusables = getFocusableElements(teaModal);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 
   const constitutionTrack = getElement("constitutionTrack");
