@@ -15,9 +15,9 @@ const products = [
   { category: "药食养方系列", series: "轻养小罐茶系列", name: "红颜茶", target: "日常轻养人群", spec: "15g/罐", formula: "阿胶、红参、桑葚、玫瑰等", intro: "适合日常轻养与礼赠场景的轻养小罐茶。", price: null, priceText: "", showPrice: false, image: "images/gongneng-xiaoguan-cha/hongyan-cha.jpg" },
   { category: "药食养方系列", series: "轻养小罐茶系列", name: "熬夜茶", target: "日常轻养人群", spec: "15g/罐", formula: "黑枸杞、决明子、乌梅等", intro: "适合夜间与办公场景的轻养小罐茶。", price: null, priceText: "", showPrice: false, image: "images/gongneng-xiaoguan-cha/aoye-cha.jpg" },
   { category: "药食养方系列", series: "国民经典饮系列", name: "酸梅汤", target: "大众日常饮用人群", spec: "15g/罐", formula: "乌梅5g、山楂3g、炙甘草1g、橘皮1g、罗汉果2.5g、洛神花1.5g、荷叶0.3g、金银花0.2g、薄荷0.5g", intro: "以乌梅、山楂、橘皮、洛神花等草本食材搭配，酸甜清爽，适合餐后、夏季和日常饮用场景。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/suanmei-tang.jpg" },
-  { category: "药食养方系列", series: "国民经典饮系列", name: "五红饮", target: "大众日常饮用人群", spec: "15g/罐", formula: "红枣、红豆、红皮花生、枸杞、红糖等", intro: "适合日常轻养与家庭场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/wuhong-tang.jpg" },
-  { category: "药食养方系列", series: "国民经典饮系列", name: "姜枣茶", target: "大众日常饮用人群", spec: "15g/罐", formula: "生姜、红枣、红糖等", intro: "适合秋冬与日常暖饮场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/jiangzao-cha.jpg" },
-  { category: "药食养方系列", series: "国民经典饮系列", name: "秋梨汤", target: "大众日常饮用人群", spec: "15g/罐", formula: "秋梨、百合、银耳等", intro: "适合季节转换与日常轻养场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/qiuli-tang.jpg" },
+  { category: "药食养方系列", series: "国民经典饮系列", name: "五红饮", hidden: true, target: "大众日常饮用人群", spec: "15g/罐", formula: "红枣、红豆、红皮花生、枸杞、红糖等", intro: "适合日常轻养与家庭场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/wuhong-tang.jpg" },
+  { category: "药食养方系列", series: "国民经典饮系列", name: "姜枣茶", hidden: true, target: "大众日常饮用人群", spec: "15g/罐", formula: "生姜、红枣、红糖等", intro: "适合秋冬与日常暖饮场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/jiangzao-cha.jpg" },
+  { category: "药食养方系列", series: "国民经典饮系列", name: "秋梨汤", hidden: true, target: "大众日常饮用人群", spec: "15g/罐", formula: "秋梨、百合、银耳等", intro: "适合季节转换与日常轻养场景的经典饮品。", price: null, priceText: "", showPrice: false, image: "images/guomin-jingdian-yinpin/qiuli-tang.jpg" },
   { category: "药食养方系列", series: "养生隐茶杯系列", name: "养元茶", target: "日常轻养人群", spec: "一次性杯装，4.5g/杯×10杯", formula: "黄精、山茱萸、枸杞、桑葚", intro: "便携杯装草本茶饮，适合日常轻养。", price: null, priceText: "", showPrice: false, image: "images/yangsheng-yincha-bei/yangyuan-cha.jpg" },
   { category: "药食养方系列", series: "养生隐茶杯系列", name: "清和茶", target: "日常轻养人群", spec: "一次性杯装，4.5g/杯×10杯", formula: "菊花、金银花、栀子、枸杞子、橘皮", intro: "便携杯装草本茶饮，适合日常轻养。", price: null, priceText: "", showPrice: false, image: "images/yangsheng-yincha-bei/qinghe-cha.jpg" },
   { category: "药食养方系列", series: "养生隐茶杯系列", name: "葛花解酲汤", target: "日常轻养人群", spec: "一次性杯装，4.5g/杯×10杯", formula: "山楂、陈皮、葛根花、枳椇子", intro: "便携杯装草本茶饮，适合日常轻养。", price: null, priceText: "", showPrice: false, image: "images/yangsheng-yincha-bei/gehua-jiecheng-tang.jpg" },
@@ -43,7 +43,7 @@ const products = [
   { category: "健康场景共建系列", series: "场景合作项目", name: "社区健康服务", target: "社区居民与健康服务场景", spec: "项目合作", formula: "/", intro: "面向社区居民的日常健康服务共建项目。", price: null, priceText: "", showPrice: false, image: "images/common/product-placeholder.jpg" },
   { category: "健康场景共建系列", series: "场景合作项目", name: "园区员工健康关爱", target: "园区企业员工", spec: "项目合作", formula: "/", intro: "面向园区员工的健康关爱服务共建项目。", price: null, priceText: "", showPrice: false, image: "images/common/product-placeholder.jpg" },
   { category: "健康场景共建系列", series: "场景合作项目", name: "中医文化展活动合作", target: "节令活动/文化展/品牌快闪", spec: "项目合作", formula: "/", intro: "适配中医文化展与线下活动的共建项目。", price: null, priceText: "", showPrice: false, image: "images/xianxia-hezuo/zhongyi-yangsheng-shiji-huodong-hezuo.jpg" }
-];
+].filter((product) => !product.hidden);
 
 const categories = ["全部", "药食养方系列", "生活养方系列", "节气养生系列", "定制礼赠系列", "健康场景共建系列"];
 const seriesList = ["全部", "轻养小罐茶系列", "辨体调养茶系列", "国民经典饮系列", "养生隐茶杯系列", "滋补系列", "轻养膳食系列", "草本睡眠/香养产品", "草本梳理/洗护产品", "节气内容产品", "礼赠产品/方案", "场景合作项目"];
@@ -60,7 +60,7 @@ const categoryIntros = {
 
 const featuredSeries = [
   { category: "药食养方系列", series: "辨体调养茶系列", title: "辨体调养茶系列", image: "images/common/series-banner-1.jpg", text: "九种体质，一茶一方，按体质选择日常轻养茶饮。" },
-  { category: "药食养方系列", series: "国民经典饮系列", title: "国民经典饮系列", image: "images/common/series-banner-2.jpg", text: "酸梅汤、五红饮、秋梨汤、姜枣茶，贴近日常饮用场景。" },
+  { category: "药食养方系列", series: "国民经典饮系列", title: "国民经典饮系列", image: "images/common/series-banner-2.jpg", text: "酸梅汤，贴近日常饮用场景。" },
   { category: "定制礼赠系列", series: "礼赠产品/方案", title: "礼赠产品/方案", image: "images/common/series-banner-3.jpg", text: "围绕员工关怀、商务伴手与主题健康礼盒灵活搭配。" }
 ];
 
