@@ -36,7 +36,7 @@ const products = [
   { category: "节气养生系列", series: "节气内容产品", name: "顺时而养 · Companion OS", target: "节气养生关注人群", spec: "设备绑定软件OS", formula: "节气陪伴与主动健康服务系统", intro: "以二十四节气和十二时辰为时间骨架，融合中医体质、五音疗愈和主动健康服务，构建与设备联动的智能陪伴系统，在生活全周期中顺时养生、持续关怀。", price: null, priceText: "", showPrice: false, image: "images/common/product-placeholder.jpg" },
   { category: "定制礼赠系列", series: "礼赠产品/方案", name: "企业员工健康礼", target: "企业福利与员工关怀", spec: "礼盒装（内容可定制）", formula: "按场景搭配产品组合", intro: "面向企业福利与员工关怀的礼赠方案。", price: null, priceText: "", showPrice: false, image: "images/qiye-dingzhi/qiye-fuli-lihe.jpg" },
   { category: "定制礼赠系列", series: "礼赠产品/方案", name: "商务伴手礼", target: "商务拜访与客户关怀", spec: "礼盒装（内容可定制）", formula: "按场景搭配产品组合", intro: "面向商务拜访与客户关怀的礼赠方案。", price: null, priceText: "", showPrice: false, image: "images/canshi-yuyang-lihe/canshi-yuyang-cha-shangwu-li.jpg" },
-  { category: "定制礼赠系列", series: "礼赠产品/方案", name: "参石御养小罐茶礼盒", target: "节日礼赠与高端关怀", spec: "12罐茶礼盒装", formula: "人参、石斛", intro: "适合节日礼赠与高端关怀场景的礼盒产品。", price: null, priceText: "", showPrice: false, image: "images/canshi-yuyang-lihe/canshi-yuyang-cha-lihe-zhuang.jpg" },
+  { category: "定制礼赠系列", series: "礼赠产品/方案", name: "参石御养小罐茶礼盒", target: "节日礼赠与高端关怀", spec: "12罐茶礼盒装", formula: "人参、石斛", intro: "适合节日礼赠与高端关怀场景的礼盒产品。", price: null, priceText: "", showPrice: false, image: "images/canshi-yuyang-lihe/canshi-yuyang-cha-lihe-zhuang-20260914.jpg" },
   { category: "定制礼赠系列", series: "礼赠产品/方案", name: "主题健康礼盒", target: "主题活动与节点关怀", spec: "礼盒装（内容可定制）", formula: "按主题搭配产品组合", intro: "围绕活动主题定制的健康礼赠方案。", price: null, priceText: "", showPrice: false, image: "images/qiye-dingzhi/zhuti-guanai-lihe.jpg" },
   { category: "健康场景共建系列", series: "场景合作项目", name: "京颐养方线下体验区", target: "院内专柜/商超/社区/合作门店", spec: "项目合作", formula: "/", intro: "面向线下场景的健康体验共建项目。", price: null, priceText: "", showPrice: false, image: "images/xianxia-hezuo/xianxia-tiyandian-hezuo.jpg" },
   { category: "健康场景共建系列", series: "场景合作项目", name: "企业健康活动", target: "企业客户/员工健康关怀", spec: "项目合作", formula: "/", intro: "结合体质辨识、试饮与科普内容的健康活动共建项目。", price: null, priceText: "", showPrice: false, image: "images/xianxia-hezuo/qiye-jiankang-huodong-zhichi.jpg" },
@@ -430,20 +430,14 @@ function getFilteredProducts() {
 }
 
 function sortProductsForDisplay(items) {
-  const constitutionTeas = items.filter((product) => product.series === "辨体调养茶系列");
-  const gingerJujubeTea = items.filter((product) => product.name === "姜枣茶");
-  if (!constitutionTeas.length && !gingerJujubeTea.length) return items;
-
-  const remainingProducts = items.filter((product) => product.series !== "辨体调养茶系列" && product.name !== "姜枣茶");
-  const autumnPearIndex = remainingProducts.findIndex((product) => product.name === "秋梨汤");
-  if (autumnPearIndex === -1) return remainingProducts.concat(gingerJujubeTea, constitutionTeas);
-
-  return [
-    ...remainingProducts.slice(0, autumnPearIndex + 1),
-    ...gingerJujubeTea,
-    ...constitutionTeas,
-    ...remainingProducts.slice(autumnPearIndex + 1)
-  ];
+  const updatedTeaNames = new Set(["元气茶", "轻湿茶", "红颜茶", "熬夜茶", "酸梅汤"]);
+  const priority = (product) => {
+    if (product.series === "辨体调养茶系列") return 0;
+    if (product.name === "参石御养小罐茶礼盒") return 1;
+    if (updatedTeaNames.has(product.name)) return 2;
+    return 3;
+  };
+  return [...items].sort((a, b) => priority(a) - priority(b));
 }
 
 function renderProducts() {
