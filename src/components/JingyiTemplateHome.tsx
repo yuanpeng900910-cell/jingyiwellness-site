@@ -19,7 +19,7 @@ type HeroSlide = { kicker: string; title: [string, string]; subtitle: string; im
 
 const heroSlides: HeroSlide[] = [
   { kicker: "JINGYI WELLNESS", title: ["京医古法", "颐养东方"], subtitle: "让东方轻养，自然融入日常。", image: "/images/hero-baihe-desktop-v1.webp", mobileImage: "/images/hero-baihe-mobile-v1.webp", theme: "tea", href: "/products/herbal-tea", alt: "京颐养方百合玉竹茶包装与茶杯" },
-  { kicker: "草本生活", title: ["一缕草本香", "日常自从容"], subtitle: "把草本的陪伴，带进生活。", image: "/images/master/hero-life-purple-desktop.png", mobileImage: "/images/master/hero-life-purple-mobile.png", theme: "life", href: "/products/incense-beads", alt: "紫气东来·瑞紫流金合香珠手串" },
+  { kicker: "草本生活", title: ["一缕草本香", "日常自从容"], subtitle: "把草本的陪伴，带进生活。", image: "/images/master/hero-life-purple-desktop.png", mobileImage: "/images/master/hero-life-purple-mobile.webp", theme: "life", href: "/products/incense-beads", alt: "紫气东来·瑞紫流金合香珠手串" },
   { kicker: "东方养生礼", title: ["以东方好物", "赠一份关怀"], subtitle: "为亲友，也为一路同行的人。", image: "/images/hero-gift-lighting-v3.webp", mobileImage: "/images/hero-gift-lighting-v3.webp", theme: "gift", href: "/gifts", alt: "京颐养方参石御养小罐茶礼盒" },
 ];
 
