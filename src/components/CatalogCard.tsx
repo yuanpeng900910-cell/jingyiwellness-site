@@ -23,7 +23,7 @@ function ProductDialog({ item, category, onClose, onContact }: { item: CatalogIt
   return <dialog ref={dialog} className="jy-dialog jy-product-dialog jy-catalog-dialog" aria-labelledby="jy-catalog-product-title" onClose={onClose}
     onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
     <button ref={closeButton} type="button" className="jy-dialog__close" aria-label="关闭产品卡片" onClick={() => dialog.current?.close()}><X size={22} /></button>
-    <div className="jy-detail-image"><Image src={product?.image ?? item.image ?? "/images/catalog/brand-placeholder.webp"} alt={item.image ? item.name : "京颐养方品牌礼袋"} width={1000} height={1000} sizes="(max-width: 800px) 90vw, 450px" quality={90} /></div>
+    <div className="jy-detail-image"><Image src={product?.image ?? item.image ?? "/images/catalog/brand-placeholder.jpg"} alt={item.image ? item.name : "京颐养方品牌礼袋"} width={1000} height={1000} sizes="(max-width: 800px) 90vw, 450px" quality={90} /></div>
     <div className="jy-detail-copy">
       <p className="jy-modal-kicker">{product?.series ?? category}</p>
       <h2 id="jy-catalog-product-title">{item.name}</h2>
@@ -71,7 +71,7 @@ export function CatalogCard({ item, category }: { item: CatalogItem; category: s
   const [mode, setMode] = useState<"product" | "contact" | null>(null);
   return <article className="jy-catalog-card">
     <button type="button" className="jy-catalog-card__button" onClick={() => setMode("product")} aria-label={`查看${item.name}详情`}>
-      <span className={`jy-catalog-card__visual${item.image ? "" : " jy-catalog-card__visual--placeholder"}`}><Image src={item.image ?? "/images/catalog/brand-placeholder.webp"} alt={item.image ? `${item.name}产品展示图` : "京颐养方品牌礼袋"} fill sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 24vw" quality={88} /></span>
+      <span className={`jy-catalog-card__visual${item.image ? "" : " jy-catalog-card__visual--placeholder"}`}><Image src={item.image ?? "/images/catalog/brand-placeholder.jpg"} alt={item.image ? `${item.name}产品展示图` : "京颐养方品牌礼袋"} fill sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 24vw" quality={88} /></span>
       <span className="jy-catalog-card__caption"><strong>{item.name}</strong>{item.note && <span>{item.note}</span>}</span>
     </button>
     {mode === "product" && <ProductDialog item={item} category={category} onClose={() => setMode(null)} onContact={() => setMode("contact")} />}

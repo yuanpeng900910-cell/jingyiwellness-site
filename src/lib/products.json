@@ -10,11 +10,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/hongyan-white.webp",
+    "image": "/images/master/hongyan-white.png",
     "id": "hongyan",
     "group": "茶饮",
     "tagline": "一罐草本，给日常一点花香",
-    "cardImage": "/images/box-only/hongyan.webp"
+    "cardImage": "/images/box-only/hongyan.png"
   },
   {
     "category": "药食养方系列",
@@ -27,11 +27,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/baihe.webp",
+    "image": "/images/master/baihe.jpg",
     "id": "baihe",
     "group": "茶饮",
     "tagline": "百合与玉竹，融入日常茶时光",
-    "cardImage": "/images/box-only/baihe.webp"
+    "cardImage": "/images/box-only/baihe.png"
   },
   {
     "category": "生活养方系列",
@@ -44,11 +44,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/pillow-v2.webp",
+    "image": "/images/master/pillow-v2.png",
     "id": "pillow",
     "group": "草本生活",
     "tagline": "草本香气，陪伴睡前的放松时刻",
-    "cardImage": "/images/master/pillow-v2.webp"
+    "cardImage": "/images/master/pillow-v2.png"
   },
   {
     "category": "定制礼赠系列",
@@ -61,11 +61,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/shenshi-single-lighting.webp",
+    "image": "/images/master/shenshi-single-lighting.png",
     "id": "gift",
     "group": "御养礼赠",
     "tagline": "把一份关怀，郑重装进礼盒",
-    "cardImage": "/images/master/shenshi-single-lighting.webp"
+    "cardImage": "/images/master/shenshi-single-lighting.png"
   },
   {
     "category": "定制礼赠系列",
@@ -78,11 +78,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/shenzhi-single-lighting.webp",
+    "image": "/images/master/shenzhi-single-lighting.png",
     "id": "shenzhi",
     "group": "御养礼赠",
     "tagline": "为她送上一份日常关怀",
-    "cardImage": "/images/master/shenzhi-single-lighting.webp"
+    "cardImage": "/images/master/shenzhi-single-lighting.png"
   },
   {
     "category": "药食养方系列",
@@ -95,11 +95,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/apple.webp",
+    "image": "/images/master/apple.jpg",
     "id": "apple",
     "group": "茶饮",
     "tagline": "苹果与黄芪，一杯轻养日常",
-    "cardImage": "/images/box-only/apple.webp"
+    "cardImage": "/images/box-only/apple.png"
   },
   {
     "category": "药食养方系列",
@@ -112,11 +112,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/rose.webp",
+    "image": "/images/master/rose.jpg",
     "id": "rose",
     "group": "茶饮",
     "tagline": "玫瑰与佛手，留一点时间给自己",
-    "cardImage": "/images/box-only/rose.webp"
+    "cardImage": "/images/box-only/rose.png"
   },
   {
     "category": "生活养方系列",
@@ -129,11 +129,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/comb.webp",
+    "image": "/images/master/comb.png",
     "id": "comb",
     "group": "草本生活",
     "tagline": "把草本融入每日梳理",
-    "cardImage": "/images/master/comb.webp"
+    "cardImage": "/images/master/comb.png"
   },
   {
     "category": "药食养方系列",
@@ -146,11 +146,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/qinghe.webp",
+    "image": "/images/master/qinghe.png",
     "id": "qinghe",
     "group": "茶饮",
     "tagline": "随手一杯，办公室里的草本时光",
-    "cardImage": "/images/master/qinghe.webp"
+    "cardImage": "/images/master/qinghe.png"
   },
   {
     "category": "药食养方系列",
@@ -163,11 +163,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/gancao.webp",
+    "image": "/images/master/gancao.jpg",
     "id": "gancao",
     "group": "茶饮",
     "tagline": "甘草与干姜，日常暖饮之选",
-    "cardImage": "/images/box-only/gancao.webp"
+    "cardImage": "/images/box-only/gancao.png"
   },
   {
     "category": "药食养方系列",
@@ -180,11 +180,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/shenqi.webp",
+    "image": "/images/master/shenqi.jpg",
     "id": "shenqi",
     "group": "茶饮",
     "tagline": "参芪与大枣，细品草本本味",
-    "cardImage": "/images/box-only/shenqi.webp"
+    "cardImage": "/images/box-only/shenqi.png"
   },
   {
     "category": "药食养方系列",
@@ -197,11 +197,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/fuling.webp",
+    "image": "/images/master/fuling.jpg",
     "id": "fuling",
     "group": "茶饮",
     "tagline": "茯苓与陈皮，茶香相伴",
-    "cardImage": "/images/box-only/fuling.webp"
+    "cardImage": "/images/box-only/fuling.png"
   },
   {
     "category": "药食养方系列",
@@ -214,11 +214,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/yiren.webp",
+    "image": "/images/master/yiren.jpg",
     "id": "yiren",
     "group": "茶饮",
     "tagline": "薏仁与荷叶，日常轻饮",
-    "cardImage": "/images/box-only/yiren.webp"
+    "cardImage": "/images/box-only/yiren.png"
   },
   {
     "category": "药食养方系列",
@@ -231,11 +231,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/danggui.webp",
+    "image": "/images/master/danggui.jpg",
     "id": "danggui",
     "group": "茶饮",
     "tagline": "当归与玫瑰，草本花香",
-    "cardImage": "/images/box-only/danggui.webp"
+    "cardImage": "/images/box-only/danggui.png"
   },
   {
     "category": "药食养方系列",
@@ -248,11 +248,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/huangqi.webp",
+    "image": "/images/master/huangqi.jpg",
     "id": "huangqi",
     "group": "茶饮",
     "tagline": "黄芪与紫苏，草本相和",
-    "cardImage": "/images/box-only/huangqi.webp"
+    "cardImage": "/images/box-only/huangqi.png"
   },
   {
     "category": "药食养方系列",
@@ -265,11 +265,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/yangyuan.webp",
+    "image": "/images/master/yangyuan.png",
     "id": "yangyuan",
     "group": "茶饮",
     "tagline": "杯中自有草本，随时享用",
-    "cardImage": "/images/master/yangyuan.webp"
+    "cardImage": "/images/master/yangyuan.png"
   },
   {
     "category": "药食养方系列",
@@ -282,11 +282,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/gehua.webp",
+    "image": "/images/master/gehua.png",
     "id": "gehua",
     "group": "茶饮",
     "tagline": "便携杯装，适合日常与接待",
-    "cardImage": "/images/master/gehua.webp"
+    "cardImage": "/images/master/gehua.png"
   },
   {
     "category": "生活养方系列",
@@ -299,11 +299,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/ruiziliujin-detail.webp",
+    "image": "/images/master/ruiziliujin-detail.png",
     "id": "ruiziliujin",
     "group": "草本生活",
     "tagline": "一缕草本香，点亮日常穿搭",
-    "cardImage": "/images/master/ruiziliujin-detail.webp"
+    "cardImage": "/images/master/ruiziliujin-detail.png"
   },
   {
     "category": "生活养方系列",
@@ -316,11 +316,11 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/meixiang-detail.webp",
+    "image": "/images/master/meixiang-detail.png",
     "id": "meixiang",
     "group": "草本生活",
     "tagline": "把一份温柔心意戴在腕间",
-    "cardImage": "/images/master/meixiang-detail.webp"
+    "cardImage": "/images/master/meixiang-detail.png"
   },
   {
     "category": "药食养方系列",
@@ -333,10 +333,10 @@
     "price": null,
     "priceText": "",
     "showPrice": false,
-    "image": "/images/master/qingshi-white-detail.webp",
+    "image": "/images/master/qingshi-white-detail.png",
     "id": "qingshi",
     "group": "茶饮",
     "tagline": "一罐谷物草本，陪伴日常轻饮",
-    "cardImage": "/images/box-only/qingshi.webp"
+    "cardImage": "/images/box-only/qingshi.png"
   }
 ]
