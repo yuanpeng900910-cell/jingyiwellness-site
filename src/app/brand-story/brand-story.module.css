@@ -1,0 +1,159 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  color: #171717;
+  font-family: "Pretendard Variable", "basier circle", Pretendard, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.page a:focus-visible {
+  outline: 2px solid #6c801a;
+  outline-offset: 4px;
+}
+
+.skip {
+  position: fixed;
+  top: 0;
+  left: 16px;
+  z-index: 30;
+  padding: 12px 18px;
+  background: #fff;
+  clip-path: inset(100%);
+}
+
+.skip:focus { top: 12px; clip-path: none; }
+
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 72px;
+  align-items: center;
+  gap: clamp(35px, 5vw, 85px);
+  padding: 0 clamp(20px, 3.8vw, 72px);
+  background: #fff;
+}
+
+.logo { flex: none; display: block; }
+.logo img { display: block; width: 154px; height: auto; }
+
+.nav { display: flex; align-items: center; gap: clamp(25px, 3.3vw, 65px); }
+.nav a, .nav span { color: #171717; font-size: 14px; font-weight: 650; white-space: nowrap; text-decoration: none; }
+.nav a:hover, .nav span { color: #697c22; }
+.back { display: none; }
+
+.hero {
+  position: relative;
+  height: clamp(530px, 43vw, 700px);
+  overflow: hidden;
+  background: #796a54;
+  color: #fff;
+}
+
+.heroImage { object-fit: cover; object-position: center 47%; }
+.heroShade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 19, 15, .66) 0%, rgba(18, 19, 15, .48) 31%, rgba(18, 19, 15, .07) 70%), linear-gradient(0deg, rgba(18, 19, 15, .2), transparent 46%); }
+.heroCopy { position: absolute; top: 51%; left: 50%; width: min(90%,760px); transform: translate(-50%,-50%); text-align: center; }
+.heroCopy > p { margin: 0 0 24px; font-size: 12px; font-weight: 700; letter-spacing: .19em; }
+.heroCopy h1 { margin: 0 0 23px; font-size: clamp(43px, 4.7vw, 76px); font-weight: 650; letter-spacing: .035em; line-height: 1.34; }
+.heroCopy > span { font-size: clamp(15px, 1.4vw, 19px); font-weight: 550; letter-spacing: .06em; }
+
+.story {
+  display: grid;
+  width: min(100%, 1510px);
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(50px, 6vw, 112px);
+  margin: 0 auto;
+  padding: clamp(95px, 9vw, 145px) clamp(28px, 5vw, 84px);
+}
+
+.eyebrow { margin: 0 0 23px; color: #6c801a; font-size: 12px; font-weight: 750; letter-spacing: .14em; }
+.storyCopy h2 { margin: 0 0 27px; font-size: clamp(31px, 3.2vw, 49px); font-weight: 650; line-height: 1.34; letter-spacing: -.025em; }
+.lead { max-width: 560px; margin: 0; color: #555; font-size: clamp(15px, 1.15vw, 18px); line-height: 2.05; }
+.storyVisual, .hospitalVisual, .peopleVisual { margin: 0; }
+.storyVisual img { display: block; width: 100%; height: auto; }
+
+.hospital { background: #f5f5f2; }
+.hospitalInner {
+  display: grid;
+  width: min(100%, 1510px);
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, .84fr);
+  align-items: center;
+  gap: clamp(50px, 6vw, 112px);
+  margin: 0 auto;
+  padding: clamp(90px, 8vw, 130px) clamp(28px, 5vw, 84px);
+}
+.hospitalVisual img { display: block; width: 100%; height: auto; }
+.hospitalVisual figcaption, .peopleVisual figcaption { margin-top: 13px; color: #737373; font-size: 12px; }
+.hospitalCopy h2, .peopleHeading h2 { margin: 0 0 28px; font-size: clamp(31px, 3.2vw, 49px); font-weight: 650; line-height: 1.34; letter-spacing: -.025em; }
+.hospitalCopy > p:not(.eyebrow) { max-width: 500px; margin: 0 0 18px; color: #555; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.95; }
+.lineage { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 32px; padding-top: 22px; border-top: 1px solid #d8d8d1; color: #555; font-size: 12px; font-weight: 650; }
+.lineage strong { color: #6c801a; font-weight: 750; }
+
+.people { width: min(100%, 1370px); margin: 0 auto; padding: clamp(90px, 8vw, 132px) clamp(28px, 5vw, 84px); }
+.peopleHeading { display: flex; align-items: end; justify-content: space-between; gap: 65px; margin-bottom: 38px; }
+.peopleHeading h2 { margin-bottom: 0; }
+.peopleHeading > p { max-width: 430px; margin: 0 0 4px; color: #555; font-size: 16px; line-height: 1.9; }
+.peopleVisual img { display: block; width: 100%; height: auto; }
+
+.origin { border-top: 1px solid #ecece8; }
+.originInner { width: min(100%, 1510px); margin: 0 auto; padding: clamp(90px, 8vw, 135px) clamp(28px, 5vw, 84px); }
+.originCopy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .72fr); align-items: end; gap: 60px; margin-bottom: 42px; }
+.originCopy h2 { margin: 0; font-size: clamp(31px, 3.2vw, 49px); font-weight: 650; line-height: 1.34; letter-spacing: -.025em; }
+.originCopy > p { max-width: 480px; margin: 0 0 3px; color: #555; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.95; }
+.originGallery { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); gap: 18px; }
+.fieldVisual, .harvestVisual { min-width: 0; margin: 0; }
+.fieldVisual img, .harvestVisual img { display: block; width: 100%; height: clamp(280px, 30vw, 430px); object-fit: cover; }
+.fieldVisual img { object-position: center; }
+.harvestVisual img { object-position: center; }
+.fieldVisual figcaption, .harvestVisual figcaption { margin-top: 13px; color: #737373; font-size: 12px; }
+
+.closing { padding: clamp(80px, 8vw, 130px) 24px; background: #f4f5f0; text-align: center; }
+.closing .eyebrow { margin-bottom: 22px; }
+.closing h2 { margin: 0; font-size: clamp(29px, 3.3vw, 49px); font-weight: 650; line-height: 1.4; }
+.closing > p:not(.eyebrow) { margin: 20px 0 33px; color: #5e5e5e; font-size: 16px; }
+.closing a { display: inline-flex; align-items: center; gap: 8px; padding: 0 0 8px; border-bottom: 1px solid #222; color: #171717; font-size: 14px; font-weight: 650; text-decoration: none; }
+.closing a:hover { color: #6c801a; border-color: #6c801a; }
+
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 33px clamp(28px, 5vw, 84px); color: #777; font-size: 12px; }
+.footer a { display: inline-flex; align-items: center; gap: 4px; color: #333; text-decoration: none; }
+
+@media (max-width: 800px) {
+  .header { height: 62px; justify-content: space-between; gap: 12px; padding: 0 20px; }
+  .logo img { width: 122px; }
+  .nav { display: none; }
+  .back { display: inline-flex; align-items: center; gap: 5px; color: #303030; font-size: 12px; font-weight: 650; text-decoration: none; }
+  .hero { height: min(69svh, 610px); min-height: 470px; }
+  .heroImage { object-position: 62% 48%; }
+  .heroShade { background: linear-gradient(0deg, rgba(19, 18, 16, .73), rgba(19, 18, 16, .13) 75%), linear-gradient(90deg, rgba(19, 18, 16, .2), transparent 80%); }
+  .heroCopy { top: auto; right: 24px; bottom: 59px; left: 24px; width: auto; transform: none; text-align: center; }
+  .heroCopy > p { margin-bottom: 14px; font-size: 10px; }
+  .heroCopy h1 { margin-bottom: 14px; font-size: clamp(38px, 10vw, 53px); line-height: 1.3; }
+  .heroCopy > span { font-size: 14px; }
+  .story { display: block; padding: 78px 22px 86px; }
+  .storyCopy { margin-bottom: 43px; }
+  .storyCopy h2 { margin-bottom: 22px; font-size: 34px; }
+  .lead { font-size: 15px; line-height: 1.9; }
+  .hospitalInner { display: block; padding: 80px 22px 88px; }
+  .hospitalVisual { margin-bottom: 42px; }
+  .hospitalVisual figcaption, .peopleVisual figcaption { margin-top: 10px; }
+  .hospitalCopy h2, .peopleHeading h2 { font-size: 34px; }
+  .hospitalCopy > p:not(.eyebrow) { font-size: 15px; line-height: 1.9; }
+  .lineage { gap: 6px; font-size: 11px; }
+  .people { padding: 80px 22px 88px; }
+  .peopleHeading { display: block; margin-bottom: 33px; }
+  .peopleHeading h2 { margin-bottom: 18px; }
+  .peopleHeading > p { font-size: 15px; }
+  .originInner { padding: 80px 22px 88px; }
+  .originCopy { display: block; margin-bottom: 34px; }
+  .originCopy h2 { margin-bottom: 19px; font-size: 34px; }
+  .originCopy > p { font-size: 15px; line-height: 1.9; }
+  .originGallery { display: block; }
+  .fieldVisual { margin-bottom: 25px; }
+  .fieldVisual img { height: auto; aspect-ratio: 1.65; }
+  .harvestVisual img { height: auto; aspect-ratio: 1.4; }
+  .fieldVisual figcaption, .harvestVisual figcaption { margin-top: 10px; }
+  .closing { padding: 79px 22px 87px; }
+  .closing h2 { font-size: 31px; }
+  .closing > p:not(.eyebrow) { font-size: 14px; }
+  .footer { padding: 28px 22px; font-size: 11px; }
+}
