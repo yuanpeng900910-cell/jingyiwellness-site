@@ -4721,6 +4721,12 @@
 .jy-catalog-sidebar__sections a { padding: 12px 0; color: #555; font-size: 13px; text-decoration: none; }
 .jy-catalog-sidebar__sections a:hover { color: #6c801a; }
 .jy-catalog-sidebar__group > a { display: block; }
+.jy-catalog-sidebar__toggle { display: block; width: 100%; padding: 14px 0; border: 0; background: none; color: #222; font-family: inherit; font-size: 15px; font-weight: 650; line-height: 1.5; text-align: left; cursor: pointer; transition: color .18s ease; }
+.jy-catalog-sidebar__toggle:hover, .jy-catalog-sidebar__toggle:focus-visible, .jy-catalog-sidebar__sections a:hover { color: #008c81; }
+.jy-catalog-sidebar__toggle:focus-visible { outline: 2px solid #008c81; outline-offset: 3px; }
+.jy-catalog-sidebar__panel { max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height .3s ease, opacity .22s ease, visibility 0s linear .3s; }
+.jy-catalog-sidebar__panel.is-open { max-height: 520px; opacity: 1; visibility: visible; transition: max-height .3s ease, opacity .22s ease, visibility 0s; }
+.jy-catalog-sidebar__sections a[aria-current="page"] { color: #222; font-weight: 650; }
 .jy-catalog-main { min-width: 0; }
 .jy-catalog-filters { display: flex; flex-wrap: wrap; gap: 10px; min-height: 46px; align-items: start; }
 .jy-catalog-filters a { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 0 24px; border: 1px solid #aaa; border-radius: 24px; color: #777; font-size: 13px; text-decoration: none; white-space: nowrap; }
@@ -4795,8 +4801,9 @@
   .jy-catalog-page--category .jy-catalog-page__layout { display: block; padding: 33px 16px 80px; }
   .jy-catalog-page--category .jy-catalog-sidebar nav { display: flex; flex-wrap: wrap; gap: 0 18px; overflow: visible; }
   .jy-catalog-page--category .jy-catalog-sidebar__group { display: contents; }
-  .jy-catalog-page--category .jy-catalog-sidebar__group > a { flex: none; padding: 9px 0; }
-  .jy-catalog-page--category .jy-catalog-sidebar__sections { order: 1; display: flex; width: 100%; gap: 4px; overflow-x: auto; margin: 8px 0 20px; padding: 4px 8px; scrollbar-width: none; }
+  .jy-catalog-page--category .jy-catalog-sidebar__toggle { flex: none; width: auto; padding: 9px 0; font-size: 13px; }
+  .jy-catalog-page--category .jy-catalog-sidebar__panel { order: 1; width: 100%; }
+  .jy-catalog-page--category .jy-catalog-sidebar__sections { display: flex; width: 100%; gap: 4px; overflow-x: auto; margin: 8px 0 20px; padding: 4px 8px; scrollbar-width: none; }
   .jy-catalog-page--category .jy-catalog-sidebar__sections a { flex: none; padding: 11px 9px; white-space: nowrap; }
   .jy-catalog-page--category .jy-catalog-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 34px 10px; }
   .jy-catalog-page--category .jy-catalog-card__visual--cutout img { transform: scale(1); }
