@@ -4647,7 +4647,6 @@
 .jy-catalog-card { min-width: 0; }
 .jy-catalog-card__visual { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: #f6f6f4; }
 .jy-catalog-card__visual img { object-fit: contain; }
-.jy-catalog-card__placeholder { position: absolute; right: 12px; bottom: 12px; padding: 5px 8px; color: #687159; background: rgba(255,255,255,.85); font-size: 11px; }
 .jy-catalog-card__caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px 12px; padding: 15px 2px 5px; }
 .jy-catalog-card__caption h3 { margin: 0; font-size: 17px; font-weight: 600; }
 .jy-catalog-card__caption span { color: #777; font-size: 11px; }
@@ -4660,9 +4659,8 @@
 .jy-editorial-section__gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
 .jy-editorial-section__gallery figure, .jy-editorial-section--cooperation > figure { position: relative; aspect-ratio: 1.36; margin: 0; overflow: hidden; background: #f3f3ef; }
 .jy-editorial-section__gallery img { object-fit: cover; }
-.jy-editorial-section__empty { position: relative; min-height: 350px; background: #f3f3ef; }
+.jy-editorial-section__empty { position: relative; width: 100%; min-width: 0; min-height: 350px; background: #f3f3ef; }
 .jy-editorial-section__empty img { object-fit: contain; }
-.jy-editorial-section__empty span { position: absolute; right: 18px; bottom: 17px; padding: 7px 10px; color: #657056; background: #fff; font-size: 12px; }
 .jy-editorial-section--cooperation { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: 8%; }
 .jy-editorial-section--cooperation .jy-editorial-section__copy { margin: 0; }
 .jy-calendar-feature { margin-top: clamp(80px, 9vw, 130px); padding-top: clamp(65px, 8vw, 110px); border-top: 1px solid #e7e7e3; }

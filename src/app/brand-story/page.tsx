@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: "品牌故事｜京颐养方",
   description: "了解京颐养方与合肥京东方医院、京东方集团的渊源，以及品牌如何把草本养生融入日常生活。",
 };
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false };
 
 export default function BrandStoryPage() {
   return <main className={styles.page}>
@@ -79,12 +81,10 @@ export default function BrandStoryPage() {
         </div>
         <div className={styles.originGallery}>
           <figure className={styles.fieldVisual}>
-            <Image src="/images/brand/herbal-field-edited.png" alt="草本种植田地的场景示意" width={1670} height={942} sizes="(max-width: 800px) 100vw, 54vw" quality={85} />
-            <figcaption>草本种植场景示意</figcaption>
+            <Image src="/images/brand/herbal-field-edited.png" alt="草本田地与远处山林" width={1670} height={942} sizes="(max-width: 800px) 100vw, 54vw" quality={85} />
           </figure>
           <figure className={styles.harvestVisual}>
-            <Image src="/images/brand/herbal-harvest-selected.png" alt="农人展示采收原料的场景示意" width={1487} height={1058} sizes="(max-width: 800px) 100vw, 36vw" quality={85} />
-            <figcaption>草本采收场景示意</figcaption>
+            <Image src="/images/brand/herbal-harvest-selected.png" alt="农人在田间展示采收的草本原料" width={1487} height={1058} sizes="(max-width: 800px) 100vw, 36vw" quality={85} />
           </figure>
         </div>
       </div>

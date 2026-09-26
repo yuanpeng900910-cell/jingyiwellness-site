@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { InnerHeader } from "@/components/SiteNavigation";
 
 export const metadata: Metadata = { title: "团体合作｜京颐养方", description: "京颐养方员工健康共建、企业健康活动与社区健康服务合作方向。" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false };
 
 const areas = [
   { id: "employee", eyebrow: "EMPLOYEE WELLNESS", title: "员工健康共建", text: "围绕员工的日常健康关怀，探索草本产品、养生内容与企业福利的组合方式。" },
@@ -19,7 +20,7 @@ export default function CooperationPage() {
     <div className="jy-collection-page__body jy-cooperation-content">
       {areas.map((area) => <section className="jy-editorial-section jy-editorial-section--cooperation" id={area.id} key={area.id}>
         <div className="jy-editorial-section__copy"><p>{area.eyebrow}</p><h2>{area.title}</h2><span>{area.text}</span></div>
-        <figure className="jy-editorial-section__empty"><Image src="/images/catalog/brand-placeholder.jpg" alt="京颐养方品牌形象图，合作场景图片待更新" fill sizes="(max-width: 700px) 90vw, 55vw" /><span>场景图片待更新</span></figure>
+        <figure className="jy-editorial-section__empty"><Image src="/images/catalog/brand-placeholder.jpg" alt="京颐养方品牌礼袋" fill sizes="(max-width: 700px) 90vw, 55vw" /></figure>
       </section>)}
     </div>
     <footer className="jy-collection-footer"><span>京颐养方 · 京医古法，颐养东方</span><Link href="/gifts">查看东方养生礼 <ArrowUpRight size={16} /></Link></footer>
