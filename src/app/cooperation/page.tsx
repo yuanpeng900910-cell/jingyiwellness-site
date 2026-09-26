@@ -15,12 +15,12 @@ const areas = [
 
 export default function CooperationPage() {
   return <main className="jy-collection-page jy-cooperation-page"><InnerHeader />
-    <header className="jy-cooperation-hero"><div><p>WORKING TOGETHER</p><h1>团体合作</h1><span>让日常关怀，走进更多相聚与同行的场景。</span><a href="#employee">了解合作方向 →</a></div><Image src="/images/catalog/gift-employee-display.jpg" alt="京颐养方企业员工关爱礼盒" width={1376} height={768} sizes="(max-width: 700px) 100vw, 50vw" quality={88} priority /></header>
+    <header className="jy-cooperation-hero"><div><p>WORKING TOGETHER</p><h1>团体合作</h1><span>让日常关怀，走进更多相聚与同行的场景。</span><a href="#employee">了解合作方向 →</a></div><Image src="/images/catalog/gift-employee-display.webp" alt="京颐养方企业员工关爱礼盒" width={1376} height={768} sizes="(max-width: 700px) 100vw, 50vw" quality={88} priority /></header>
     <nav className="jy-gifts-tabs" aria-label="合作方向">{areas.map((area) => <a href={`#${area.id}`} key={area.id}>{area.title}</a>)}</nav>
     <div className="jy-collection-page__body jy-cooperation-content">
       {areas.map((area) => <section className="jy-editorial-section jy-editorial-section--cooperation" id={area.id} key={area.id}>
         <div className="jy-editorial-section__copy"><p>{area.eyebrow}</p><h2>{area.title}</h2><span>{area.text}</span></div>
-        <figure className="jy-editorial-section__empty"><Image src="/images/catalog/brand-placeholder.jpg" alt="京颐养方品牌礼袋" fill sizes="(max-width: 700px) 90vw, 55vw" /></figure>
+        <figure className="jy-editorial-section__empty"><Image src="/images/catalog/brand-placeholder.webp" alt="京颐养方品牌礼袋" fill sizes="(max-width: 700px) 90vw, 55vw" /></figure>
       </section>)}
     </div>
     <footer className="jy-collection-footer"><span>京颐养方 · 京医古法，颐养东方</span><Link href="/gifts">查看东方养生礼 <ArrowUpRight size={16} /></Link></footer>

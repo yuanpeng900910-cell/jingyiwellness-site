@@ -18,7 +18,7 @@ export default function BrandStoryPage() {
     <InnerHeader />
 
     <section className={styles.hero} aria-labelledby="brand-story-title">
-      <Image className={styles.heroImage} src="/images/brand/herbal-practice.jpg" alt="合肥京东方医院中医科医师处理草本药材" fill sizes="100vw" quality={85} preload />
+      <Image className={styles.heroImage} src="/images/brand/herbal-practice.webp" alt="合肥京东方医院中医科医师处理草本药材" fill sizes="100vw" quality={85} preload />
       <div className={styles.heroShade} aria-hidden="true" />
       <div className={styles.heroCopy}>
         <p>JINGYI WELLNESS · BRAND STORY</p>
@@ -34,14 +34,14 @@ export default function BrandStoryPage() {
         <p className={styles.lead}>京颐养方由合肥京东方医院中医科团队、临床药师、营养师等团队携手研发，围绕药食同源、草本生活与健康礼赠等场景，构建覆盖日常饮用、生活用品与礼赠定制的中医养生产品体系。</p>
       </div>
       <figure className={styles.storyVisual}>
-        <Image src="/images/brand/herbal-study.png" alt="草本原料与配方研读场景" width={1448} height={1086} sizes="(max-width: 800px) 100vw, 53vw" quality={90} />
+        <Image src="/images/brand/herbal-study.webp" alt="草本原料与配方研读场景" width={1448} height={1086} sizes="(max-width: 800px) 100vw, 53vw" quality={90} />
       </figure>
     </section>
 
     <section className={styles.hospital} aria-labelledby="hospital-title">
       <div className={styles.hospitalInner}>
         <figure className={styles.hospitalVisual}>
-          <Image src="/images/brand/hefei-boe-hospital.jpg" alt="合肥京东方医院建筑外观" width={3898} height={1921} sizes="(max-width: 800px) 100vw, 55vw" quality={85} />
+          <Image src="/images/brand/hefei-boe-hospital.webp" alt="合肥京东方医院建筑外观" width={3898} height={1921} sizes="(max-width: 800px) 100vw, 55vw" quality={85} />
           <figcaption>合肥京东方医院</figcaption>
         </figure>
         <div className={styles.hospitalCopy}>
@@ -65,7 +65,7 @@ export default function BrandStoryPage() {
         <p>从对草本的理解，到日常饮用与礼赠场景的构思，京颐养方希望让东方养生更贴近生活。</p>
       </div>
       <figure className={styles.peopleVisual}>
-        <Image src="/images/brand/tcm-team.jpg" alt="合肥京东方医院中医科团队合影" width={2200} height={1237} sizes="(max-width: 800px) 100vw, 90vw" quality={85} />
+        <Image src="/images/brand/tcm-team.webp" alt="合肥京东方医院中医科团队合影" width={2200} height={1237} sizes="(max-width: 800px) 100vw, 90vw" quality={85} />
         <figcaption>合肥京东方医院中医科团队</figcaption>
       </figure>
     </section>
@@ -81,10 +81,10 @@ export default function BrandStoryPage() {
         </div>
         <div className={styles.originGallery}>
           <figure className={styles.fieldVisual}>
-            <Image src="/images/brand/herbal-field-edited.png" alt="草本田地与远处山林" width={1670} height={942} sizes="(max-width: 800px) 100vw, 54vw" quality={85} />
+            <Image src="/images/brand/herbal-field-edited.webp" alt="草本田地与远处山林" width={1670} height={942} sizes="(max-width: 800px) 100vw, 54vw" quality={85} />
           </figure>
           <figure className={styles.harvestVisual}>
-            <Image src="/images/brand/herbal-harvest-selected.png" alt="农人在田间展示采收的草本原料" width={1487} height={1058} sizes="(max-width: 800px) 100vw, 36vw" quality={85} />
+            <Image src="/images/brand/herbal-harvest-selected.webp" alt="农人在田间展示采收的草本原料" width={1487} height={1058} sizes="(max-width: 800px) 100vw, 36vw" quality={85} />
           </figure>
         </div>
       </div>
