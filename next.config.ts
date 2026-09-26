@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  trailingSlash: true,
   turbopack: { root: process.cwd() },
-  outputFileTracingRoot: process.cwd(),
   devIndicators: false,
-  images: { qualities: [90] },
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
