@@ -19,7 +19,7 @@ type HeroSlide = { kicker: string; title: [string, string]; subtitle: string; im
 
 const heroSlides: HeroSlide[] = [
   { kicker: "JINGYI WELLNESS", title: ["京医古法", "颐养东方"], subtitle: "让东方轻养，自然融入日常。", image: "/images/hero-baihe-desktop-v1.webp", mobileImage: "/images/hero-baihe-mobile-v1.webp", theme: "tea", href: "/products/herbal-tea", alt: "京颐养方百合玉竹茶包装与茶杯" },
-  { kicker: "草本生活", title: ["一缕草本香", "日常自从容"], subtitle: "把草本的陪伴，带进生活。", image: "/images/master/hero-life-purple-desktop.png", mobileImage: "/images/master/hero-life-purple-mobile.webp", theme: "life", href: "/products/incense-beads", alt: "紫气东来·瑞紫流金合香珠手串" },
+  { kicker: "草本生活", title: ["一缕草本香", "日常自从容"], subtitle: "把草本的陪伴，带进生活。", image: "/images/master/hero-life-purple-desktop.webp", mobileImage: "/images/master/hero-life-purple-mobile.webp", theme: "life", href: "/products/incense-beads", alt: "紫气东来·瑞紫流金合香珠手串" },
   { kicker: "东方养生礼", title: ["以东方好物", "赠一份关怀"], subtitle: "为亲友，也为一路同行的人。", image: "/images/hero-gift-lighting-v3.webp", mobileImage: "/images/hero-gift-lighting-v3.webp", theme: "gift", href: "/gifts", alt: "京颐养方参石御养小罐茶礼盒" },
 ];
 
@@ -234,15 +234,15 @@ export function JingyiTemplateHome() {
 
     <section className="content-section deal-section" id="tea" aria-labelledby="tea-title">
       <h2 id="tea-title">草本茶饮，融入日常</h2>
-      <div className="deal-section__grid"><button type="button" className="deal-section__image jy-tea-feature" onClick={() => setModal({ kind: "product", product: products[0] })}><Image src="/images/master/tea-yan-shi-feature.png" alt="京颐养方红颜茶与轻湿茶双款茶饮" width={1672} height={941} sizes="(max-width: 800px) 100vw, 75vw" quality={90} /></button>
+      <div className="deal-section__grid"><button type="button" className="deal-section__image jy-tea-feature" onClick={() => setModal({ kind: "product", product: products[0] })}><Image src="/images/master/tea-yan-shi-feature.webp" alt="京颐养方红颜茶与轻湿茶双款茶饮" width={1672} height={941} sizes="(max-width: 800px) 100vw, 75vw" quality={90} /></button>
         <div className="deal-section__products"><RecommendedProductSwiper items={teaProducts} onSelect={(product) => setModal({ kind: "product", product })} /></div></div>
     </section>
 
     <section className="content-section split-section todays-section" id="gifts">
       <article className="todays-event todays-deal"><div className="todays-header"><h2>WEEKLY ISSUE PICK</h2><p>以东方好物，赠一份日常关怀。</p></div>
-        <button type="button" className="todays-link jy-feature-card jy-feature-card--issue" onClick={() => setModal({ kind: "product", product: products[3] })}><div className="issue-copy"><h3 className="issue-title">以东方好物，<br />赠一份日常关怀。</h3><p className="issue-product">参石御养小罐茶礼盒</p><strong>了解这款 <ArrowUpRight size={17} /></strong></div><div className="issue-card"><Image src="/images/master/hero-gift.png" alt="参石御养小罐茶礼盒" width={1672} height={941} sizes="(max-width: 800px) 100vw, 50vw" quality={90} /></div></button></article>
+        <button type="button" className="todays-link jy-feature-card jy-feature-card--issue" onClick={() => setModal({ kind: "product", product: products[3] })}><div className="issue-copy"><h3 className="issue-title">以东方好物，<br />赠一份日常关怀。</h3><p className="issue-product">参石御养小罐茶礼盒</p><strong>了解这款 <ArrowUpRight size={17} /></strong></div><div className="issue-card"><Image src="/images/master/hero-gift.webp" alt="参石御养小罐茶礼盒" width={1672} height={941} sizes="(max-width: 800px) 100vw, 50vw" quality={90} /></div></button></article>
       <article className="todays-event event-now"><div className="todays-header"><h2>JINGYI NOW</h2></div>
-        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "product", product: products[2] })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>鼻安梦香枕 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src="/images/master/pillow-v2.png" alt="鼻安梦香枕" width={1421} height={800} sizes="180px" quality={90} /><strong>鼻安梦香枕</strong></span><span><Image src="/images/master/hero-life-purple.png" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
+        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "product", product: products[2] })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>鼻安梦香枕 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src="/images/master/pillow-v2.webp" alt="鼻安梦香枕" width={1421} height={800} sizes="180px" quality={90} /><strong>鼻安梦香枕</strong></span><span><Image src="/images/master/hero-life-purple.webp" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
     </section>
 
     <section className="content-section store-section" id="lifestyle" aria-labelledby="lifestyle-title"><div className="section-heading"><h2 id="lifestyle-title">HERBAL LIVING</h2><Link href="/products/herbal-living">查看全部</Link></div>
@@ -252,7 +252,7 @@ export function JingyiTemplateHome() {
     </section>
 
     <section className="content-section brand-section" id="brand" aria-labelledby="brand-title"><div className="section-heading"><h2 id="brand-title">BRAND STORY</h2></div>
-      <Link href="/brand-story" className="brand-section__banner jy-brand-banner"><Image src="/images/master/brand-story-herbal-study.png" alt="京颐养方草本研究与东方养生场景" width={1448} height={1086} sizes="100vw" quality={90} /><p>京医古法，颐养东方<ArrowUpRight size={26} /></p></Link>
+      <Link href="/brand-story" className="brand-section__banner jy-brand-banner"><Image src="/images/master/brand-story-herbal-study.webp" alt="京颐养方草本研究与东方养生场景" width={1448} height={1086} sizes="100vw" quality={90} /><p>京医古法，颐养东方<ArrowUpRight size={26} /></p></Link>
     </section>
 
     <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phone}</strong><p>联系人：{contact.name}</p><p>电话与微信同号</p></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
