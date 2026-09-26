@@ -4646,7 +4646,7 @@
 .jy-catalog-grid--wide .jy-catalog-card__visual img { object-fit: cover; }
 .jy-catalog-card { min-width: 0; }
 .jy-catalog-card__visual { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: #f6f6f4; }
-.jy-catalog-card__visual img { object-fit: contain; }
+.jy-catalog-card__visual img { object-fit: cover; }
 .jy-catalog-card__caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px 12px; padding: 15px 2px 5px; }
 .jy-catalog-card__caption h3 { margin: 0; font-size: 17px; font-weight: 600; }
 .jy-catalog-card__caption span { color: #777; font-size: 11px; }
@@ -4739,7 +4739,7 @@
 .jy-catalog-card__button { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
 .jy-catalog-card__button:focus-visible { outline: 2px solid #6c801a; outline-offset: 4px; }
 .jy-catalog-page .jy-catalog-card__visual, .jy-catalog-page .jy-catalog-grid--wide .jy-catalog-card__visual { display: block; aspect-ratio: 1; background: #f7f7f7; }
-.jy-catalog-page .jy-catalog-card__visual img, .jy-catalog-page .jy-catalog-grid--wide .jy-catalog-card__visual img { object-fit: contain; transition: transform .25s ease; }
+.jy-catalog-page .jy-catalog-card__visual img, .jy-catalog-page .jy-catalog-grid--wide .jy-catalog-card__visual img { object-fit: cover; transition: transform .25s ease; }
 .jy-catalog-page .jy-catalog-card__visual--placeholder img { object-fit: cover; }
 .jy-catalog-card__button:hover .jy-catalog-card__visual img { transform: scale(1.025); }
 .jy-catalog-page .jy-catalog-card__caption { display: block; padding: 14px 1px 0; }
