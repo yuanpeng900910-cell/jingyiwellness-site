@@ -71,7 +71,7 @@ export function CatalogCard({ item, category }: { item: CatalogItem; category: s
   const [mode, setMode] = useState<"product" | "contact" | null>(null);
   return <article className="jy-catalog-card">
     <button type="button" className="jy-catalog-card__button" onClick={() => setMode("product")} aria-label={`查看${item.name}详情`}>
-      <span className={`jy-catalog-card__visual${item.image ? "" : " jy-catalog-card__visual--placeholder"}`}><Image src={item.image ?? "/images/catalog/brand-placeholder.webp"} alt={item.image ? `${item.name}产品展示图` : "京颐养方品牌礼袋"} fill sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 24vw" quality={88} /></span>
+      <span className={`jy-catalog-card__visual${item.image ? "" : " jy-catalog-card__visual--placeholder"}${item.image?.startsWith("/images/box-only/") || item.image?.startsWith("/images/catalog/soap-") ? " jy-catalog-card__visual--cutout" : ""}`}><Image src={item.image ?? "/images/catalog/brand-placeholder.webp"} alt={item.image ? `${item.name}产品展示图` : "京颐养方品牌礼袋"} fill sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 24vw" quality={88} /></span>
       <span className="jy-catalog-card__caption"><strong>{item.name}</strong>{item.note && <span>{item.note}</span>}</span>
     </button>
     {mode === "product" && <ProductDialog item={item} category={category} onClose={() => setMode(null)} onContact={() => setMode("contact")} />}
