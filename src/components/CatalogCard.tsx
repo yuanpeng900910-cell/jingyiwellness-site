@@ -8,12 +8,16 @@ import { ProductPrice } from "@/components/ProductPrice";
 import { getProductCommerce } from "@/lib/product-commerce";
 import { ContactDialog } from "@/components/ContactDialog";
 import { products } from "@/lib/products";
+import { getIncenseFormula } from "@/lib/incense-formulas";
 
 export function CatalogProductDialog({ item, category, onClose, onContact }: { item: CatalogItem; category: string; onClose: () => void; onContact: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const product = products.find((entry) => entry.id === item.productId || entry.name === item.name);
   const commerce = getProductCommerce(item.name) ?? product?.commerce;
+  const incenseFormula = getIncenseFormula(item.name);
+  const formula = incenseFormula ?? product?.formula;
+  const spec = product?.spec ?? commerce?.spec;
 
   useEffect(() => {
     const element = dialog.current;
@@ -33,11 +37,11 @@ export function CatalogProductDialog({ item, category, onClose, onContact }: { i
       <h2 id="jy-catalog-product-title">{item.name}</h2>
       {product && <p>{product.intro}</p>}
       <ProductPrice commerce={commerce} detail />
-      {product ? <dl>
-        <div><dt>产品规格</dt><dd>{product.spec}</dd></div>
-        <div><dt>配料 / 组成</dt><dd>{product.formula}</dd></div>
-        <div><dt>适用人群</dt><dd>{product.target}</dd></div>
-      </dl> : commerce?.spec ? <dl><div><dt>产品规格</dt><dd>{commerce.spec}</dd></div></dl> : null}
+      {(spec || formula) && <dl>
+        {spec && <div><dt>产品规格</dt><dd>{spec}</dd></div>}
+        {formula && <div><dt>{incenseFormula ? "香方配伍" : "配料 / 组成"}</dt><dd>{formula}</dd></div>}
+        {product && <div><dt>适用人群</dt><dd>{product.target}</dd></div>}
+      </dl>}
       <div className="jy-dialog__actions">
         {product?.purchaseUrl && <a href={product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}
         <button type="button" className="jy-primary-action" onClick={onContact}>咨询这款产品 <ArrowRight size={17} /></button>
