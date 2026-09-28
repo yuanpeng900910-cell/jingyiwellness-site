@@ -32,7 +32,10 @@ function ProductDialog({ item, category, onClose, onContact }: { item: CatalogIt
         <div><dt>配料 / 组成</dt><dd>{product.formula}</dd></div>
         <div><dt>适用人群</dt><dd>{product.target}</dd></div>
       </dl></> : null}
-      <button type="button" className="jy-primary-action" onClick={onContact}>咨询这款产品 <ArrowRight size={17} /></button>
+      <div className="jy-dialog__actions">
+        {product?.purchaseUrl && <a href={product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}
+        <button type="button" className="jy-primary-action" onClick={onContact}>咨询这款产品 <ArrowRight size={17} /></button>
+      </div>
       {product && <small>产品信息沿用品牌现有资料，具体以实物包装为准。</small>}
     </div>
     {item.detailImages?.length ? <div className="jy-catalog-dialog__gallery" aria-label={`${item.name}补充图片`}>

@@ -97,6 +97,7 @@
     "showPrice": false,
     "image": "/images/master/apple.webp",
     "id": "apple",
+    "purchaseUrl": "https://h5.youzan.com/wscshop/goods/2okqmcvzrzjhbr1",
     "group": "茶饮",
     "tagline": "苹果与黄芪，一杯轻养日常",
     "cardImage": "/images/box-only/apple.webp"
