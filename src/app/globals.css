@@ -4716,6 +4716,7 @@
 .jy-catalog-sidebar nav { display: grid; gap: 0; padding-bottom: 10px; }
 .jy-catalog-sidebar nav a { padding: 14px 0; color: #222; font-size: 15px; font-weight: 650; text-decoration: none; }
 .jy-catalog-sidebar nav a:hover, .jy-catalog-sidebar nav a.is-active { color: #6c801a; }
+.jy-catalog-sidebar__all { display: block; line-height: 1.5; }
 .jy-catalog-sidebar__sections { display: grid; gap: 0; padding: 12px 20px; background: #f7f7f7; }
 .jy-catalog-sidebar__sections strong { padding: 12px 0; font-size: 13px; }
 .jy-catalog-sidebar__sections a { padding: 12px 0; color: #555; font-size: 13px; text-decoration: none; }

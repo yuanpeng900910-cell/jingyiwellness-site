@@ -25,6 +25,7 @@ export function CatalogSidebar({ activeSlug }: { activeSlug?: string }) {
   return <aside className="jy-catalog-sidebar" aria-label="产品分类">
     <h1>产品</h1>
     <nav>
+      <Link className="jy-catalog-sidebar__all" href="/products">全部产品</Link>
       {catalogCategories.map((entry) => {
         const isOpen = openSlug === entry.slug;
         const isCurrent = activeSlug === entry.slug;
