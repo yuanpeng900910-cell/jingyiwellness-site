@@ -125,7 +125,7 @@ function ContactContent() {
   return <div className="jy-contact">
     <p className="jy-modal-kicker">联系咨询</p><h2 id="jy-contact-title">从一份关怀，开始聊起。</h2>
     <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p>
-    <strong>{contact.name}</strong><a className="jy-phone" href={"tel:" + contact.phone}>{contact.phoneDisplay}</a>
+    <a className="jy-phone" href={"tel:" + contact.phone}>{contact.phoneDisplay}</a>
     <div className="jy-dialog__actions"><a href={"tel:" + contact.phone}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied === "ok" ? <Check size={17} /> : <Copy size={17} />}{copied === "ok" ? "电话号码已复制" : "复制电话号码"}</button></div>
     <p className="jy-copy-status" role="status">{copied === "ok" ? "电话号码已复制，可粘贴到拨号界面。" : copied === "failed" ? "复制未成功，请选中上方号码手动复制。" : "可提前告知所需产品、数量和使用场景。"}</p>
   </div>;
@@ -258,7 +258,7 @@ export function JingyiTemplateHome() {
       <Link href="/brand-story" className="brand-section__banner jy-brand-banner"><Image src="/images/master/brand-story-herbal-study.webp" alt="京颐养方草本研究与东方养生场景" width={1448} height={1086} sizes="100vw" quality={90} /><p>京医古法，颐养东方<ArrowUpRight size={26} /></p></Link>
     </section>
 
-    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phoneDisplay}</strong><p>联系人：{contact.name}</p></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
+    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phoneDisplay}</strong></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
       <div className="footer-legal"><p>京颐养方 · 京医古法，颐养东方</p><p>产品用于日常轻养与健康生活方式，不替代药品及医疗服务。具体使用建议请结合个人情况咨询专业人员。</p></div>
       <div className="footer-section__mobile"><p>京颐养方 · 京医古法，颐养东方</p><div className="footer-contact"><strong>产品与合作咨询</strong><a href={"tel:" + contact.phone}>{contact.phoneDisplay}</a></div><p>产品不替代药品及医疗服务。</p></div>
     </footer>

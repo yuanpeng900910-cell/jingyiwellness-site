@@ -63,7 +63,7 @@ function ContactDialog({ onClose }: { onClose: () => void }) {
     onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
     <button ref={closeButton} type="button" className="jy-dialog__close" aria-label="关闭咨询卡片" onClick={() => dialog.current?.close()}><X size={22} /></button>
     <div className="jy-contact"><p className="jy-modal-kicker">联系咨询</p><h2 id="jy-catalog-contact-title">从一份关怀，开始聊起。</h2>
-      <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p><strong>{contact.name}</strong>
+      <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p>
       <a className="jy-phone" href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
       <div className="jy-dialog__actions"><a href={`tel:${contact.phone}`}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "电话号码已复制" : "复制电话号码"}</button></div>
     </div>

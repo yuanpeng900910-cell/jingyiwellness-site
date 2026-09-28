@@ -49,9 +49,9 @@ export const catalogCategories: CatalogCategory[] = [
     ] }],
   },
   { slug: "incense-beads", title: "合香珠系列", eyebrow: "INCENSE BEADS",
-    intro: "以合香珠承载草本气息，探索配饰手串与纯药香珠手串的不同呈现。",
+    intro: "以合香珠承载草本气息，探索设计师款与纯药珠款的不同呈现。",
     sections: [
-      { title: "配饰手串", items: [
+      { title: "设计师款", items: [
         { name: "玫香纳福", image: "/images/catalog/incense-beads/rose-fortune.webp" },
         { name: "鹅梨帐中香·养气梨香玉", image: "/images/catalog/incense-beads/pear-jade.webp" },
         { name: "鹅梨帐中香·梨香绕玉", image: "/images/catalog/incense-beads/pear-jade-double.webp", note: "双圈" },
@@ -64,7 +64,7 @@ export const catalogCategories: CatalogCategory[] = [
         { name: "云泽金曜", image: "/images/catalog/incense-beads/yunze-gold.webp" },
         { name: "五行手串", image: "/images/catalog/incense-beads/five-elements.webp" },
       ] },
-      { title: "纯药香珠手串", items: [
+      { title: "纯药珠款", items: [
         { name: "鹅梨帐中香·纯药香珠", image: "/images/catalog/incense-beads/pear-pure.webp" },
         { name: "玫香纳福·纯药香珠", image: "/images/catalog/incense-beads/rose-pure.webp" },
         { name: "息肌丸·纯药香珠", image: "/images/catalog/incense-beads/xiji-pure.webp" },
