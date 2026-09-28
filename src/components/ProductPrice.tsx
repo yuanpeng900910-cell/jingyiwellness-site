@@ -14,7 +14,7 @@ export function ProductPrice({ commerce, detail = false }: { commerce?: ProductC
   if (price === undefined || !Number.isFinite(price)) return null;
   const originalPrice = commerce.originalPrice;
   const discounted = originalPrice !== undefined && originalPrice > price && commerce.onlinePrice !== undefined;
-  const savingPercent = discounted ? Math.round((1 - price / originalPrice) * 100) : 0;
+  const discountLabel = discounted ? `${(price / originalPrice * 10).toFixed(1)}折` : "";
   const from = !detail && hasVariants;
   const priceLabel = commerce.onlinePrice !== undefined ? "线上折扣价" : "售价";
 
@@ -26,7 +26,7 @@ export function ProductPrice({ commerce, detail = false }: { commerce?: ProductC
     <span className="jy-price__values" aria-live={detail ? "polite" : undefined}>
       {discounted && <span className="jy-price__original">原价 <del>{formatPrice(originalPrice)}</del></span>}
       <span className="jy-price__line">
-        {discounted && <span className="jy-price__discount" aria-label={`优惠约${savingPercent}%`}>约{savingPercent}%</span>}
+        {discounted && <span className="jy-price__discount" aria-label={discountLabel}>{discountLabel}</span>}
         <span className="jy-price__amount" aria-label={`${priceLabel} ${price}元${from ? "起" : ""}，每${commerce.unit}`}>
           {detail && <span className="jy-price__label">{priceLabel}</span>}
           <b>{formatPrice(price)}</b><span className="jy-price__unit">{from ? "起" : `/${commerce.unit}`}</span>
