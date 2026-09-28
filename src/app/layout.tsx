@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ImageProtection } from "@/components/ImageProtection";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-CN"><body>{children}</body></html>;
+  return <html lang="zh-CN"><body><ImageProtection />{children}</body></html>;
 }

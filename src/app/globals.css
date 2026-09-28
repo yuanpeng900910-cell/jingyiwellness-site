@@ -4853,3 +4853,10 @@
   .jy-cooperation-hero a { margin-top: 20px; }
   .jy-cooperation-content .jy-editorial-section { padding: 65px 0; }
 }
+/* Limit native image saving while preserving taps and carousel gestures. */
+img, picture, svg {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
