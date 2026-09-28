@@ -4772,6 +4772,24 @@
 .jy-catalog-page--category .jy-catalog-card__button:hover .jy-catalog-card__visual--cutout img { transform: scale(.925); }
 .jy-catalog-page--category .jy-catalog-card__caption { padding-top: 16px; }
 
+/* These two source photos have a 735px box versus the 789px series reference.
+   Normalize the visible box while retaining each card's existing hover transform. */
+:is(.jy-product .product-card__image, .jy-catalog-card__visual) img[src$="/box-only/qingshi.webp"] {
+  scale: 1.0735;
+  translate: 0 -.3%;
+}
+:is(.jy-product .product-card__image, .jy-catalog-card__visual) img[src$="/box-only/hongyan.webp"] {
+  scale: 1.0735;
+  translate: 0 2.2%;
+}
+/* Category cards contain a 4:3 photo in a square and use a .9 desktop scale. */
+.jy-catalog-page--category .jy-catalog-card__visual img[src$="/box-only/qingshi.webp"] { translate: 0 -.2%; }
+.jy-catalog-page--category .jy-catalog-card__visual img[src$="/box-only/hongyan.webp"] { translate: 0 1.5%; }
+@media (max-width: 800px) {
+  .jy-catalog-page--category .jy-catalog-card__visual img[src$="/box-only/qingshi.webp"] { translate: 0 -.225%; }
+  .jy-catalog-page--category .jy-catalog-card__visual img[src$="/box-only/hongyan.webp"] { translate: 0 1.65%; }
+}
+
 @media (max-width: 1100px) {
   .jy-catalog-page__layout { grid-template-columns: 210px minmax(0,1fr); gap: 26px; padding: 70px 25px 100px; }
   .jy-catalog-page .jy-catalog-grid, .jy-catalog-page .jy-catalog-grid--wide { grid-template-columns: repeat(3,minmax(0,1fr)); }
