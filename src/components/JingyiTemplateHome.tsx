@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowRight, ArrowUp, ArrowUpRight, Check, ChevronLeft, ChevronRight, Copy, Phone, Search, X } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ArrowRight, ArrowUp, ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { Swiper as SwiperInstance } from "swiper";
 import { A11y, Autoplay, FreeMode, Grid, Pagination, Parallax, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +15,8 @@ import { contact, products, type Category, type Product } from "@/lib/products";
 import { ProductPrice } from "@/components/ProductPrice";
 import { getProductCommerce } from "@/lib/product-commerce";
 import { CatalogProductDialog } from "@/components/CatalogCard";
+import { HeaderActions } from "@/components/HeaderActions";
+import { ContactDialog } from "@/components/ContactDialog";
 import { DesktopNavigation, MobileNavigation } from "@/components/SiteNavigation";
 
 type Modal = { kind: "product"; product: Product } | { kind: "contact" } | { kind: "monthly" };
@@ -119,35 +121,16 @@ function ModalShell({ titleId, onClose, children, className = "" }: { titleId: s
   </dialog>;
 }
 
-function ContactContent() {
-  const [copied, setCopied] = useState<"idle" | "ok" | "failed">("idle");
-  async function copyPhone() {
-    try { await navigator.clipboard.writeText(contact.phone); setCopied("ok"); }
-    catch { setCopied("failed"); }
-  }
-  return <div className="jy-contact">
-    <p className="jy-modal-kicker">联系咨询</p><h2 id="jy-contact-title">从一份关怀，开始聊起。</h2>
-    <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p>
-    <a className="jy-phone" href={"tel:" + contact.phone}>{contact.phoneDisplay}</a>
-    <div className="jy-dialog__actions"><a href={"tel:" + contact.phone}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied === "ok" ? <Check size={17} /> : <Copy size={17} />}{copied === "ok" ? "电话号码已复制" : "复制电话号码"}</button></div>
-    <p className="jy-copy-status" role="status">{copied === "ok" ? "电话号码已复制，可粘贴到拨号界面。" : copied === "failed" ? "复制未成功，请选中上方号码手动复制。" : "可提前告知所需产品、数量和使用场景。"}</p>
-  </div>;
-}
-
 export function JingyiTemplateHome() {
   const [category, setCategory] = useState<Category>("全部精选");
-  const [query, setQuery] = useState("");
-  const [draftQuery, setDraftQuery] = useState("");
   const [showAllProducts, setShowAllProducts] = useState(false);
   const [modal, setModal] = useState<Modal | null>(null);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
   const [animatedHero, setAnimatedHero] = useState(0);
   const hero = useRef<SwiperInstance | null>(null);
   const heroTextTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const searchInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 4);
@@ -155,42 +138,35 @@ export function JingyiTemplateHome() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   useEffect(() => {
-    const locked = searchOpen || drawerOpen;
+    const locked = drawerOpen;
     const before = document.body.style.overflow;
     if (locked) document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = before; };
-  }, [searchOpen, drawerOpen]);
+  }, [drawerOpen]);
   useEffect(() => {
-    function onKey(event: KeyboardEvent) { if (event.key === "Escape") { setSearchOpen(false); setDrawerOpen(false); } }
+    function onKey(event: KeyboardEvent) { if (event.key === "Escape") { setDrawerOpen(false); } }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-  useEffect(() => { if (searchOpen) searchInput.current?.focus(); }, [searchOpen]);
   useEffect(() => () => { if (heroTextTimer.current) clearTimeout(heroTextTimer.current); }, []);
 
-  const filteredProducts = orderedProducts.filter((product) => (category === "全部精选" || product.group === category) && (product.name + product.series + product.tagline).includes(query.trim()));
-  const visibleProducts = category === "全部精选" && !query && !showAllProducts ? bestAndNewProducts : filteredProducts;
+  const filteredProducts = orderedProducts.filter((product) => (category === "全部精选" || product.group === category));
+  const visibleProducts = category === "全部精选" && !showAllProducts ? bestAndNewProducts : filteredProducts;
   const teaProducts = products.filter((product) => product.group === "茶饮").slice(3, 11);
   const lifestyleProducts = products.filter((product) => product.group === "草本生活");
-  const searchMatches = products.filter((product) => (product.name + product.series).includes(draftQuery.trim())).slice(0, 6);
 
   function selectCategory(next: Category, target = "best") {
-    setCategory(next); setQuery(""); setDraftQuery(""); setShowAllProducts(true); setSearchOpen(false); setDrawerOpen(false);
+    setCategory(next); setShowAllProducts(true); setDrawerOpen(false);
     window.requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }));
-  }
-  function submitSearch(event?: FormEvent) {
-    event?.preventDefault();
-    setCategory("全部精选"); setQuery(draftQuery.trim()); setShowAllProducts(true); setSearchOpen(false);
-    window.requestAnimationFrame(() => document.getElementById("best")?.scrollIntoView({ behavior: "smooth" }));
   }
   return <main className="osulloc-page jingyi-template">
     <a className="jy-skip" href="#best">跳到精选产品</a>
-    <header className={"site-header" + (scrolled || searchOpen ? " fixed" : "") + (searchOpen ? " open-search" : "")}>
+    <header className={"site-header" + (scrolled ? " fixed" : "")}>
       <div className="site-header__inner">
         <button type="button" className="open-m-nav" aria-label="打开导航菜单" onClick={() => setDrawerOpen(true)}><span className="line" /><span className="line" /><span className="line" /></button>
         <div className="site-header__logo"><a href="#top" aria-label="京颐养方首页"><Image src="/images/logo.webp" alt="京颐养方 JINGYI WELLNESS" width={184} height={63} quality={90} preload /></a></div>
         <DesktopNavigation />
-        <div className="site-header__utility"><button type="button" className="utility-icon icon-search" aria-label="搜索产品" onClick={() => { setSearchOpen(true); setDrawerOpen(false); }}><Search size={21} strokeWidth={1.8} /></button><button type="button" className="jy-header-contact utility-link" onClick={() => setModal({ kind: "contact" })}>合作咨询</button></div>
+        <HeaderActions onOpen={() => setDrawerOpen(false)} />
       </div>
     </header>
 
@@ -200,15 +176,6 @@ export function JingyiTemplateHome() {
       <div className="mobile-drawer__content"><MobileNavigation onNavigate={() => setDrawerOpen(false)} /></div>
       <div className="mobile-drawer__footer"><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a><button type="button" onClick={() => { setDrawerOpen(false); setModal({ kind: "contact" }); }}>联系我们</button></div>
     </aside>
-
-    <div className={"search-layer" + (searchOpen ? " active" : "")} aria-hidden={!searchOpen}>
-      <div className="search-layer__inner"><div className="search-layer__header">
-        <button type="button" className="btn-x search-layer__close" aria-label="关闭搜索" onClick={() => setSearchOpen(false)} />
-        <form className="search-layer__inputbox" onSubmit={submitSearch}><input ref={searchInput} className="search-layer__input" type="search" aria-label="搜索京颐养方产品" placeholder="搜索京颐养方产品" value={draftQuery} onChange={(event) => setDraftQuery(event.target.value)} /><button type="submit" className="search-layer__submit" aria-label="提交搜索" /></form>
-      </div><div className="search-layer__content"><section className="search-chart jy-search-chart"><div className="search-chart__header"><h3>{draftQuery ? "搜索结果" : "寻找一款好物"}</h3></div>
-        {searchMatches.length ? <ol className="search-chart__list">{searchMatches.map((product, index) => <li key={product.id}><b>{index + 1}</b><button type="button" onClick={() => { setSearchOpen(false); setModal({ kind: "product", product }); }}>{product.name}</button></li>)}</ol> : <p>暂时没有找到这款好物，试试其他名称。</p>}
-      </section></div></div>
-    </div>
 
     <section className={"hero-section jingyi-hero jingyi-hero--" + heroSlides[activeHero].theme} id="top" aria-label="京颐养方品牌与产品">
       <Swiper className="hero-section__swiper" modules={[A11y, Autoplay, Parallax]} loop slidesPerView={1} speed={450} parallax watchSlidesProgress
@@ -269,6 +236,6 @@ export function JingyiTemplateHome() {
 
     {modal?.kind === "product" && <ModalShell key={modal.product.id} titleId="jy-product-title" onClose={() => setModal(null)} className={"jy-product-dialog" + (hasTeaPackageFocus(modal.product) ? " jy-product-dialog--tea-package" : "") + (braceletProductIds.has(modal.product.id) ? " jy-product-dialog--bracelet" : "")}><div className="jy-detail-image"><Image src={modal.product.image} alt={modal.product.name} width={hasTeaPackageFocus(modal.product) ? 800 : 1000} height={hasTeaPackageFocus(modal.product) ? 600 : 1000} sizes={productDetailSizes(modal.product)} quality={90} loading="eager" /></div><div className="jy-detail-copy"><p className="jy-modal-kicker">{modal.product.series}</p><h2 id="jy-product-title">{modal.product.name}</h2><p>{modal.product.intro}</p><ProductPrice commerce={modal.product.commerce} detail /><dl><div><dt>产品规格</dt><dd>{modal.product.spec}</dd></div><div><dt>配料 / 组成</dt><dd>{modal.product.formula}</dd></div><div><dt>适用人群</dt><dd>{modal.product.target}</dd></div></dl><div className="jy-dialog__actions">{modal.product.purchaseUrl && <a href={modal.product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}<button type="button" className="jy-primary-action" onClick={() => setModal({ kind: "contact" })}>咨询这款产品 <ArrowRight size={17} /></button></div><small>产品信息沿用品牌现有资料，具体以实物包装为准。</small></div></ModalShell>}
     {modal?.kind === "monthly" && <CatalogProductDialog item={monthlyProduct} category="草本生活" onClose={() => setModal(null)} onContact={() => setModal({ kind: "contact" })} />}
-    {modal?.kind === "contact" && <ModalShell key="contact" titleId="jy-contact-title" onClose={() => setModal(null)} className="jy-contact-dialog"><ContactContent /></ModalShell>}
+    {modal?.kind === "contact" && <ContactDialog onClose={() => setModal(null)} />}
   </main>;
 }

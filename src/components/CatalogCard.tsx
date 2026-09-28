@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Check, Copy, Phone, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import type { CatalogItem } from "@/lib/catalog";
 import { ProductPrice } from "@/components/ProductPrice";
 import { getProductCommerce } from "@/lib/product-commerce";
-import { contact, products } from "@/lib/products";
+import { ContactDialog } from "@/components/ContactDialog";
+import { products } from "@/lib/products";
 
 export function CatalogProductDialog({ item, category, onClose, onContact }: { item: CatalogItem; category: string; onClose: () => void; onContact: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -46,32 +47,6 @@ export function CatalogProductDialog({ item, category, onClose, onContact }: { i
     {item.detailImages?.length ? <div className="jy-catalog-dialog__gallery" aria-label={`${item.name}补充图片`}>
       {item.detailImages.map((src, index) => <Image key={src} src={src} alt={`${item.name}补充图片 ${index + 1}`} width={750} height={750} sizes="(max-width: 800px) 90vw, 30vw" quality={85} />)}
     </div> : null}
-  </dialog>;
-}
-
-function ContactDialog({ onClose }: { onClose: () => void }) {
-  const dialog = useRef<HTMLDialogElement>(null);
-  const closeButton = useRef<HTMLButtonElement>(null);
-  const [copied, setCopied] = useState(false);
-  useEffect(() => {
-    const element = dialog.current;
-    const previousOverflow = document.body.style.overflow;
-    element?.showModal();
-    closeButton.current?.focus({ preventScroll: true });
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previousOverflow; };
-  }, []);
-  async function copyPhone() {
-    try { await navigator.clipboard.writeText(contact.phone); setCopied(true); } catch { setCopied(false); }
-  }
-  return <dialog ref={dialog} className="jy-dialog jy-contact-dialog jy-catalog-contact-dialog" aria-labelledby="jy-catalog-contact-title" onClose={onClose}
-    onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
-    <button ref={closeButton} type="button" className="jy-dialog__close" aria-label="关闭咨询卡片" onClick={() => dialog.current?.close()}><X size={22} /></button>
-    <div className="jy-contact"><p className="jy-modal-kicker">联系咨询</p><h2 id="jy-catalog-contact-title">从一份关怀，开始聊起。</h2>
-      <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p>
-      <a className="jy-phone" href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
-      <div className="jy-dialog__actions"><a href={`tel:${contact.phone}`}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "电话号码已复制" : "复制电话号码"}</button></div>
-    </div>
   </dialog>;
 }
 

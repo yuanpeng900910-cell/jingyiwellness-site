@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { HeaderActions } from "@/components/HeaderActions";
 import { siteNavigation } from "@/lib/site-navigation";
 
 export function DesktopNavigation() {
@@ -26,7 +27,7 @@ export function InnerHeader() {
   return <header className="jy-inner-header">
     <Link href="/" aria-label="京颐养方首页" className="jy-inner-header__logo"><Image src="/images/logo.webp" alt="京颐养方 JINGYI WELLNESS" width={184} height={63} /></Link>
     <DesktopNavigation />
-    <Link className="jy-inner-header__contact" href="/cooperation">合作咨询</Link>
+    <HeaderActions onOpen={() => { if (mobileMenu.current) mobileMenu.current.open = false; }} />
     <details className="jy-inner-header__mobile" ref={mobileMenu}><summary aria-label="打开导航菜单"><span /><span /><span /></summary><nav aria-label="移动端主导航"><MobileNavigation onNavigate={() => { if (mobileMenu.current) mobileMenu.current.open = false; }} /></nav></details>
   </header>;
 }

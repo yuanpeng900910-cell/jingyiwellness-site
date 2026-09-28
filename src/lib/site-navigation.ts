@@ -1,4 +1,5 @@
 export const siteNavigation = [
+  { label: "首页", href: "/" },
   { label: "产品", href: "/products", children: [
     { label: "草本茶饮", href: "/products/herbal-tea" },
     { label: "药食养方", href: "/products/food-formulas" },
