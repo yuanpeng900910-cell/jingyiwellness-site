@@ -12,6 +12,8 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { contact, products, type Category, type Product } from "@/lib/products";
+import { ProductPrice } from "@/components/ProductPrice";
+import { getProductCommerce } from "@/lib/product-commerce";
 import { CatalogProductDialog } from "@/components/CatalogCard";
 import { DesktopNavigation, MobileNavigation } from "@/components/SiteNavigation";
 
@@ -62,6 +64,7 @@ function ProductCard({ product, compact = false, onSelect }: { product: Product;
       <span className="jy-product__copy">
         <strong className="product-card__name">{product.name}</strong>
         <span className="product-card__original">{product.series}</span>
+        <ProductPrice commerce={product.commerce} />
         <span className="product-card__price">了解这款 <ArrowUpRight size={15} aria-hidden="true" /></span>
       </span>
     </button>
@@ -245,12 +248,12 @@ export function JingyiTemplateHome() {
       <article className="todays-event todays-deal"><div className="todays-header"><h2>本周甄选</h2><p>以东方好物，赠一份日常关怀。</p></div>
         <button type="button" className="todays-link jy-feature-card jy-feature-card--issue" onClick={() => setModal({ kind: "product", product: products[3] })}><div className="issue-copy"><h3 className="issue-title">以东方好物，<br />赠一份日常关怀。</h3><p className="issue-product">参石御养小罐茶礼盒</p><strong>了解这款 <ArrowUpRight size={17} /></strong></div><div className="issue-card"><Image src="/images/master/hero-gift.webp" alt="参石御养小罐茶礼盒" width={1672} height={941} sizes="(max-width: 800px) 100vw, 50vw" quality={90} /></div></button></article>
       <article className="todays-event event-now"><div className="todays-header"><h2>本月精选</h2></div>
-        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "monthly" })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>温胆汤足浴液 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src={monthlyProduct.image} alt={monthlyProduct.name} width={1000} height={1000} sizes="180px" quality={90} /><strong>{monthlyProduct.name}</strong></span><span><Image src="/images/master/hero-life-purple.webp" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
+        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "monthly" })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>温胆汤足浴液 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src={monthlyProduct.image} alt={monthlyProduct.name} width={1000} height={1000} sizes="180px" quality={90} /><span className="jy-now-product-copy"><strong>{monthlyProduct.name}</strong><ProductPrice commerce={getProductCommerce(monthlyProduct.name)} /></span></span><span><Image src="/images/master/hero-life-purple.webp" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
     </section>
 
     <section className="content-section store-section" id="lifestyle" aria-labelledby="lifestyle-title"><div className="section-heading"><h2 id="lifestyle-title">草本生活</h2><Link href="/products/herbal-living">查看全部</Link></div>
       <div className="store-swiper-wrap"><Swiper className="store-swiper" modules={[Scrollbar]} breakpoints={{ 0: { centeredSlides: true, slidesPerView: 1.127, spaceBetween: 7.5 }, 801: { slidesPerView: 2, spaceBetween: 20 } }} scrollbar={{ draggable: true, dragClass: "store-scrollbar-drag", el: ".store-scrollbar" }}>
-        {lifestyleProducts.map((product) => <SwiperSlide key={product.id}><button type="button" className="jy-lifestyle-card" onClick={() => setModal({ kind: "product", product })}><Image src={product.image} alt={product.name} width={1421} height={800} sizes="(max-width: 800px) 85vw, 50vw" quality={90} /><strong>{product.name}</strong></button></SwiperSlide>)}
+        {lifestyleProducts.map((product) => <SwiperSlide key={product.id}><button type="button" className="jy-lifestyle-card" onClick={() => setModal({ kind: "product", product })}><Image src={product.image} alt={product.name} width={1421} height={800} sizes="(max-width: 800px) 85vw, 50vw" quality={90} /><strong>{product.name}</strong><ProductPrice commerce={product.commerce} /></button></SwiperSlide>)}
       </Swiper><div className="store-scrollbar" /></div>
     </section>
 
@@ -264,7 +267,7 @@ export function JingyiTemplateHome() {
     </footer>
     {scrolled && <a className="top-button" href="#top" aria-label="返回顶部"><ArrowUp size={18} /></a>}
 
-    {modal?.kind === "product" && <ModalShell key={modal.product.id} titleId="jy-product-title" onClose={() => setModal(null)} className={"jy-product-dialog" + (hasTeaPackageFocus(modal.product) ? " jy-product-dialog--tea-package" : "") + (braceletProductIds.has(modal.product.id) ? " jy-product-dialog--bracelet" : "")}><div className="jy-detail-image"><Image src={modal.product.image} alt={modal.product.name} width={hasTeaPackageFocus(modal.product) ? 800 : 1000} height={hasTeaPackageFocus(modal.product) ? 600 : 1000} sizes={productDetailSizes(modal.product)} quality={90} loading="eager" /></div><div className="jy-detail-copy"><p className="jy-modal-kicker">{modal.product.series}</p><h2 id="jy-product-title">{modal.product.name}</h2><p>{modal.product.intro}</p><dl><div><dt>产品规格</dt><dd>{modal.product.spec}</dd></div><div><dt>配料 / 组成</dt><dd>{modal.product.formula}</dd></div><div><dt>适用人群</dt><dd>{modal.product.target}</dd></div></dl><div className="jy-dialog__actions">{modal.product.purchaseUrl && <a href={modal.product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}<button type="button" className="jy-primary-action" onClick={() => setModal({ kind: "contact" })}>咨询这款产品 <ArrowRight size={17} /></button></div><small>产品信息沿用品牌现有资料，具体以实物包装为准。</small></div></ModalShell>}
+    {modal?.kind === "product" && <ModalShell key={modal.product.id} titleId="jy-product-title" onClose={() => setModal(null)} className={"jy-product-dialog" + (hasTeaPackageFocus(modal.product) ? " jy-product-dialog--tea-package" : "") + (braceletProductIds.has(modal.product.id) ? " jy-product-dialog--bracelet" : "")}><div className="jy-detail-image"><Image src={modal.product.image} alt={modal.product.name} width={hasTeaPackageFocus(modal.product) ? 800 : 1000} height={hasTeaPackageFocus(modal.product) ? 600 : 1000} sizes={productDetailSizes(modal.product)} quality={90} loading="eager" /></div><div className="jy-detail-copy"><p className="jy-modal-kicker">{modal.product.series}</p><h2 id="jy-product-title">{modal.product.name}</h2><p>{modal.product.intro}</p><ProductPrice commerce={modal.product.commerce} detail /><dl><div><dt>产品规格</dt><dd>{modal.product.spec}</dd></div><div><dt>配料 / 组成</dt><dd>{modal.product.formula}</dd></div><div><dt>适用人群</dt><dd>{modal.product.target}</dd></div></dl><div className="jy-dialog__actions">{modal.product.purchaseUrl && <a href={modal.product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}<button type="button" className="jy-primary-action" onClick={() => setModal({ kind: "contact" })}>咨询这款产品 <ArrowRight size={17} /></button></div><small>产品信息沿用品牌现有资料，具体以实物包装为准。</small></div></ModalShell>}
     {modal?.kind === "monthly" && <CatalogProductDialog item={monthlyProduct} category="草本生活" onClose={() => setModal(null)} onContact={() => setModal({ kind: "contact" })} />}
     {modal?.kind === "contact" && <ModalShell key="contact" titleId="jy-contact-title" onClose={() => setModal(null)} className="jy-contact-dialog"><ContactContent /></ModalShell>}
   </main>;

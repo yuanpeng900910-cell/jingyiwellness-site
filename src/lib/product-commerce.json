@@ -1,0 +1,461 @@
+[
+  {
+    "name": "红颜茶",
+    "aliases": [],
+    "originalPrice": 33.9,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "轻湿茶",
+    "aliases": [],
+    "originalPrice": 33.9,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "元气茶",
+    "aliases": [],
+    "originalPrice": 33.9,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "熬夜茶",
+    "aliases": [],
+    "originalPrice": 33.9,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "苹果黄芪茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "甘草干姜茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "百合玉竹茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "参芪大枣茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "茯苓陈皮茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "薏仁荷叶茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "当归玫瑰茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "玫瑰佛手茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "黄芪紫苏茶",
+    "aliases": [],
+    "originalPrice": 35,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "姜枣茶",
+    "aliases": [],
+    "originalPrice": 36,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "秋梨汤",
+    "aliases": [],
+    "originalPrice": 36,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "五红饮",
+    "aliases": [
+      "五红汤"
+    ],
+    "originalPrice": 36,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "酸梅汤",
+    "aliases": [],
+    "originalPrice": 36,
+    "onlinePrice": 24.9,
+    "unit": "盒",
+    "spec": "8罐/盒（15g/罐）"
+  },
+  {
+    "name": "参石御养",
+    "aliases": [
+      "参石御养茶",
+      "参石御养小罐茶礼盒"
+    ],
+    "originalPrice": 600,
+    "onlinePrice": 366,
+    "unit": "礼盒",
+    "spec": "12罐/礼盒"
+  },
+  {
+    "name": "参芝润颜",
+    "aliases": [
+      "参芝润颜茶"
+    ],
+    "originalPrice": 600,
+    "onlinePrice": 366,
+    "unit": "礼盒",
+    "spec": "12罐/礼盒（15g/罐）"
+  },
+  {
+    "name": "非遗药香梳",
+    "aliases": [
+      "非遗工艺·药香梳",
+      "非遗合香梳"
+    ],
+    "originalPrice": 128,
+    "onlinePrice": 88,
+    "unit": "把",
+    "spec": "1把/盒"
+  },
+  {
+    "name": "鼻安梦香枕",
+    "aliases": [],
+    "originalPrice": 99,
+    "onlinePrice": 68,
+    "unit": "盒",
+    "spec": "枕套＋内胆 / 盒"
+  },
+  {
+    "name": "玫香纳福",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "鹅梨帐中香·养气梨香玉",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      }
+    ]
+  },
+  {
+    "name": "鹅梨帐中香·梨香绕玉",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm 双圈 · 每串",
+    "variants": [
+      {
+        "label": "8mm 双圈",
+        "price": 198
+      }
+    ]
+  },
+  {
+    "name": "鹅梨帐中香·青山怀玉",
+    "aliases": [],
+    "unit": "串",
+    "spec": "10mm · 每串",
+    "variants": [
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "紫气东来·瑞紫流金",
+    "aliases": [],
+    "unit": "串",
+    "spec": "10mm · 每串",
+    "variants": [
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "紫气东来·云上霜",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm 双圈 · 每串",
+    "variants": [
+      {
+        "label": "8mm 双圈",
+        "price": 198
+      }
+    ]
+  },
+  {
+    "name": "玲珑多宝",
+    "aliases": [],
+    "unit": "串",
+    "spec": "12mm · 每串",
+    "variants": [
+      {
+        "label": "12mm",
+        "price": 129
+      }
+    ]
+  },
+  {
+    "name": "木香息肌·女款",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "木香息肌·男款",
+    "aliases": [],
+    "unit": "串",
+    "spec": "12mm · 每串",
+    "variants": [
+      {
+        "label": "12mm",
+        "price": 129
+      }
+    ]
+  },
+  {
+    "name": "云泽金曜",
+    "aliases": [],
+    "unit": "串",
+    "spec": "12mm · 每串",
+    "variants": [
+      {
+        "label": "12mm",
+        "price": 129
+      }
+    ]
+  },
+  {
+    "name": "五行手串",
+    "aliases": [],
+    "unit": "串",
+    "spec": "15mm · 每串",
+    "variants": [
+      {
+        "label": "15mm",
+        "price": 149
+      }
+    ]
+  },
+  {
+    "name": "鹅梨帐中香·纯药香珠",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm / 12mm / 15mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      },
+      {
+        "label": "12mm",
+        "price": 129
+      },
+      {
+        "label": "15mm",
+        "price": 149
+      }
+    ]
+  },
+  {
+    "name": "玫香纳福·纯药香珠",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "息肌丸·纯药香珠",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm / 12mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      },
+      {
+        "label": "12mm",
+        "price": 129
+      }
+    ]
+  },
+  {
+    "name": "紫气东来·纯药香珠",
+    "aliases": [],
+    "unit": "串",
+    "spec": "10mm · 每串",
+    "variants": [
+      {
+        "label": "10mm",
+        "price": 109
+      }
+    ]
+  },
+  {
+    "name": "栀子花香·纯药香珠",
+    "aliases": [],
+    "unit": "串",
+    "spec": "8mm / 10mm / 12mm · 每串",
+    "variants": [
+      {
+        "label": "8mm",
+        "price": 99
+      },
+      {
+        "label": "10mm",
+        "price": 109
+      },
+      {
+        "label": "12mm",
+        "price": 129
+      }
+    ]
+  },
+  {
+    "name": "即食九制黄精",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "六物山楂丸",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "七子白洁面皂",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "侧柏叶养发皂",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "温胆汤足浴液",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "桃红四物汤足浴液",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  },
+  {
+    "name": "顺时而养·二十四节气养生历",
+    "aliases": [],
+    "unit": "",
+    "spec": "",
+    "status": "upcoming"
+  }
+]

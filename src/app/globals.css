@@ -4867,3 +4867,40 @@ img, picture, svg {
 @media (min-width: 701px) {
   .jy-inner-header__logo img { width: 136px; }
 }
+
+
+/* Shared retail prices and specifications for homepage, catalog, and dialogs. */
+.jy-price { display: block; margin-top: 10px; color: #111; text-align: left; font-size: 14px; line-height: 1.5; font-weight: 400; }
+.jy-price span { margin: 0; font: inherit; color: inherit; }
+.jy-price .jy-price__values { display: block; }
+.jy-price .jy-price__original { display: block; margin-bottom: 4px; color: #888; font-size: 12px; }
+.jy-price__original del { text-decoration: line-through; }
+.jy-price .jy-price__line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px; }
+.jy-price .jy-price__discount { color: #ff4e51; font-size: 15px; font-weight: 700; }
+.jy-price .jy-price__amount { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 3px; font-size: 16px; }
+.jy-price__amount b { color: #111; font-weight: 700; }
+.jy-price .jy-price__unit { display: inline; color: #777; font-size: 11px; font-weight: 400; }
+.jy-price .jy-price__spec { display: block; margin-top: 6px; color: #777; font-size: 11px; line-height: 1.6; }
+.jy-price .jy-price__pending { display: block; color: #777; font-size: 13px; }
+.jy-price .jy-price__label { display: inline; margin-right: 5px; color: #555; font-size: 12px; }
+.jy-price--detail { margin: 22px 0; }
+.jy-price--detail .jy-price__amount { font-size: 24px; }
+.jy-price--detail .jy-price__discount { font-size: 18px; }
+.jy-price--detail .jy-price__spec { font-size: 12px; }
+.jy-price .jy-price__variants { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.jy-price__variants button { min-width: 62px; min-height: 44px; padding: 8px 12px; border: 1px solid #ccc; background: #fff; color: #555; font: inherit; font-size: 13px; cursor: pointer; }
+.jy-price__variants button[aria-pressed="true"] { border-color: #111; background: #111; color: #fff; }
+.jy-price__variants button:focus-visible { outline: 2px solid #6b7f18; outline-offset: 3px; }
+.jy-lifestyle-card > .jy-price { margin: 0; padding: 0 18px 18px; background: #fff; }
+.jy-now-product-copy { display: block; min-width: 0; }
+.jy-now-product-copy .jy-price { margin-top: 4px; }
+@media (max-width: 700px) {
+  .jy-price .jy-price__amount { font-size: 14px; }
+  .jy-price .jy-price__discount { font-size: 13px; }
+  .jy-price .jy-price__original { font-size: 11px; }
+  .jy-price .jy-price__spec { font-size: 10px; }
+  .jy-price--detail .jy-price__amount { font-size: 22px; }
+  .jy-price--detail .jy-price__discount { font-size: 16px; }
+  .jy-price--detail .jy-price__spec { font-size: 12px; }
+  .jy-now-product-copy .jy-price__pending { font-size: 9px; }
+}
