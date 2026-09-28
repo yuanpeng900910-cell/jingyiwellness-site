@@ -37,7 +37,7 @@ const mobileCategories: { label: string; category: Category }[] = [
   { label: "东方养生礼", category: "御养礼赠" },
 ];
 
-const hasTeaPackageFocus = (product: Product) => product.series === "轻养小罐茶系列" || product.series === "辨体调养茶系列";
+const hasTeaPackageFocus = (product: Product) => product.series === "轻养小罐茶系列" || product.series === "辨体调养茶系列" || product.series === "国民经典饮品系列";
 const braceletProductIds = new Set(["ruiziliujin", "meixiang"]);
 const bestAndNewIds = ["baihe", "fuling", "shenzhi", "ruiziliujin", "meixiang", "pillow", "hongyan", "qingshi"];
 const bestAndNewProducts = products.filter((product) => bestAndNewIds.includes(product.id)).sort((first, second) => bestAndNewIds.indexOf(first.id) - bestAndNewIds.indexOf(second.id));

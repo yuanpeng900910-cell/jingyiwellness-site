@@ -355,7 +355,7 @@
     "id": "drink-ginger-jujube",
     "group": "茶饮",
     "tagline": "以生姜、红枣、枸杞与红糖入茶，日常暖饮之选。",
-    "cardImage": "/images/catalog/drink-ginger-jujube-20260928.webp"
+    "cardImage": "/images/box-only/drink-ginger-jujube-20260928.webp"
   },
   {
     "category": "药食养方系列",
@@ -372,7 +372,7 @@
     "id": "drink-pear",
     "group": "茶饮",
     "tagline": "秋梨与枇杷搭配百合、玉竹和陈皮，细品草本本味。",
-    "cardImage": "/images/catalog/drink-pear-20260928.webp"
+    "cardImage": "/images/box-only/drink-pear-20260928.webp"
   },
   {
     "category": "药食养方系列",
@@ -389,7 +389,7 @@
     "id": "drink-five-red",
     "group": "茶饮",
     "tagline": "红枣、红豆、花生、枸杞与红糖相伴，日常茶饮之选。",
-    "cardImage": "/images/catalog/drink-five-red-20260928.webp"
+    "cardImage": "/images/box-only/drink-five-red-20260928.webp"
   },
   {
     "category": "药食养方系列",
@@ -406,6 +406,6 @@
     "id": "drink-sour-plum",
     "group": "茶饮",
     "tagline": "以乌梅、山楂搭配草本食材，延续熟悉的酸梅汤风味。",
-    "cardImage": "/images/catalog/drink-sour-plum-20260928.webp"
+    "cardImage": "/images/box-only/drink-sour-plum-20260928.webp"
   }
 ]
