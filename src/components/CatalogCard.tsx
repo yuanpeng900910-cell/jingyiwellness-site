@@ -6,7 +6,7 @@ import { ArrowRight, Check, Copy, Phone, X } from "lucide-react";
 import type { CatalogItem } from "@/lib/catalog";
 import { contact, products } from "@/lib/products";
 
-function ProductDialog({ item, category, onClose, onContact }: { item: CatalogItem; category: string; onClose: () => void; onContact: () => void }) {
+export function CatalogProductDialog({ item, category, onClose, onContact }: { item: CatalogItem; category: string; onClose: () => void; onContact: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const product = products.find((entry) => entry.id === item.productId || entry.name === item.name);
@@ -62,10 +62,10 @@ function ContactDialog({ onClose }: { onClose: () => void }) {
   return <dialog ref={dialog} className="jy-dialog jy-contact-dialog jy-catalog-contact-dialog" aria-labelledby="jy-catalog-contact-title" onClose={onClose}
     onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
     <button ref={closeButton} type="button" className="jy-dialog__close" aria-label="关闭咨询卡片" onClick={() => dialog.current?.close()}><X size={22} /></button>
-    <div className="jy-contact"><p className="jy-modal-kicker">CONTACT</p><h2 id="jy-catalog-contact-title">从一份关怀，开始聊起。</h2>
+    <div className="jy-contact"><p className="jy-modal-kicker">联系咨询</p><h2 id="jy-catalog-contact-title">从一份关怀，开始聊起。</h2>
       <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p><strong>{contact.name}</strong>
-      <a className="jy-phone" href={`tel:${contact.phone}`}>{contact.phone}</a><span>电话与微信同号</span>
-      <div className="jy-dialog__actions"><a href={`tel:${contact.phone}`}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "微信号已复制" : "复制微信号"}</button></div>
+      <a className="jy-phone" href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
+      <div className="jy-dialog__actions"><a href={`tel:${contact.phone}`}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "电话号码已复制" : "复制电话号码"}</button></div>
     </div>
   </dialog>;
 }
@@ -77,7 +77,7 @@ export function CatalogCard({ item, category }: { item: CatalogItem; category: s
       <span className={`jy-catalog-card__visual${item.image ? "" : " jy-catalog-card__visual--placeholder"}${item.image?.startsWith("/images/box-only/") || item.image?.startsWith("/images/catalog/soap-") ? " jy-catalog-card__visual--cutout" : ""}`}><Image src={item.image ?? "/images/catalog/brand-placeholder.webp"} alt={item.image ? `${item.name}产品展示图` : "京颐养方品牌礼袋"} fill sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 24vw" quality={88} /></span>
       <span className="jy-catalog-card__caption"><strong>{item.name}</strong>{item.note && <span>{item.note}</span>}</span>
     </button>
-    {mode === "product" && <ProductDialog item={item} category={category} onClose={() => setMode(null)} onContact={() => setMode("contact")} />}
+    {mode === "product" && <CatalogProductDialog item={item} category={category} onClose={() => setMode(null)} onContact={() => setMode("contact")} />}
     {mode === "contact" && <ContactDialog onClose={() => setMode(null)} />}
   </article>;
 }

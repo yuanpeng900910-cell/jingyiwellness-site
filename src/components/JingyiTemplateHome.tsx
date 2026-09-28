@@ -12,10 +12,13 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { contact, products, type Category, type Product } from "@/lib/products";
+import { CatalogProductDialog } from "@/components/CatalogCard";
 import { DesktopNavigation, MobileNavigation } from "@/components/SiteNavigation";
 
-type Modal = { kind: "product"; product: Product } | { kind: "contact" };
+type Modal = { kind: "product"; product: Product } | { kind: "contact" } | { kind: "monthly" };
 type HeroSlide = { kicker: string; title: [string, string]; subtitle: string; image: string; mobileImage: string; theme: string; href: string; alt: string };
+
+const monthlyProduct = { name: "温胆汤足浴液", image: "/images/catalog/footbath-wendan-head-v2.webp" };
 
 const heroSlides: HeroSlide[] = [
   { kicker: "JINGYI WELLNESS", title: ["京医古法", "颐养东方"], subtitle: "让东方轻养，自然融入日常。", image: "/images/hero-baihe-desktop-v1.webp", mobileImage: "/images/hero-baihe-mobile-v1.webp", theme: "tea", href: "/products/herbal-tea", alt: "京颐养方百合玉竹茶包装与茶杯" },
@@ -120,11 +123,11 @@ function ContactContent() {
     catch { setCopied("failed"); }
   }
   return <div className="jy-contact">
-    <p className="jy-modal-kicker">CONTACT</p><h2 id="jy-contact-title">从一份关怀，开始聊起。</h2>
+    <p className="jy-modal-kicker">联系咨询</p><h2 id="jy-contact-title">从一份关怀，开始聊起。</h2>
     <p>产品选购、礼赠定制与场景合作，欢迎联系京颐养方。</p>
-    <strong>{contact.name}</strong><a className="jy-phone" href={"tel:" + contact.phone}>{contact.phone}</a><span>电话与微信同号</span>
-    <div className="jy-dialog__actions"><a href={"tel:" + contact.phone}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied === "ok" ? <Check size={17} /> : <Copy size={17} />}{copied === "ok" ? "微信号已复制" : "复制微信号"}</button></div>
-    <p className="jy-copy-status" role="status">{copied === "ok" ? "打开微信并粘贴号码即可添加联系人。" : copied === "failed" ? "复制未成功，请选中上方号码手动复制。" : "可提前告知所需产品、数量和使用场景。"}</p>
+    <strong>{contact.name}</strong><a className="jy-phone" href={"tel:" + contact.phone}>{contact.phoneDisplay}</a>
+    <div className="jy-dialog__actions"><a href={"tel:" + contact.phone}><Phone size={17} />拨打电话</a><button type="button" onClick={copyPhone}>{copied === "ok" ? <Check size={17} /> : <Copy size={17} />}{copied === "ok" ? "电话号码已复制" : "复制电话号码"}</button></div>
+    <p className="jy-copy-status" role="status">{copied === "ok" ? "电话号码已复制，可粘贴到拨号界面。" : copied === "failed" ? "复制未成功，请选中上方号码手动复制。" : "可提前告知所需产品、数量和使用场景。"}</p>
   </div>;
 }
 
@@ -228,40 +231,41 @@ export function JingyiTemplateHome() {
     </Swiper></nav>
 
     <section className="content-section best-section" id="best" aria-labelledby="best-title">
-      <div className="section-heading"><h2 id="best-title">BEST &amp; NEW</h2><Link href="/products">查看全部</Link></div>
+      <div className="section-heading"><h2 id="best-title">精选好物</h2><Link href="/products">查看全部</Link></div>
       <BestProductSwiper items={visibleProducts} onSelect={(product) => setModal({ kind: "product", product })} />
     </section>
 
     <section className="content-section deal-section" id="tea" aria-labelledby="tea-title">
-      <h2 id="tea-title">草本茶饮，融入日常</h2>
+      <h2 id="tea-title">草本茶饮</h2>
       <div className="deal-section__grid"><button type="button" className="deal-section__image jy-tea-feature" onClick={() => setModal({ kind: "product", product: products[0] })}><Image src="/images/master/tea-yan-shi-feature.webp" alt="京颐养方红颜茶与轻湿茶双款茶饮" width={1672} height={941} sizes="(max-width: 800px) 100vw, 75vw" quality={90} /></button>
         <div className="deal-section__products"><RecommendedProductSwiper items={teaProducts} onSelect={(product) => setModal({ kind: "product", product })} /></div></div>
     </section>
 
     <section className="content-section split-section todays-section" id="gifts">
-      <article className="todays-event todays-deal"><div className="todays-header"><h2>WEEKLY ISSUE PICK</h2><p>以东方好物，赠一份日常关怀。</p></div>
+      <article className="todays-event todays-deal"><div className="todays-header"><h2>本周甄选</h2><p>以东方好物，赠一份日常关怀。</p></div>
         <button type="button" className="todays-link jy-feature-card jy-feature-card--issue" onClick={() => setModal({ kind: "product", product: products[3] })}><div className="issue-copy"><h3 className="issue-title">以东方好物，<br />赠一份日常关怀。</h3><p className="issue-product">参石御养小罐茶礼盒</p><strong>了解这款 <ArrowUpRight size={17} /></strong></div><div className="issue-card"><Image src="/images/master/hero-gift.webp" alt="参石御养小罐茶礼盒" width={1672} height={941} sizes="(max-width: 800px) 100vw, 50vw" quality={90} /></div></button></article>
-      <article className="todays-event event-now"><div className="todays-header"><h2>JINGYI NOW</h2></div>
-        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "product", product: products[2] })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>鼻安梦香枕 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src="/images/master/pillow-v2.webp" alt="鼻安梦香枕" width={1421} height={800} sizes="180px" quality={90} /><strong>鼻安梦香枕</strong></span><span><Image src="/images/master/hero-life-purple.webp" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
+      <article className="todays-event event-now"><div className="todays-header"><h2>本月精选</h2></div>
+        <button type="button" className="todays-link jy-feature-card jy-feature-card--now" onClick={() => setModal({ kind: "monthly" })}><div className="now-copy"><h3>本月草本生活精选</h3><p>把草本的陪伴，带进生活。</p><span>温胆汤足浴液 <ArrowUpRight size={17} /></span></div><div className="jy-now-products"><span><Image src={monthlyProduct.image} alt={monthlyProduct.name} width={1000} height={1000} sizes="180px" quality={90} /><strong>{monthlyProduct.name}</strong></span><span><Image src="/images/master/hero-life-purple.webp" alt="紫气东来·瑞紫流金合香珠手串" width={1421} height={800} sizes="180px" quality={90} /><strong>瑞紫流金</strong></span></div></button></article>
     </section>
 
-    <section className="content-section store-section" id="lifestyle" aria-labelledby="lifestyle-title"><div className="section-heading"><h2 id="lifestyle-title">HERBAL LIVING</h2><Link href="/products/herbal-living">查看全部</Link></div>
+    <section className="content-section store-section" id="lifestyle" aria-labelledby="lifestyle-title"><div className="section-heading"><h2 id="lifestyle-title">草本生活</h2><Link href="/products/herbal-living">查看全部</Link></div>
       <div className="store-swiper-wrap"><Swiper className="store-swiper" modules={[Scrollbar]} breakpoints={{ 0: { centeredSlides: true, slidesPerView: 1.127, spaceBetween: 7.5 }, 801: { slidesPerView: 2, spaceBetween: 20 } }} scrollbar={{ draggable: true, dragClass: "store-scrollbar-drag", el: ".store-scrollbar" }}>
         {lifestyleProducts.map((product) => <SwiperSlide key={product.id}><button type="button" className="jy-lifestyle-card" onClick={() => setModal({ kind: "product", product })}><Image src={product.image} alt={product.name} width={1421} height={800} sizes="(max-width: 800px) 85vw, 50vw" quality={90} /><strong>{product.name}</strong></button></SwiperSlide>)}
       </Swiper><div className="store-scrollbar" /></div>
     </section>
 
-    <section className="content-section brand-section" id="brand" aria-labelledby="brand-title"><div className="section-heading"><h2 id="brand-title">BRAND STORY</h2></div>
+    <section className="content-section brand-section" id="brand" aria-labelledby="brand-title"><div className="section-heading"><h2 id="brand-title">品牌故事</h2></div>
       <Link href="/brand-story" className="brand-section__banner jy-brand-banner"><Image src="/images/master/brand-story-herbal-study.webp" alt="京颐养方草本研究与东方养生场景" width={1448} height={1086} sizes="100vw" quality={90} /><p>京医古法，颐养东方<ArrowUpRight size={26} /></p></Link>
     </section>
 
-    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phone}</strong><p>联系人：{contact.name}</p><p>电话与微信同号</p></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
+    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phoneDisplay}</strong><p>联系人：{contact.name}</p></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
       <div className="footer-legal"><p>京颐养方 · 京医古法，颐养东方</p><p>产品用于日常轻养与健康生活方式，不替代药品及医疗服务。具体使用建议请结合个人情况咨询专业人员。</p></div>
-      <div className="footer-section__mobile"><p>京颐养方 · 京医古法，颐养东方</p><div className="footer-contact"><strong>产品与合作咨询</strong><a href={"tel:" + contact.phone}>{contact.phone}</a><span>电话与微信同号</span></div><p>产品不替代药品及医疗服务。</p></div>
+      <div className="footer-section__mobile"><p>京颐养方 · 京医古法，颐养东方</p><div className="footer-contact"><strong>产品与合作咨询</strong><a href={"tel:" + contact.phone}>{contact.phoneDisplay}</a></div><p>产品不替代药品及医疗服务。</p></div>
     </footer>
     {scrolled && <a className="top-button" href="#top" aria-label="返回顶部"><ArrowUp size={18} /></a>}
 
     {modal?.kind === "product" && <ModalShell key={modal.product.id} titleId="jy-product-title" onClose={() => setModal(null)} className={"jy-product-dialog" + (hasTeaPackageFocus(modal.product) ? " jy-product-dialog--tea-package" : "") + (braceletProductIds.has(modal.product.id) ? " jy-product-dialog--bracelet" : "")}><div className="jy-detail-image"><Image src={modal.product.image} alt={modal.product.name} width={hasTeaPackageFocus(modal.product) ? 800 : 1000} height={hasTeaPackageFocus(modal.product) ? 600 : 1000} sizes={productDetailSizes(modal.product)} quality={90} loading="eager" /></div><div className="jy-detail-copy"><p className="jy-modal-kicker">{modal.product.series}</p><h2 id="jy-product-title">{modal.product.name}</h2><p>{modal.product.intro}</p><dl><div><dt>产品规格</dt><dd>{modal.product.spec}</dd></div><div><dt>配料 / 组成</dt><dd>{modal.product.formula}</dd></div><div><dt>适用人群</dt><dd>{modal.product.target}</dd></div></dl><div className="jy-dialog__actions">{modal.product.purchaseUrl && <a href={modal.product.purchaseUrl} className="jy-primary-action">前往有赞购买 <ArrowRight size={17} /></a>}<button type="button" className="jy-primary-action" onClick={() => setModal({ kind: "contact" })}>咨询这款产品 <ArrowRight size={17} /></button></div><small>产品信息沿用品牌现有资料，具体以实物包装为准。</small></div></ModalShell>}
+    {modal?.kind === "monthly" && <CatalogProductDialog item={monthlyProduct} category="草本生活" onClose={() => setModal(null)} onContact={() => setModal({ kind: "contact" })} />}
     {modal?.kind === "contact" && <ModalShell key="contact" titleId="jy-contact-title" onClose={() => setModal(null)} className="jy-contact-dialog"><ContactContent /></ModalShell>}
   </main>;
 }
