@@ -68,7 +68,7 @@ export const catalogCategories: CatalogCategory[] = [
         { name: "鹅梨帐中香·纯药香珠", image: "/images/catalog/incense-beads/pear-pure.webp" },
         { name: "玫香纳福·纯药香珠", image: "/images/catalog/incense-beads/rose-pure.webp" },
         { name: "息肌丸·纯药香珠", image: "/images/catalog/incense-beads/xiji-pure.webp" },
-        { name: "紫气东来·纯药香珠", image: "/images/catalog/incense-beads/purple-pure.webp" },
+        { name: "紫气东来·纯药香珠", image: "/images/catalog/incense-beads/purple-pure-deep-20260929.webp" },
         { name: "栀子花香·纯药香珠", image: "/images/catalog/incense-beads/gardenia-pure.webp" },
       ] },
     ],
