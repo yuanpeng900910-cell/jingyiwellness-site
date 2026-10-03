@@ -8,7 +8,7 @@ export function generateStaticParams() { return catalogCategories.map(({ slug })
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const category = catalogCategories.find((item) => item.slug === slug);
-  return { title: category ? `${category.title}｜京颐养方` : "产品｜京颐养方", description: category?.intro };
+  return { title: category ? `${category.title}｜京颐养方` : "产品｜京颐养方", description: category?.intro, alternates: category ? { canonical: `/products/${slug}/` } : undefined };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {

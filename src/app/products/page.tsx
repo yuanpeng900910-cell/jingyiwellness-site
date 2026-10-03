@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { CatalogLayout, CatalogCard } from "@/components/CatalogView";
 import { catalogCategories, catalogTotal } from "@/lib/catalog";
 
-export const metadata: Metadata = { title: "产品｜京颐养方", description: "浏览京颐养方草本茶饮、药食养方、草本生活与合香珠系列。" };
+export const metadata: Metadata = { title: "产品｜京颐养方", description: "浏览京颐养方草本茶饮、药食养方、草本生活与合香珠系列。", alternates: { canonical: "/products/" } };
 
 export default function ProductsPage() {
   return <CatalogLayout title="全部产品" eyebrow="JINGYI COLLECTION" intro={`四类草本生活选择，现展示 ${catalogTotal} 款产品与方案。`}>

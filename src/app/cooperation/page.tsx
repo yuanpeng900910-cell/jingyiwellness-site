@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { InnerHeader } from "@/components/SiteNavigation";
 
-export const metadata: Metadata = { title: "团体合作｜京颐养方", description: "京颐养方员工健康共建、企业健康活动与社区健康服务合作方向。" };
+export const metadata: Metadata = { title: "团体合作｜京颐养方", description: "京颐养方员工健康共建、企业健康活动与社区健康服务合作方向。", alternates: { canonical: "/cooperation/" } };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false };
 
 const areas = [

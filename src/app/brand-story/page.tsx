@@ -8,6 +8,7 @@ import styles from "./brand-story.module.css";
 export const metadata: Metadata = {
   title: "品牌故事｜京颐养方",
   description: "了解京颐养方与合肥京东方医院、京东方集团的渊源，以及品牌如何把草本养生融入日常生活。",
+  alternates: { canonical: "/brand-story/" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false };

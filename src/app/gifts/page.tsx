@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { InnerHeader } from "@/components/SiteNavigation";
 
-export const metadata: Metadata = { title: "东方养生礼｜京颐养方", description: "京颐养方节气定制礼、员工关爱礼与宋朝香氛联名款展示。" };
+export const metadata: Metadata = { title: "东方养生礼｜京颐养方", description: "京颐养方节气定制礼、员工关爱礼与宋朝香氛联名款展示。", alternates: { canonical: "/gifts/" } };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false };
 
 const gifts = [
