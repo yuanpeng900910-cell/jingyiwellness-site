@@ -174,7 +174,7 @@ export function JingyiTemplateHome() {
       <button type="button" className="btn-x mobile-drawer__close" aria-label="关闭导航菜单" onClick={() => setDrawerOpen(false)} />
       <div className="mobile-drawer__header"><span>京医古法，颐养东方</span></div>
       <div className="mobile-drawer__content"><MobileNavigation onNavigate={() => setDrawerOpen(false)} /></div>
-      <div className="mobile-drawer__footer"><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a><button type="button" onClick={() => { setDrawerOpen(false); setModal({ kind: "contact" }); }}>联系我们</button></div>
+      <div className="mobile-drawer__footer"><Link href="/products/" onClick={() => setDrawerOpen(false)}>产品目录</Link><button type="button" onClick={() => { setDrawerOpen(false); setModal({ kind: "contact" }); }}>联系我们</button></div>
     </aside>
 
     <section className={"hero-section jingyi-hero jingyi-hero--" + heroSlides[activeHero].theme} id="top" aria-label="京颐养方品牌与产品">
@@ -228,7 +228,7 @@ export function JingyiTemplateHome() {
       <Link href="/brand-story" className="brand-section__banner jy-brand-banner"><Image src="/images/master/brand-story-herbal-study.webp" alt="京颐养方草本研究与东方养生场景" width={1448} height={1086} sizes="100vw" quality={90} /><p>京医古法，颐养东方<ArrowUpRight size={26} /></p></Link>
     </section>
 
-    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phoneDisplay}</strong></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><a href="https://jingyiwellness.online/qa" target="_blank" rel="noreferrer">常见问题</a></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
+    <footer className="footer-section" id="contact"><div className="footer-section__desktop"><div className="footer-logo"><Image src="/images/logo.webp" alt="京颐养方" width={184} height={63} quality={90} /></div><div><h3>产品与合作咨询</h3><strong>{contact.phoneDisplay}</strong></div><div><h3>京颐养方</h3><p>草本茶饮 · 草本生活 · 东方养生礼</p><p>京医古法，颐养东方</p></div><div><h3>了解更多</h3><p><Link href="/products/">产品目录</Link></p><p><Link href="/brand-story">品牌故事</Link></p></div></div>
       <div className="footer-legal"><p>京颐养方 · 京医古法，颐养东方</p><p>产品用于日常轻养与健康生活方式，不替代药品及医疗服务。具体使用建议请结合个人情况咨询专业人员。</p></div>
       <div className="footer-section__mobile"><p>京颐养方 · 京医古法，颐养东方</p><div className="footer-contact"><strong>产品与合作咨询</strong><a href={"tel:" + contact.phone}>{contact.phoneDisplay}</a></div><p>产品不替代药品及医疗服务。</p></div>
     </footer>
