@@ -3,9 +3,15 @@
   "name": "jingyiwellness-site",
   "main": "./worker-static.js",
   "compatibility_date": "2026-09-25",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "PUBLIC_SITE_ENABLED": "false"
+  },
   "assets": {
     "directory": "./out",
     "binding": "ASSETS",
+    "run_worker_first": true,
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
   }
