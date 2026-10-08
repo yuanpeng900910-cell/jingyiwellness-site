@@ -1,4 +1,4 @@
-const previewHostname = "jingyiwellness-site.yuanpeng900910.workers.dev";
+const previewHostname = "preview.jingyiwellness.online";
 const officialHostnames = new Set(["jingyiwellness.online", "www.jingyiwellness.online"]);
 
 function notFound(request) {
