@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { formatPrice, type ProductCommerce } from "@/lib/product-commerce";
+
+// Unconfirmed prices are visible only on the project team's review domain.
+// Static HTML defaults to no prices, so the public site never flashes a price.
+const subscribeToPriceVisibility = () => () => {};
+const getPriceVisibility = () => window.location.hostname === "preview.jingyiwellness.online";
+const getServerPriceVisibility = () => false;
 
 export function ProductPrice({ commerce, detail = false }: { commerce?: ProductCommerce; detail?: boolean }) {
   const [selectedVariant, setSelectedVariant] = useState(0);
+  const showPrices = useSyncExternalStore(subscribeToPriceVisibility, getPriceVisibility, getServerPriceVisibility);
   if (!commerce) return null;
+  if (!showPrices) {
+    // Product details already show specifications in their definition list.
+    if (detail || !commerce.spec) return null;
+    return <span className="jy-price"><span className="jy-price__spec">{commerce.spec}</span></span>;
+  }
   if (commerce.status === "upcoming") return <span className="jy-price"><span className="jy-price__pending">待上线</span></span>;
 
   const variants = commerce.variants ?? [];
