@@ -13,7 +13,7 @@ const existing = (id: string, name?: string): CatalogItem => {
 export const catalogCategories: CatalogCategory[] = [
   {
     slug: "herbal-tea", title: "草本茶饮", eyebrow: "HERBAL TEA",
-    intro: "从轻养小罐茶、辨体调养茶，到熟悉的国民经典饮品与御养茶礼。",
+    intro: "从轻养小罐茶、辨体调养茶，到国民经典饮品、御养茶礼与便携隐茶杯。",
     sections: [
       { title: "轻养小罐茶", items: [
         { name: "元气茶", image: "/images/box-only/yuanqi.webp" },
@@ -31,6 +31,7 @@ export const catalogCategories: CatalogCategory[] = [
         existing("drink-sour-plum"),
       ] },
       { title: "御养茶礼", items: [existing("gift", "参石御养"), existing("shenzhi", "参芝润颜")] },
+      { title: "轻养隐茶杯", items: [existing("qinghe"), existing("yangyuan"), existing("gehua")] },
     ],
   },
   { slug: "food-formulas", title: "药食养方", eyebrow: "FOOD & HERBS",
