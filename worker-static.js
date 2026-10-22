@@ -16,7 +16,7 @@ function notFound(request) {
 const worker = {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const isPreview = url.hostname === previewHostname;
+    const isPreview = url.hostname === previewHostname && env.PREVIEW_SITE_ENABLED === "true";
     const isPublished = officialHostnames.has(url.hostname) && env.PUBLIC_SITE_ENABLED === "true";
 
     if (!isPreview && !isPublished) return notFound(request);

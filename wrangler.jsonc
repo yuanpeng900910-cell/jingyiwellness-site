@@ -18,7 +18,8 @@
     }
   ],
   "vars": {
-    "PUBLIC_SITE_ENABLED": "true"
+    "PUBLIC_SITE_ENABLED": "false",
+    "PREVIEW_SITE_ENABLED": "false"
   },
   "assets": {
     "directory": "./out",
