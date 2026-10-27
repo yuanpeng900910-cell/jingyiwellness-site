@@ -18,7 +18,7 @@
     }
   ],
   "vars": {
-    "PUBLIC_SITE_ENABLED": "false",
+    "PUBLIC_SITE_ENABLED": "true",
     "PREVIEW_SITE_ENABLED": "false"
   },
   "assets": {
