@@ -2,6 +2,8 @@
 
 2026-10-27，用户要求“把官网恢复”。正式官网恢复公开访问，延续此前隐藏价格的设置。此状态替代 2026-10-22 的全站暂停访问状态。
 
+2026-10-28，用户要求开放官网图片下载。已移除全站图片复制、右键另存、拖拽和手机长按菜单的拦截，恢复浏览器原生图片操作。此要求替代此前禁止保存图片的设置。
+
 - 临时网址：https://preview.jingyiwellness.online/
 - 正式网址：https://jingyiwellness.online/
 - `wrangler.jsonc` 中 `PUBLIC_SITE_ENABLED` 当前为字符串 `"true"`，`PREVIEW_SITE_ENABLED` 为字符串 `"false"`。
